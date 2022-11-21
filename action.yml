@@ -1,0 +1,16 @@
+name: 'Jest PR analysis'
+description: 'Track your code coverage in each pull request.'
+author: 'Manoel Gomes <manoelgomes53@gmail.com>'
+inputs:
+  github-token:
+    required: true
+    description: 'A github access token'
+    default: ${{ github.token }}
+runs:
+    using: composite
+    steps:
+        - run: ${{ github.action_path }}run.sh
+          shell: bash
+          id: main
+          env:
+              INPUT_GITHUB_TOKEN: ${{ inputs.github-token }}
