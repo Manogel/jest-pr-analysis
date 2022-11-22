@@ -12,7 +12,7 @@ export const getPrDiffFiles = async ({
 }: IPrDiffFiles) => {
   try {
     const { stdout } = await getExecOutput(
-      `git diff --name-only '${baseBranch}' '${headBranch}'`,
+      `git diff --name-only ${baseBranch} ${headBranch}`,
     );
     return stdout;
   } catch (err) {
