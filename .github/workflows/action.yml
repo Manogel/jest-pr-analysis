@@ -1,0 +1,19 @@
+name: PR metadata annotation
+
+on: 
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  run-local-action:
+    runs-on: ubuntu-latest
+    env:
+        GITHUB_ACTION_PATH: ./
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Annotate PR
+        uses: ./
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
