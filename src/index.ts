@@ -45,7 +45,7 @@ export const run = async () => {
       return `--collectCoverageFrom "${formattedPath}"`;
     })
     .join(' ');
-
+  console.log(collectCoverageScript);
   const relatedTestFiles = await getRelatedTestFiles(changedFilesArray);
 
   const filesToTestArray = relatedTestFiles
