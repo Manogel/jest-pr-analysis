@@ -3,6 +3,7 @@ import { pullBranch } from '~/stages/pullBranch';
 import { getActionParams } from '~/utils/getActionParams';
 import { switchToBranch } from '~/stages/switchToBranch';
 import micromatch from 'micromatch';
+import actCore from '@actions/core';
 import { getJestParams } from '~/utils/getJestParams';
 import { getPrDiffFiles } from '~/stages/getPrDiffFiles';
 import { getRelatedTestFiles } from '~/stages/getRelatedTestFiles';
@@ -34,7 +35,8 @@ export const run = async () => {
     jestParams.collectCoverageFrom,
   );
 
-  if (changedFilesArray.length < 0) {
+  if (changedFilesArray.length <= 0) {
+    actCore.info('No files to tests.');
     process.exit(0);
   }
 
