@@ -2,16 +2,30 @@ import fs from 'fs-extra';
 
 const PACKAGE_JSON_PATH = './package.json';
 
+export interface IJestThreshold {
+  branches: number;
+  functions: number;
+  lines: number;
+  statements: number;
+}
+
 interface IPackageObj {
   jest: {
     collectCoverageFrom: string[];
     rootDir: string;
+    coverageThreshold: {
+      global: IJestThreshold;
+    };
   };
 }
 
 export const getJestParams = () => {
   const packageObj = fs.readJsonSync(PACKAGE_JSON_PATH) as IPackageObj;
-  const { collectCoverageFrom, rootDir } = packageObj.jest;
+  const {
+    collectCoverageFrom,
+    rootDir = '.',
+    coverageThreshold,
+  } = packageObj.jest;
 
   const lastChar = rootDir.substring(rootDir.length - 1);
   let formattedRootDir = rootDir;
@@ -23,5 +37,6 @@ export const getJestParams = () => {
   return {
     collectCoverageFrom,
     rootDir: formattedRootDir,
+    coverageThreshold: coverageThreshold.global,
   };
 };
