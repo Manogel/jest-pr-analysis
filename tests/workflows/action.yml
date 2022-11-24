@@ -7,7 +7,7 @@ on:
 jobs:
   run-local-action:
     runs-on: ubuntu-latest
-    container: catthehacker/ubuntu:act-latest
+    container: catthehacker/ubuntu:js-latest
     env:
         GITHUB_ACTION_PATH: ./
     steps:
@@ -19,6 +19,7 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+      # - run: yarn install
       - name: Annotate PR
         uses: ./
         with:
