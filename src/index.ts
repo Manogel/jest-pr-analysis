@@ -34,6 +34,7 @@ export const run = async () => {
     diffFilesStr.split(/\n/g),
     jestParams.collectCoverageFrom,
   );
+  console.log(changedFilesArray);
 
   if (changedFilesArray.length <= 0) {
     actCore.info('No files to tests.');
@@ -43,7 +44,11 @@ export const run = async () => {
   const collectCoverageScript = changedFilesArray
     .map((from) => {
       // remove rootDir reference
-      const formattedPath = from.split(`${jestParams.rootDir}/`)[1];
+
+      const formattedPath =
+        jestParams.rootDir != null
+          ? from.split(`${jestParams.rootDir}/`)[1]
+          : from;
       return `--collectCoverageFrom "${formattedPath}"`;
     })
     .join(' ');

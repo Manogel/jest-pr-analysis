@@ -23,15 +23,18 @@ export const getJestParams = () => {
   const packageObj = fs.readJsonSync(PACKAGE_JSON_PATH) as IPackageObj;
   const {
     collectCoverageFrom,
-    rootDir = '.',
+    rootDir = null,
     coverageThreshold,
   } = packageObj.jest;
 
-  const lastChar = rootDir.substring(rootDir.length - 1);
   let formattedRootDir = rootDir;
 
-  if (lastChar === '/') {
-    formattedRootDir = rootDir.substring(0, rootDir.length - 1);
+  if (rootDir != null) {
+    const lastChar = rootDir.substring(rootDir.length - 1);
+
+    if (lastChar === '/') {
+      formattedRootDir = rootDir.substring(0, rootDir.length - 1);
+    }
   }
 
   return {
