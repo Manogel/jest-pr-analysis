@@ -69,6 +69,13 @@
     "moduleNameMapper": {
       "~/(.*)": "<rootDir>/src/$1"
     },
-    "setupFilesAfterEnv": ["<rootDir>/tests/setupJestGlobal.ts"]
+    "setupFilesAfterEnv": ["<rootDir>/tests/setupJestGlobal.ts"],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80
+      }
+    }
   }
 }
