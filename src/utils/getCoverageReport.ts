@@ -22,7 +22,7 @@ export const getCoverageReport = (coverageFilePath: string) => {
     // return { ...coverage, coverageHtml };
   } catch (error) {
     if (error instanceof Error) {
-      actCore.info(`[Error] Generating coverage report: ${error.message}`);
+      actCore.error(`[Error] Generating coverage report: ${error.message}`);
     }
     throw error;
   }
