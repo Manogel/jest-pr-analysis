@@ -16,4 +16,9 @@ export const spyExec = {
     .mockImplementation(async (_commandLine, _args, _options) => {
       return 1;
     }),
+  getExecOutput: jest
+    .spyOn(exec, 'getExecOutput')
+    .mockImplementation(async (_commandLine) => {
+      return { exitCode: 1, stdout: _commandLine, stderr: _commandLine };
+    }),
 };
