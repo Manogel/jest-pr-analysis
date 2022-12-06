@@ -11,13 +11,15 @@ export const generateJestTestCmd = ({
     'yarn',
     'jest',
     '--ci',
+    '--json',
+    '--coverage',
+    collectCoverageScript,
+    '--testLocationInResults',
     '--reporters=default',
     '--reporters=jest-junit',
     '--coverageReporters=json-summary',
     '--coverageReporters=text',
     '--outputFile=report.json',
-    '--coverage',
-    collectCoverageScript,
     ...filesToTestArray,
   ];
 
