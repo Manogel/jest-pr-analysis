@@ -60,6 +60,11 @@ export const run = async () => {
     .map((testFile: string) => path.relative(process.cwd(), testFile))
     .filter((file) => file.match(new RegExp(jestParams.testRegex, 'g')));
 
+  if (filesToTestArray.length <= 0) {
+    actCore.info(`No tests found for: [${changedFilesArray.join.call(' ')}].`);
+    process.exit(1);
+  }
+
   const jestCmd = generateJestTestCmd({
     collectCoverageScript,
     filesToTestArray,
