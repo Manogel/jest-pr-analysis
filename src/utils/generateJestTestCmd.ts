@@ -8,6 +8,7 @@ export const generateJestTestCmd = ({
   filesToTestArray,
 }: IGenerateJestTestCmd) => {
   const jestCommand = [
+    'yarn',
     'jest',
     '--ci',
     '--reporters=default',

@@ -3,7 +3,7 @@ import { getExecOutput } from '@actions/exec';
 export const getRelatedTestFiles = async (changedFilesArray: string[]) => {
   try {
     const { stdout } = await getExecOutput(
-      `jest --listTests --findRelatedTests ${changedFilesArray.join(' ')}`,
+      `yarn jest --listTests --findRelatedTests ${changedFilesArray.join(' ')}`,
     );
     return stdout;
   } catch (err) {
