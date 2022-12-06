@@ -19,7 +19,7 @@ export const generateJestTestCmd = ({
     '--reporters=jest-junit',
     '--coverageReporters=json-summary',
     '--coverageReporters=text',
-    '--outputFile=report.json',
+    '--outputFile=./coverage/report.json',
     ...filesToTestArray,
   ];
 
