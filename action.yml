@@ -9,6 +9,10 @@ inputs:
 runs:
     using: composite
     steps:
+        - name: Configure git user
+          run: |
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
         - run: ${{ github.action_path }}run.sh
           shell: bash
           id: main
