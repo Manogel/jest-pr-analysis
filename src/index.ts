@@ -52,7 +52,7 @@ export const run = async () => {
       return `--collectCoverageFrom "${formattedPath}"`;
     })
     .join(' ');
-  console.log(collectCoverageScript);
+
   const relatedTestFiles = await getRelatedTestFiles(changedFilesArray);
 
   const filesToTestArray = relatedTestFiles
@@ -60,7 +60,7 @@ export const run = async () => {
     .trim()
     .split(' ')
     .map((testFile: string) => path.relative(process.cwd(), testFile));
-
+  console.log(filesToTestArray);
   const jestCmd = generateJestTestCmd({
     collectCoverageScript,
     filesToTestArray,
