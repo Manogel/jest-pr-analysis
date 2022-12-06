@@ -25,5 +25,3 @@ export const generateJestTestCmd = ({
 
   return jestCommand.join(' ');
 };
-
-// ${collectCoverageScript} ${testFiles}
