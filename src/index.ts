@@ -61,7 +61,7 @@ export const run = async () => {
     .filter((file) => file.match(new RegExp(jestParams.testRegex, 'g')));
 
   if (filesToTestArray.length <= 0) {
-    actCore.info(`No tests found for: [${changedFilesArray.join.call(' ')}].`);
+    actCore.info(`No tests found for: [${changedFilesArray.join(' ')}].`);
     process.exit(1);
   }
 
