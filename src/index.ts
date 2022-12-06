@@ -61,7 +61,7 @@ export const run = async () => {
       .split(' ')
       .map((testFile: string) => path.relative(process.cwd(), testFile)),
     jestParams.testRegex,
-    { regex: true },
+    { unescape: true },
   );
   console.log(jestParams.testRegex);
   console.log(
