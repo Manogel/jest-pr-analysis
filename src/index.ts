@@ -60,8 +60,8 @@ export const run = async () => {
       .trim()
       .split(' ')
       .map((testFile: string) => path.relative(process.cwd(), testFile)),
-    jestParams.testRegex.replace(/\\/g, '/'),
-    { regex: true },
+    jestParams.testRegex,
+    { regex: true, unescape: true },
   );
   console.log(jestParams.testRegex);
   console.log(jestParams.testRegex.replace(/\\/g, '/'));
