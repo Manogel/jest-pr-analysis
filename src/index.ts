@@ -3,7 +3,7 @@ import { pullBranch } from '~/stages/pullBranch';
 import { getActionParams } from '~/utils/getActionParams';
 import { switchToBranch } from '~/stages/switchToBranch';
 import micromatch from 'micromatch';
-import actCore from '@actions/core';
+import { error, info } from '@actions/core';
 import { getJestParams } from '~/utils/getJestParams';
 import { getPrDiffFiles } from '~/stages/getPrDiffFiles';
 import { getRelatedTestFiles } from '~/stages/getRelatedTestFiles';
@@ -36,7 +36,7 @@ export const run = async () => {
   );
 
   if (changedFilesArray.length <= 0) {
-    actCore.info('No files to tests.');
+    info('No files to tests.');
     process.exit(0);
   }
 
@@ -61,7 +61,7 @@ export const run = async () => {
     .filter((file) => file.match(new RegExp(jestParams.testRegex, 'g')));
 
   if (filesToTestArray.length <= 0) {
-    actCore.error(`No tests found for: [${changedFilesArray.join(' ')}].`);
+    error(`No tests found for: [${changedFilesArray.join(' ')}].`);
     process.exit(1);
   }
 
