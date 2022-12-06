@@ -66,7 +66,7 @@ export const run = async () => {
   });
 
   // TODO fail to use pipe
-  const fullTestCmd = `yarn "${jestCmd} | tee ./coverage/coverage.txt"`;
+  const fullTestCmd = `/bin/bash -c "${jestCmd} | tee ./coverage/coverage.txt"`;
 
   await safeRunStage(async () => {
     await runTest(fullTestCmd);
