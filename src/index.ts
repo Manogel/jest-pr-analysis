@@ -75,10 +75,10 @@ export const run = async () => {
     filesToTestArray,
   });
 
-  // const fullTestCmd = `${jestCmd} | tee ./coverage/coverage.txt`;
+  const fullTestCmd = `"${jestCmd} | tee ./coverage/coverage.txt"`;
 
   await safeRunStage(async () => {
-    await runTest(jestCmd);
+    await runTest(fullTestCmd);
   });
 };
 
