@@ -62,7 +62,13 @@ export const run = async () => {
       .map((testFile: string) => path.relative(process.cwd(), testFile)),
     jestParams.testRegex,
   );
-
+  console.log(
+    relatedTestResults
+      .replace(/\n/g, ' ')
+      .trim()
+      .split(' ')
+      .map((testFile: string) => path.relative(process.cwd(), testFile)),
+  );
   console.log(filesToTestArray);
 
   const jestCmd = generateJestTestCmd({
