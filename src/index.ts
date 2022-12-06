@@ -54,16 +54,22 @@ export const run = async () => {
     .join(' ');
 
   const relatedTestResults = await getRelatedTestFiles(changedFilesArray);
-  const filesToTestArray = micromatch(
-    relatedTestResults
-      .replace(/\n/g, ' ')
-      .trim()
-      .split(' ')
-      .map((testFile: string) => path.relative(process.cwd(), testFile)),
-    jestParams.testRegex,
-    { regex: true, unescape: true },
-  );
-  console.log(jestParams.testRegex);
+  // const filesToTestArray = micromatch(
+  //   relatedTestResults
+  //     .replace(/\n/g, ' ')
+  //     .trim()
+  //     .split(' ')
+  //     .map((testFile: string) => path.relative(process.cwd(), testFile)),
+  //   jestParams.testRegex,
+  //   { regex: true, unescape: true },
+  // );
+  const filesToTestArray = relatedTestResults
+    .replace(/\n/g, ' ')
+    .trim()
+    .split(' ')
+    .map((testFile: string) => path.relative(process.cwd(), testFile))
+    .filter((file) => file.match(new RegExp(jestParams.testRegex, 'g')));
+  console.log(new RegExp(jestParams.testRegex, 'g'));
   console.log(jestParams.testRegex.replace(/\\/g, '/'));
   console.log(
     relatedTestResults
