@@ -34,7 +34,6 @@ export const run = async () => {
     diffFilesStr.split(/\n/g),
     jestParams.collectCoverageFrom,
   );
-  console.log(changedFilesArray);
 
   if (changedFilesArray.length <= 0) {
     actCore.info('No files to tests.');
@@ -54,15 +53,6 @@ export const run = async () => {
     .join(' ');
 
   const relatedTestResults = await getRelatedTestFiles(changedFilesArray);
-  // const filesToTestArray = micromatch(
-  //   relatedTestResults
-  //     .replace(/\n/g, ' ')
-  //     .trim()
-  //     .split(' ')
-  //     .map((testFile: string) => path.relative(process.cwd(), testFile)),
-  //   jestParams.testRegex,
-  //   { regex: true, unescape: true },
-  // );
   const filesToTestArray = relatedTestResults
     .replace(/\n/g, ' ')
     .trim()
@@ -75,7 +65,8 @@ export const run = async () => {
     filesToTestArray,
   });
 
-  const fullTestCmd = `"${jestCmd} | tee ./coverage/coverage.txt"`;
+  // TODO fail to use pipe
+  const fullTestCmd = `yarn "${jestCmd} | tee ./coverage/coverage.txt"`;
 
   await safeRunStage(async () => {
     await runTest(fullTestCmd);
