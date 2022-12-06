@@ -69,16 +69,6 @@ export const run = async () => {
     .split(' ')
     .map((testFile: string) => path.relative(process.cwd(), testFile))
     .filter((file) => file.match(new RegExp(jestParams.testRegex, 'g')));
-  console.log(new RegExp(jestParams.testRegex, 'g'));
-  console.log(jestParams.testRegex.replace(/\\/g, '/'));
-  console.log(
-    relatedTestResults
-      .replace(/\n/g, ' ')
-      .trim()
-      .split(' ')
-      .map((testFile: string) => path.relative(process.cwd(), testFile)),
-  );
-  console.log(filesToTestArray);
 
   const jestCmd = generateJestTestCmd({
     collectCoverageScript,
