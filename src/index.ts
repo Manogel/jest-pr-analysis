@@ -53,15 +53,18 @@ export const run = async () => {
     })
     .join(' ');
 
-  const relatedTestFiles = await getRelatedTestFiles(changedFilesArray);
-  console.log(relatedTestFiles);
+  const relatedTestResults = await getRelatedTestFiles(changedFilesArray);
+  const filesToTestArray = micromatch(
+    relatedTestResults
+      .replace(/\n/g, ' ')
+      .trim()
+      .split(' ')
+      .map((testFile: string) => path.relative(process.cwd(), testFile)),
+    jestParams.testRegex,
+  );
 
-  const filesToTestArray = relatedTestFiles
-    .replace(/\n/g, ' ')
-    .trim()
-    .split(' ')
-    .map((testFile: string) => path.relative(process.cwd(), testFile));
   console.log(filesToTestArray);
+
   const jestCmd = generateJestTestCmd({
     collectCoverageScript,
     filesToTestArray,

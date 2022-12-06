@@ -11,6 +11,7 @@ export interface IJestThreshold {
 
 interface IPackageObj {
   jest: {
+    testRegex: string;
     collectCoverageFrom: string[];
     rootDir: string;
     coverageThreshold: {
@@ -25,6 +26,7 @@ export const getJestParams = () => {
     collectCoverageFrom,
     rootDir = null,
     coverageThreshold,
+    testRegex,
   } = packageObj.jest;
 
   let formattedRootDir = rootDir;
@@ -41,5 +43,6 @@ export const getJestParams = () => {
     collectCoverageFrom,
     rootDir: formattedRootDir,
     coverageThreshold: coverageThreshold.global,
+    testRegex,
   };
 };
