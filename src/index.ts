@@ -70,7 +70,6 @@ export const run = async () => {
     filesToTestArray,
   });
 
-  // TODO fail to use pipe
   const fullTestCmd = `/bin/bash -c "${jestCmd} | tee ./coverage/coverage.txt"`;
 
   await safeRunStage(async () => {
