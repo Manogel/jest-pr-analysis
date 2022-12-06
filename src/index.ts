@@ -54,6 +54,7 @@ export const run = async () => {
     .join(' ');
 
   const relatedTestFiles = await getRelatedTestFiles(changedFilesArray);
+  console.log(relatedTestFiles);
 
   const filesToTestArray = relatedTestFiles
     .replace(/\n/g, ' ')
