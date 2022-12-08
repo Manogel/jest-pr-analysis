@@ -1,18 +1,6 @@
 import { getInput } from '@actions/core';
 import { context } from '@actions/github';
 
-export interface IPullRequest {
-  base: { ref: string };
-  head: { ref: string; sha: string };
-  number: number;
-}
-
-interface IActionParams {
-  prNumber: number;
-  ghToken: string;
-  pullRequest: IPullRequest;
-}
-
 export const getActionParams = (): IActionParams => {
   const ghToken = getInput('github-token', {
     required: true,

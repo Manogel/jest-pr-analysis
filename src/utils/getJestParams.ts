@@ -2,24 +2,6 @@ import fs from 'fs-extra';
 
 const PACKAGE_JSON_PATH = './package.json';
 
-export interface IJestThreshold {
-  branches: number;
-  functions: number;
-  lines: number;
-  statements: number;
-}
-
-interface IPackageObj {
-  jest: {
-    testRegex: string;
-    collectCoverageFrom: string[];
-    rootDir: string;
-    coverageThreshold: {
-      global: IJestThreshold;
-    };
-  };
-}
-
 export const getJestParams = () => {
   const packageObj = fs.readJsonSync(PACKAGE_JSON_PATH) as IPackageObj;
   const {
