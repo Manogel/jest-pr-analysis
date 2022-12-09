@@ -1,15 +1,19 @@
-import defaultTemplateMd from '../templates/template.md';
+import path from 'path';
+import { getContentFile } from '~/utils/getContentFile';
 
 type ITemplate = 'default';
 
 export const parseMarkdownTemplate = (
-  _template: ITemplate,
+  template: ITemplate,
   args: Record<string, string | number | undefined>,
 ) => {
-  let text = defaultTemplateMd;
-
+  let text = '';
+  const templateDir = path.resolve(__dirname, '..', 'templates');
   // TODO:
-  // if (template === 'default') text = defaultTemplateMd;
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (template === 'default') {
+    text = getContentFile(path.join(templateDir, 'template.md'));
+  }
 
   Object.keys(args).forEach((argName) => {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
