@@ -16,6 +16,7 @@ export const getActionParams = (): IActionParams => {
     ghToken,
     prNumber: pullRequest.number,
     pullRequest,
+    coverageTextPath: './coverage/coverage.txt',
   };
 
   return options;

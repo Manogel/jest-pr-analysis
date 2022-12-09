@@ -11,12 +11,14 @@ import path from 'path';
 import { generateJestTestCmd } from '~/utils/generateJestTestCmd';
 import { safeRunStage } from '~/utils/safeRunStage';
 import { runTest } from '~/stages/runTests';
+import { createReportComment } from '~/stages/createReportComment';
+import { genCoverageReportInMarkdown } from '~/generators/genCoverageReportInMarkdown';
 
 export const run = async () => {
-  const { pullRequest } = getActionParams();
+  const actionParams = getActionParams();
 
-  const currentBranch = pullRequest.head.ref;
-  const baseBranch = pullRequest.base.ref;
+  const currentBranch = actionParams.pullRequest.head.ref;
+  const baseBranch = actionParams.pullRequest.base.ref;
 
   // setup git files
   await fetchBranch(baseBranch);
@@ -70,11 +72,17 @@ export const run = async () => {
     filesToTestArray,
   });
 
-  const fullTestCmd = `/bin/bash -c "${jestCmd} | tee ./coverage/coverage.txt"`;
+  const fullTestCmd = `/bin/bash -c "${jestCmd} | tee ${actionParams.coverageTextPath}"`;
 
   await safeRunStage(async () => {
     await runTest(fullTestCmd);
   });
+
+  const report = genCoverageReportInMarkdown(actionParams.coverageTextPath);
+
+  await createReportComment(report, actionParams);
+
+  process.exit(0);
 };
 
 void run();

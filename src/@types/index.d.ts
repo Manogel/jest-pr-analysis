@@ -60,4 +60,5 @@ interface IActionParams {
   prNumber: number;
   ghToken: string;
   pullRequest: IPullRequest;
+  coverageTextPath: string;
 }
