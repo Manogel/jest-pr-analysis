@@ -10,9 +10,12 @@ export const getActionParams = (): IActionParams => {
     throw Error('Action available only pull request');
   }
 
-  console.log(context);
-  const pullRequest = context.payload.pull_request as IPullRequest;
+  context.repo.owner = 'Manogel';
+  context.repo.repo = 'jest-pr-analysis';
 
+  const pullRequest = context.payload.pull_request as IPullRequest;
+  console.log(context.payload);
+  console.log(context);
   const options: IActionParams = {
     ghToken,
     prNumber: pullRequest.number,

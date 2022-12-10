@@ -5,6 +5,7 @@
     },
     "base": {
       "ref": "main"
-    }
+    },
+    "number": 4
   }
 }
