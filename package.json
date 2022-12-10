@@ -65,7 +65,8 @@
       "/node_modules/"
     ],
     "collectCoverageFrom": [
-      "src/**/*.ts"
+      "src/**/*.ts",
+      "!src/@types/*"
     ],
     "coverageDirectory": "coverage",
     "testEnvironment": "node",

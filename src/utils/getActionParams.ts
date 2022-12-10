@@ -10,6 +10,7 @@ export const getActionParams = (): IActionParams => {
     throw Error('Action available only pull request');
   }
 
+  console.log(context);
   const pullRequest = context.payload.pull_request as IPullRequest;
 
   const options: IActionParams = {
