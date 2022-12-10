@@ -44,12 +44,12 @@ export const createReportComment = async (
   const { owner, repo } = context.repo;
 
   // if (!previousReport) {
-  await octokit.rest.issues.createComment({
-    owner,
-    repo,
-    body: report,
-    issue_number: options.prNumber,
-  });
+  // await octokit.rest.issues.createComment({
+  //   owner,
+  //   repo,
+  //   body: report,
+  //   issue_number: options.prNumber,
+  // });
   // } else {
   //   await octokit.rest.issues.updateComment({
   //     owner,
