@@ -3,10 +3,12 @@ import { context, getOctokit } from '@actions/github';
 import { GitHub } from '@actions/github/lib/utils';
 import { GH_MAX_COMMENT_LENGTH } from '~/constants/github';
 
+const JEST_PR_TOKEN = '<!-- jest pull request analysis -->';
+
 const getPreviousReport = async (
   octokit: InstanceType<typeof GitHub>,
   prNumber: number,
-): Promise<null | { id: number }> => {
+) => {
   const { owner, repo } = context.repo;
   console.log('Fetch comments ');
 
@@ -20,11 +22,11 @@ const getPreviousReport = async (
   console.log(context.repo);
   console.log(commentList);
 
-  // const previousReport = commentList.find((comment) =>
-  //   comment.body?.startsWith(getReportTag(options)),
-  // );
+  const previousReport = commentList.find((comment) =>
+    comment.body?.startsWith(JEST_PR_TOKEN),
+  );
 
-  return null;
+  return previousReport;
 };
 
 export const createReportComment = async (
@@ -40,22 +42,22 @@ export const createReportComment = async (
     return;
   }
 
-  const _previousReport = getPreviousReport(octokit, options.prNumber);
+  const previousReport = await getPreviousReport(octokit, options.prNumber);
   const { owner, repo } = context.repo;
 
-  // if (!previousReport) {
-  await octokit.rest.issues.createComment({
-    owner,
-    repo,
-    body: report,
-    issue_number: options.prNumber,
-  });
-  // } else {
-  //   await octokit.rest.issues.updateComment({
-  //     owner,
-  //     repo,
-  //     body: report,
-  //     comment_id: previousReport.id,
-  //   });
-  // }
+  if (!previousReport) {
+    await octokit.rest.issues.createComment({
+      owner,
+      repo,
+      body: report,
+      issue_number: options.prNumber,
+    });
+  } else {
+    await octokit.rest.issues.updateComment({
+      owner,
+      repo,
+      body: report,
+      comment_id: previousReport.id,
+    });
+  }
 };
