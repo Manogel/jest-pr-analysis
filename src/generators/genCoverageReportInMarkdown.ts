@@ -29,9 +29,15 @@ const coverageDataToArrayString = (
 ) => {
   const { statusIcon = false } = options;
   const isFile = (name: string) => name.includes('.');
-  const formattedFilename = isFile(covData.file)
-    ? `📌 ${covData.file}`
-    : covData.file;
+  let formattedFilename = covData.file;
+
+  if (isFile(covData.file)) {
+    formattedFilename = `📌 ${covData.file}`;
+  } else if (covData.file === 'All files') {
+    formattedFilename = `📦 ${covData.file}`;
+  } else {
+    formattedFilename = `• ${covData.file}`;
+  }
 
   const stmtsText = `${
     statusIcon ? getCoverageStatusIcon(covData.stmts) : ''
