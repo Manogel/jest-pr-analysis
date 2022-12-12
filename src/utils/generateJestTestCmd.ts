@@ -11,7 +11,6 @@ export const generateJestTestCmd = ({
     'yarn',
     'jest',
     '--ci',
-    '--json',
     '--coverage',
     collectCoverageScript,
     '--testLocationInResults',
