@@ -1,20 +1,18 @@
-import { getExecOutput } from '@actions/exec';
-
-interface IPrDiffFiles {
-  baseBranch: string;
-  headBranch: string;
-}
+import { context, getOctokit } from '@actions/github';
 
 // Get diff files from pr base branch
-export const getPrDiffFiles = async ({
-  baseBranch,
-  headBranch,
-}: IPrDiffFiles) => {
+export const getPrDiffFiles = async (actionParams: IActionParams) => {
   try {
-    const { stdout } = await getExecOutput(
-      `git diff --name-only ${baseBranch} ${headBranch}`,
-    );
-    return stdout;
+    const { owner, repo } = context.repo;
+
+    const octokit = getOctokit(actionParams.ghToken);
+    const { data: files } = await octokit.rest.pulls.listFiles({
+      owner,
+      repo,
+      pull_number: actionParams.prNumber,
+    });
+
+    return files;
   } catch (err) {
     console.warn('Error to show files diff', err);
     throw err;
