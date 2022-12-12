@@ -10,7 +10,6 @@ const getPreviousReport = async (
   prNumber: number,
 ) => {
   const { owner, repo } = context.repo;
-  console.log('Fetch comments ');
 
   const commentList = await octokit.paginate(octokit.rest.issues.listComments, {
     owner,
@@ -18,9 +17,6 @@ const getPreviousReport = async (
     per_page: 20,
     issue_number: prNumber,
   });
-
-  console.log(context.repo);
-  console.log(commentList);
 
   const previousReport = commentList.find((comment) =>
     comment.body?.startsWith(JEST_PR_TOKEN),
@@ -38,7 +34,6 @@ export const createReportComment = async (
   if (report.length > GH_MAX_COMMENT_LENGTH) {
     const tooLongComment = `Too long comment, maximum available is ${GH_MAX_COMMENT_LENGTH}. Current length ${report.length}`;
     warning(tooLongComment);
-    console.log(tooLongComment);
     return;
   }
 

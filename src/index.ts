@@ -79,8 +79,8 @@ export const run = async () => {
   });
 
   const report = genCoverageReportInMarkdown(actionParams.coverageTextPath);
-
-  await createReportComment(report, actionParams);
+  console.log(report);
+  // await createReportComment(report, actionParams);
 
   process.exit(0);
 };
