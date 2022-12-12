@@ -1,4 +1,5 @@
 import markdownTable from 'markdown-table';
+
 import { parseCoverageFromTextFile } from '~/utils/parseCoverageFromTextFile';
 import { parseMarkdownTemplate } from '~/utils/parseMarkdownTemplate';
 

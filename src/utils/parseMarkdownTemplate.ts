@@ -1,4 +1,5 @@
 import path from 'path';
+
 import { getContentFile } from '~/utils/getContentFile';
 
 type ITemplate = 'default';
