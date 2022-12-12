@@ -1,6 +1,5 @@
 import { context, getOctokit } from '@actions/github';
 
-// Get diff files from pr base branch
 export const getPrDiffFiles = async (actionParams: IActionParams) => {
   try {
     const { owner, repo } = context.repo;
