@@ -9,14 +9,13 @@ const getPreviousReport = async (
 ): Promise<null | { id: number }> => {
   const { owner, repo } = context.repo;
   console.log('Fetch comments ');
-  const commentList = await octokit.paginate(
-    `GET /repos/{owner}/{repo}/issues/{prNumber}/comments`,
-    {
-      owner,
-      repo,
-      prNumber,
-    },
-  );
+
+  const commentList = await octokit.paginate(octokit.rest.issues.listComments, {
+    owner,
+    repo,
+    per_page: 20,
+    issue_number: prNumber,
+  });
 
   console.log(context.repo);
   console.log(commentList);
@@ -45,12 +44,12 @@ export const createReportComment = async (
   const { owner, repo } = context.repo;
 
   // if (!previousReport) {
-  // await octokit.rest.issues.createComment({
-  //   owner,
-  //   repo,
-  //   body: report,
-  //   issue_number: options.prNumber,
-  // });
+  await octokit.rest.issues.createComment({
+    owner,
+    repo,
+    body: report,
+    issue_number: options.prNumber,
+  });
   // } else {
   //   await octokit.rest.issues.updateComment({
   //     owner,

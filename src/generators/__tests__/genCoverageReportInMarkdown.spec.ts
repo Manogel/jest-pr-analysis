@@ -54,8 +54,7 @@ jest.mock('~/utils/parseMarkdownTemplate', () => {
 describe('genCoverageReportInMarkdown', () => {
   const pathToFile = 'path-to-file';
   it('should be return coverage report', async () => {
-    const results = genCoverageReportInMarkdown(pathToFile);
-    console.log(results);
+    genCoverageReportInMarkdown(pathToFile);
     expect(true).toBe(true);
   });
 });
