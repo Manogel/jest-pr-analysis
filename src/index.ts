@@ -13,6 +13,7 @@ import { safeRunStage } from '~/utils/safeRunStage';
 import { runTest } from '~/stages/runTests';
 import { createReportComment } from '~/stages/createReportComment';
 import { genCoverageReportInMarkdown } from '~/generators/genCoverageReportInMarkdown';
+import { context, getOctokit } from '@actions/github';
 
 export const run = async () => {
   const actionParams = getActionParams();
@@ -77,6 +78,14 @@ export const run = async () => {
   await safeRunStage(async () => {
     await runTest(fullTestCmd);
   });
+
+  const octokit = getOctokit(actionParams.ghToken);
+  const files = await octokit.rest.pulls.listFiles({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    pull_number: actionParams.prNumber,
+  });
+  console.log(files);
 
   const report = genCoverageReportInMarkdown(actionParams.coverageTextPath);
   console.log(report);
