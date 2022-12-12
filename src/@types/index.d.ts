@@ -35,8 +35,8 @@ interface IPackageObj {
     testRegex: string;
     collectCoverageFrom: string[];
     rootDir: string;
-    coverageThreshold: {
-      global: IJestThreshold;
+    coverageThreshold?: {
+      global?: IJestThreshold;
     };
   };
 }

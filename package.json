@@ -66,7 +66,8 @@
     ],
     "collectCoverageFrom": [
       "src/**/*.ts",
-      "!src/@types/*"
+      "!src/@types/*",
+      "!src/**/*.spec.ts"
     ],
     "coverageDirectory": "coverage",
     "testEnvironment": "node",
