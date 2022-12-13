@@ -1,4 +1,5 @@
 import { getExecOutput } from '@actions/exec';
+
 import { getRelatedTestFiles } from '~/stages/getRelatedTestFiles';
 
 describe('getRelatedTestFiles', () => {

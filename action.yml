@@ -7,14 +7,5 @@ inputs:
     description: 'A github access token'
     default: ${{ github.token }}
 runs:
-    using: composite
-    steps:
-        - name: Configure git user
-          run: |
-            git config --local user.email "manoelgomes53@gmail.com"
-            git config --local user.name "Manogel"
-        - run: ${{ github.action_path }}run.sh
-          shell: bash
-          id: main
-          env:
-              INPUT_GITHUB_TOKEN: ${{ inputs.github-token }}
+  using: 'node16'
+  main: lib/index.js
