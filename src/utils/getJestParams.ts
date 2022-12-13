@@ -1,6 +1,5 @@
 import fs from 'fs-extra';
-
-const PACKAGE_JSON_PATH = './package.json';
+import path from 'path';
 
 export const getThreshold = (
   packageJson: IPackageObj,
@@ -18,7 +17,8 @@ export const getThreshold = (
 };
 
 export const getJestParams = () => {
-  const packageObj = fs.readJsonSync(PACKAGE_JSON_PATH) as IPackageObj;
+  console.log(path.join('package.json'));
+  const packageObj = fs.readJsonSync(path.join('package.json')) as IPackageObj;
   const { collectCoverageFrom, rootDir = null, testRegex } = packageObj.jest;
 
   let formattedRootDir = rootDir;
