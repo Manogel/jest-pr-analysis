@@ -1,6 +1,6 @@
-import path from 'path';
-
 import { getContentFile } from '~/utils/getContentFile';
+
+import defaultTemplate from '../templates/template.md';
 
 type ITemplate = 'default';
 
@@ -9,11 +9,10 @@ export const parseMarkdownTemplate = (
   args: Record<string, string | number | undefined>,
 ) => {
   let text = '';
-  const templateDir = path.resolve(__dirname, '..', 'templates');
-  // TODO:
+
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (template === 'default') {
-    text = getContentFile(path.join(templateDir, 'template.md'));
+    text = getContentFile(defaultTemplate);
   }
 
   Object.keys(args).forEach((argName) => {
