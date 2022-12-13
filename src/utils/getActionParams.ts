@@ -10,8 +10,9 @@ export const getActionParams = (): IActionParams => {
     throw Error('Action available only pull request');
   }
 
-  context.repo.owner = 'Manogel';
-  context.repo.repo = 'jest-pr-analysis';
+  // For testing:
+  // context.repo.owner = 'Manogel';
+  // context.repo.repo = 'jest-pr-analysis';
 
   const pullRequest = context.payload.pull_request as IPullRequest;
 

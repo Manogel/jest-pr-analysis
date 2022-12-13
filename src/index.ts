@@ -3,6 +3,7 @@ import micromatch from 'micromatch';
 import path from 'path';
 
 import { genCoverageReportInMarkdown } from '~/generators/genCoverageReportInMarkdown';
+import { createCoverageTextFile } from '~/stages/createCoverageTextFile';
 import { createReportComment } from '~/stages/createReportComment';
 import { getPrDiffFiles } from '~/stages/getPrDiffFiles';
 import { getRelatedTestFiles } from '~/stages/getRelatedTestFiles';
@@ -60,6 +61,8 @@ export const run = async () => {
   });
 
   const fullTestCmd = `/bin/bash -c "${jestCmd} | tee ${actionParams.coverageTextPath}"`;
+
+  createCoverageTextFile(actionParams.coverageTextPath);
 
   await safeRunStage(async () => {
     await runTest(fullTestCmd);
