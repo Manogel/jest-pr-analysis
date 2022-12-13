@@ -1,6 +1,9 @@
 name: 'Jest PR analysis'
 description: 'Track your code coverage in each pull request.'
 author: 'Manoel Gomes <manoelgomes53@gmail.com>'
+branding:
+    icon: 'check-circle'
+    color: 'gray-dark'
 inputs:
   github-token:
     required: true
