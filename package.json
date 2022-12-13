@@ -4,6 +4,16 @@
   "description": "This Action allows you to create annotations and coverage reports based on Jest's output.",
   "main": "lib/index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manogel/jest-pr-analysis"
+  },
+  "keywords": ["jest", "pull request", "coverage", "tests"],
+  "author": "Manogel",
+  "bugs": {
+    "url": "https://github.com/Manogel/jest-pr-analysis/issues"
+  },
+  "homepage": "https://github.com/Manogel/jest-pr-analysis#readme",
   "scripts": {
     "start:dev": "ts-node src/index.ts",
     "prebuild": "rimraf dist",
