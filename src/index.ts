@@ -1,40 +1,26 @@
-import { fetchBranch } from '~/stages/fetchBranch';
-import { pullBranch } from '~/stages/pullBranch';
-import { getActionParams } from '~/utils/getActionParams';
-import { switchToBranch } from '~/stages/switchToBranch';
-import micromatch from 'micromatch';
 import { error, info } from '@actions/core';
-import { getJestParams } from '~/utils/getJestParams';
+import micromatch from 'micromatch';
+import path from 'path';
+
+import { genCoverageReportInMarkdown } from '~/generators/genCoverageReportInMarkdown';
+import { createReportComment } from '~/stages/createReportComment';
 import { getPrDiffFiles } from '~/stages/getPrDiffFiles';
 import { getRelatedTestFiles } from '~/stages/getRelatedTestFiles';
-import path from 'path';
-import { generateJestTestCmd } from '~/utils/generateJestTestCmd';
-import { safeRunStage } from '~/utils/safeRunStage';
 import { runTest } from '~/stages/runTests';
-import { createReportComment } from '~/stages/createReportComment';
-import { genCoverageReportInMarkdown } from '~/generators/genCoverageReportInMarkdown';
-import { context, getOctokit } from '@actions/github';
+import { generateJestTestCmd } from '~/utils/generateJestTestCmd';
+import { getActionParams } from '~/utils/getActionParams';
+import { getJestParams } from '~/utils/getJestParams';
+import { safeRunStage } from '~/utils/safeRunStage';
 
 export const run = async () => {
   const actionParams = getActionParams();
 
-  const currentBranch = actionParams.pullRequest.head.ref;
-  const baseBranch = actionParams.pullRequest.base.ref;
-
-  // setup git files
-  await fetchBranch(baseBranch);
-  await switchToBranch(baseBranch);
-  await pullBranch(baseBranch);
-  await switchToBranch(currentBranch);
-
-  const diffFilesStr = await getPrDiffFiles({
-    baseBranch,
-    headBranch: currentBranch,
-  });
+  const filesDiffList = await getPrDiffFiles(actionParams);
+  const filenamesList = filesDiffList.map(({ filename }) => filename);
 
   const jestParams = getJestParams();
   const changedFilesArray = micromatch(
-    diffFilesStr.split(/\n/g),
+    filenamesList,
     jestParams.collectCoverageFrom,
   );
 
@@ -79,17 +65,9 @@ export const run = async () => {
     await runTest(fullTestCmd);
   });
 
-  const octokit = getOctokit(actionParams.ghToken);
-  const files = await octokit.rest.pulls.listFiles({
-    owner: context.repo.owner,
-    repo: context.repo.repo,
-    pull_number: actionParams.prNumber,
-  });
-  console.log(files);
-
   const report = genCoverageReportInMarkdown(actionParams.coverageTextPath);
-  console.log(report);
-  // await createReportComment(report, actionParams);
+
+  await createReportComment(report, actionParams);
 
   process.exit(0);
 };

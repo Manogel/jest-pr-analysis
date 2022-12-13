@@ -1,0 +1,13 @@
+name: PR analysis
+
+on: 
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  annotate-pr:
+    runs-on: ubuntu-latest
+    name: Run tests on pull request
+    steps:
+      - name: Annotate PR
+        uses: Manogel/jest-pr-analysis@main

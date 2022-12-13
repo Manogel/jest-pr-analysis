@@ -6,6 +6,7 @@ event:
 	@echo "# Test action         #"
 	@echo "#######################"
 	yarn build
+	yarn package
 	act pull_request -e tests/mocks/pull-request-event.json \
 		--container-architecture linux/amd64 \
 		--bind \

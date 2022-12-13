@@ -1,6 +1,7 @@
 import { warning } from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 import { GitHub } from '@actions/github/lib/utils';
+
 import { GH_MAX_COMMENT_LENGTH } from '~/constants/github';
 
 const JEST_PR_TOKEN = '<!-- jest pull request analysis -->';
