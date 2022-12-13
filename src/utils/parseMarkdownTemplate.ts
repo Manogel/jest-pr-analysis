@@ -1,5 +1,3 @@
-import { getContentFile } from '~/utils/getContentFile';
-
 import defaultTemplate from '../templates/template.md';
 
 type ITemplate = 'default';
@@ -12,7 +10,7 @@ export const parseMarkdownTemplate = (
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (template === 'default') {
-    text = getContentFile(defaultTemplate);
+    text = defaultTemplate;
   }
 
   Object.keys(args).forEach((argName) => {
