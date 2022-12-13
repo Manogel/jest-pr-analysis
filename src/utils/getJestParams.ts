@@ -17,7 +17,6 @@ export const getThreshold = (
 };
 
 export const getJestParams = () => {
-  console.log(path.join('package.json'));
   const packageObj = fs.readJsonSync(path.join('package.json')) as IPackageObj;
   const { collectCoverageFrom, rootDir = null, testRegex } = packageObj.jest;
 
