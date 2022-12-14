@@ -1,4 +1,4 @@
-name: PR analysis (Branch)
+name: PR analysis (Marketplace action)
 
 on: 
   workflow_dispatch:
