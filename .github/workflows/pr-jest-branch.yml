@@ -1,7 +1,8 @@
 name: PR analysis (Branch)
 
 on: 
-  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened, synchronize]
 
 jobs:
   annotate-pr:
