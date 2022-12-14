@@ -1,6 +1,6 @@
 {
   "name": "jest-pr-analysis",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "This Action allows you to create annotations and coverage reports based on Jest's output.",
   "main": "lib/index.js",
@@ -9,7 +9,12 @@
     "type": "git",
     "url": "git+https://github.com/Manogel/jest-pr-analysis"
   },
-  "keywords": ["jest", "pull request", "coverage", "tests"],
+  "keywords": [
+    "jest",
+    "pull request",
+    "coverage",
+    "tests"
+  ],
   "author": "Manoel Gomes <manoelgomes53@gmail.com>",
   "bugs": {
     "url": "https://github.com/Manogel/jest-pr-analysis/issues"
