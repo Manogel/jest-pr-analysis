@@ -25,20 +25,22 @@ const formatArrayRows = (lineArray: string[]): ICoverageLine => {
 
 export const parseCoverageFromTextFile = (coverageFilePath: string) => {
   const txtContent = getContentFile(coverageFilePath);
-
   const fileLines = txtContent.split('\n');
   const filterReport = fileLines.filter(
     (line) => line.split('|').length === 6 && !line.includes('----'),
   );
 
-  const [headerLine, totalLine, ...filesLine] = filterReport;
+  const [headerLine, ...filesLine] = filterReport;
 
   let lastMappedFolder = '';
   const mappedFoldersObj: IParsedCoverageObj = {};
   filesLine.forEach((lineString) => {
     const lineArray = lineString.split('|');
 
-    if (isFolderLine(lineArray)) {
+    const isFolder = isFolderLine(lineArray);
+    const isFile = isFileLine(lineArray);
+
+    if (isFolder) {
       lastMappedFolder = lineArray[0].trim();
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       mappedFoldersObj[lastMappedFolder] = mappedFoldersObj[
@@ -46,10 +48,11 @@ export const parseCoverageFromTextFile = (coverageFilePath: string) => {
       ] || {
         filesCov: [],
         totalFilePathCov: {},
+        isAllFilesLine: false,
       };
     }
 
-    if (isFileLine(lineArray)) {
+    if (isFile) {
       // lineArray[0] = lastMappedFolder
       //   ? `${lastMappedFolder}/${lineArray[0].trim()}`
       //   : lineArray[0].trim();
@@ -62,11 +65,12 @@ export const parseCoverageFromTextFile = (coverageFilePath: string) => {
     } else {
       mappedFoldersObj[lastMappedFolder].totalFilePathCov =
         formatArrayRows(lineArray);
+      mappedFoldersObj[lastMappedFolder].isAllFilesLine =
+        lastMappedFolder === 'All files';
     }
   });
 
   return {
-    allFilesLine: formatArrayRows(totalLine.split('|')),
     headerLine: headerLine.split('|').map((line) => line.trim()),
     filesLinesObj: mappedFoldersObj,
   };

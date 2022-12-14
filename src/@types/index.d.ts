@@ -44,6 +44,7 @@ interface IPackageObj {
 interface IParsedCoverage {
   totalFilePathCov: ICoverageLine;
   filesCov: ICoverageLine[];
+  isAllFilesLine: boolean;
 }
 
 interface IParsedCoverageObj {
