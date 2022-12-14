@@ -87,7 +87,8 @@
       "src/**/*.ts",
       "!src/@types/*",
       "!src/**/*.spec.ts",
-      "!src/constants"
+      "!src/constants/*",
+      "!src/**/__tests__/*"
     ],
     "coverageDirectory": "coverage",
     "testEnvironment": "node",

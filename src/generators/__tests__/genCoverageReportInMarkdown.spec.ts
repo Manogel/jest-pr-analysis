@@ -1,60 +1,31 @@
+import {
+  mockResultsFromTextFile1,
+  mockResultsFromTextFile2,
+} from '~/generators/__tests__/_mocks';
 import { genCoverageReportInMarkdown } from '~/generators/genCoverageReportInMarkdown';
 
-// TODO: create mock files
-// Define module mocks
+const mockParseCoverageFromTextFileFn = jest.fn();
+
 jest.mock('~/utils/parseCoverageFromTextFile', () => {
   return {
-    parseCoverageFromTextFile: () => ({
-      allFilesLine: {
-        file: 'All files',
-        branch: 0,
-        funcs: 0,
-        lines: 0,
-        stmts: 0,
-        uncoveredLines: null,
-      },
-      headerLine: [
-        'File',
-        '% Stmts',
-        '% Funcs',
-        '% Lines',
-        'Uncovered Line #s',
-      ],
-      filesLinesObj: {
-        src: {
-          totalFilePathCov: {
-            file: 'src',
-            branch: 0,
-            funcs: 0,
-            lines: 0,
-            stmts: 0,
-            uncoveredLines: null,
-          },
-          filesCov: [
-            {
-              file: 'index.ts',
-              branch: 0,
-              funcs: 0,
-              lines: 0,
-              stmts: 0,
-              uncoveredLines: null,
-            },
-          ],
-        },
-      },
-    }),
-  };
-});
-jest.mock('~/utils/parseMarkdownTemplate', () => {
-  return {
-    parseMarkdownTemplate: () => 'Content file',
+    parseCoverageFromTextFile: (...args: any) =>
+      mockParseCoverageFromTextFileFn(...args),
   };
 });
 
 describe('genCoverageReportInMarkdown', () => {
   const pathToFile = 'path-to-file';
-  it('should be return coverage report', async () => {
-    genCoverageReportInMarkdown(pathToFile);
-    expect(true).toBe(true);
+  it('should be return coverage report #1', async () => {
+    mockParseCoverageFromTextFileFn.mockReturnValue(mockResultsFromTextFile1);
+    const results = genCoverageReportInMarkdown(pathToFile);
+    expect(results.indexOf('📦 All files')).toBeGreaterThan(-1);
+    expect(results.indexOf('• src')).toBeGreaterThan(-1);
+  });
+
+  it('should be return coverage report #2', async () => {
+    mockParseCoverageFromTextFileFn.mockReturnValue(mockResultsFromTextFile2);
+    const results = genCoverageReportInMarkdown(pathToFile);
+    expect(results.indexOf('📦 All files')).toBeGreaterThan(-1);
+    expect(results.indexOf('📌 index.ts')).toBeGreaterThan(-1);
   });
 });

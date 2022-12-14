@@ -76,11 +76,17 @@ const makeFilesCovRows = (folders: IParsedCoverageObj) => {
 
   for (const pathFolder of Object.keys(folders)) {
     const files = folders[pathFolder].filesCov;
-
-    if (!files.length) continue;
     const pathCov = folders[pathFolder].totalFilePathCov;
+    const isAllFilesLine = folders[pathFolder].isAllFilesLine;
 
-    covRows.push(coverageDataToArrayString(pathCov, { statusIcon: false }));
+    covRows.push(
+      coverageDataToArrayString(pathCov, { statusIcon: isAllFilesLine }),
+    );
+
+    if (!files.length) {
+      continue;
+    }
+
     files.forEach((item) => {
       covRows.push(coverageDataToArrayString(item, { statusIcon: false }));
     });
@@ -92,10 +98,7 @@ const makeFilesCovRows = (folders: IParsedCoverageObj) => {
 export const genCoverageReportInMarkdown = (coverageTextFilePath: string) => {
   const results = parseCoverageFromTextFile(coverageTextFilePath);
   const covRows = makeFilesCovRows(results.filesLinesObj);
-  const mkTable = createReportTable([
-    coverageDataToArrayString(results.allFilesLine, { statusIcon: true }),
-    ...covRows,
-  ]);
+  const mkTable = createReportTable([...covRows]);
 
   const content = parseMarkdownTemplate('default', {
     covTable: mkTable,
