@@ -1,0 +1,45 @@
+name: Build
+
+on:
+  push:
+    paths:
+      - 'src/**'
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'yarn'
+
+      - name: Installing dependencies
+        run: yarn install
+
+      - name: Building
+        run: yarn build
+
+      - name: Package
+        run: yarn package
+
+      - name: Committing & pushing
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git config --local user.password "${{ secrets.GITHUB_TOKEN }}"
+      
+      - name: Update app version to patch
+        run: npm version patch -m 'Upgrade to %s'
+      
+      - name: Update branch
+        run: git push
+
+      - name: Send tags
+        run: git push --tags
