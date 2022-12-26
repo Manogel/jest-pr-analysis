@@ -2,11 +2,12 @@ import { error, info } from '@actions/core';
 import micromatch from 'micromatch';
 import path from 'path';
 
-import { genCoverageReportInMarkdown } from '~/generators/genCoverageReportInMarkdown';
 import { createCoverageTextFile } from '~/stages/createCoverageTextFile';
 import { createReportComment } from '~/stages/createReportComment';
+import { genCoverageReportInMarkdown } from '~/stages/genCoverageReportInMarkdown';
 import { getPrDiffFiles } from '~/stages/getPrDiffFiles';
 import { getRelatedTestFiles } from '~/stages/getRelatedTestFiles';
+import { parseCoverageFromTextFile } from '~/stages/parseCoverageFromTextFile';
 import { runTest } from '~/stages/runTests';
 import { generateJestTestCmd } from '~/utils/generateJestTestCmd';
 import { getActionParams } from '~/utils/getActionParams';
@@ -68,7 +69,11 @@ export const run = async () => {
     await runTest(fullTestCmd);
   });
 
-  const report = genCoverageReportInMarkdown(actionParams.coverageTextPath);
+  const coverageObjectResults = parseCoverageFromTextFile(
+    actionParams.coverageTextPath,
+  );
+
+  const report = genCoverageReportInMarkdown(coverageObjectResults);
 
   await createReportComment(report, actionParams);
 

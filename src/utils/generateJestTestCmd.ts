@@ -1,24 +1,24 @@
 interface IGenerateJestTestCmd {
   filesToTestArray: string[];
   collectCoverageScript: string;
+  reporters?: string[];
 }
 
 export const generateJestTestCmd = ({
   collectCoverageScript,
   filesToTestArray,
+  reporters = [],
 }: IGenerateJestTestCmd) => {
+  const defaultReporters = ['default', ...reporters];
+
   const jestCommand = [
     'yarn',
     'jest',
     '--ci',
     '--coverage',
     collectCoverageScript,
-    '--testLocationInResults',
-    '--reporters=default',
-    '--reporters=jest-junit',
-    '--coverageReporters=json-summary',
+    ...defaultReporters.map((reporter) => `--reporters=${reporter}`),
     '--coverageReporters=text',
-    '--outputFile=./coverage/report.json',
     ...filesToTestArray,
   ];
 
