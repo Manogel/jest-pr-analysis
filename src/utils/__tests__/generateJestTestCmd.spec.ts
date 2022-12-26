@@ -8,7 +8,6 @@ describe('generateJestTestCmd', () => {
       filesToTestArray: ['file-test.ts'],
       collectCoverageScript: '',
     });
-    console.log(results);
     expect(results).toBeDefined();
     expect(results).toBe(
       'yarn jest --ci --coverage  --reporters=default --coverageReporters=text file-test.ts',
