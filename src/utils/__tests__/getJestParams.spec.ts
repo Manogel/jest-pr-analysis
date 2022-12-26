@@ -26,11 +26,45 @@ describe('getJestParams', () => {
   it('return jest params from package.json', () => {
     const results = getJestParams();
     expect(results).toBeDefined();
+    expect(results).toMatchObject({
+      collectCoverageFrom: mockPackageJson.jest.collectCoverageFrom,
+      rootDir: mockPackageJson.jest.rootDir,
+      testRegex: mockPackageJson.jest.testRegex,
+      coverageThreshold: {
+        branches: 90,
+        functions: 90,
+        lines: 90,
+        statements: 90,
+      },
+    });
   });
 
-  it('return default threshold', () => {
+  it('return default threshold | lines::50%', () => {
     mockPackageJson.jest.coverageThreshold = undefined;
     const results = getJestParams();
     expect(results).toBeDefined();
+    expect(results).toMatchObject({
+      coverageThreshold: {
+        lines: 50,
+      },
+    });
+  });
+
+  it('merge threshold config with default', () => {
+    mockPackageJson.jest.coverageThreshold = {
+      global: {
+        branches: 80,
+        functions: 80,
+      } as IJestThreshold,
+    };
+    const results = getJestParams();
+    expect(results).toBeDefined();
+    expect(results).toMatchObject({
+      coverageThreshold: {
+        lines: 50,
+        branches: 80,
+        functions: 80,
+      },
+    });
   });
 });

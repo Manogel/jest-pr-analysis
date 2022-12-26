@@ -25,7 +25,7 @@ const formatArrayRows = (lineArray: string[]): ICoverageLine => {
 
 const parseFilesLine = (filesLine: string[]) => {
   let lastMappedFolder = '';
-  const mappedFoldersObj: IParsedCoverageObj = {};
+  const mappedFoldersObj: IParsedCoverageObj = {} as IParsedCoverageObj;
   filesLine.forEach((lineString) => {
     const lineArray = lineString.split('|');
 

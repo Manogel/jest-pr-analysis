@@ -2,6 +2,7 @@ import { error, info } from '@actions/core';
 import micromatch from 'micromatch';
 import path from 'path';
 
+import { checkThreshold } from '~/stages/checkThreshold';
 import { createCoverageTextFile } from '~/stages/createCoverageTextFile';
 import { createReportComment } from '~/stages/createReportComment';
 import { genCoverageReportInMarkdown } from '~/stages/genCoverageReportInMarkdown';
@@ -76,6 +77,8 @@ export const run = async () => {
   const report = genCoverageReportInMarkdown(coverageObjectResults);
 
   await createReportComment(report, actionParams);
+
+  checkThreshold(coverageObjectResults, jestParams.coverageThreshold);
 
   process.exit(0);
 };
