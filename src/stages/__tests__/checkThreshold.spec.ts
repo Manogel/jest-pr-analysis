@@ -3,11 +3,6 @@ import { error } from '@actions/core';
 import { checkThreshold } from '~/stages/checkThreshold';
 
 describe('checkThreshold', () => {
-  beforeEach(() => {
-    // @ts-expect-error
-    process.exit = jest.fn();
-  });
-
   afterEach(jest.clearAllMocks);
 
   const coverage = {

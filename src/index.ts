@@ -29,7 +29,7 @@ export const run = async () => {
 
   if (changedFilesArray.length <= 0) {
     info('No files to tests.');
-    process.exit(0);
+    return process.exit(0);
   }
 
   const collectCoverageScript = changedFilesArray
@@ -54,7 +54,7 @@ export const run = async () => {
 
   if (filesToTestArray.length <= 0) {
     error(`No tests found for: [${changedFilesArray.join(' ')}].`);
-    process.exit(1);
+    return process.exit(1);
   }
 
   const jestCmd = generateJestTestCmd({
@@ -80,7 +80,5 @@ export const run = async () => {
 
   checkThreshold(coverageObjectResults, jestParams.coverageThreshold);
 
-  process.exit(0);
+  return process.exit(0);
 };
-
-void run();
