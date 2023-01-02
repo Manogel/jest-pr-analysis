@@ -24,10 +24,10 @@ interface ICoverageReport {
 }
 
 interface IJestThreshold {
-  branches: number;
-  functions: number;
+  branches?: number;
+  functions?: number;
   lines: number;
-  statements: number;
+  statements?: number;
 }
 
 interface IPackageObj {
@@ -48,6 +48,7 @@ interface IParsedCoverage {
 }
 
 interface IParsedCoverageObj {
+  'All files': IParsedCoverage;
   [filePath: string]: IParsedCoverage;
 }
 

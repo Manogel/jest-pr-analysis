@@ -23,17 +23,9 @@ const formatArrayRows = (lineArray: string[]): ICoverageLine => {
   };
 };
 
-export const parseCoverageFromTextFile = (coverageFilePath: string) => {
-  const txtContent = getContentFile(coverageFilePath);
-  const fileLines = txtContent.split('\n');
-  const filterReport = fileLines.filter(
-    (line) => line.split('|').length === 6 && !line.includes('----'),
-  );
-
-  const [headerLine, ...filesLine] = filterReport;
-
+const parseFilesLine = (filesLine: string[]) => {
   let lastMappedFolder = '';
-  const mappedFoldersObj: IParsedCoverageObj = {};
+  const mappedFoldersObj: IParsedCoverageObj = {} as IParsedCoverageObj;
   filesLine.forEach((lineString) => {
     const lineArray = lineString.split('|');
 
@@ -69,9 +61,28 @@ export const parseCoverageFromTextFile = (coverageFilePath: string) => {
         lastMappedFolder === 'All files';
     }
   });
+  return mappedFoldersObj;
+};
 
-  return {
-    headerLine: headerLine.split('|').map((line) => line.trim()),
-    filesLinesObj: mappedFoldersObj,
-  };
+export const parseCoverageFromTextFile = (coverageFilePath: string) => {
+  const txtContent = getContentFile(coverageFilePath);
+
+  /**
+   * Filter files coverage (example):
+   *
+   * -------------------|---------|----------|---------|---------|-------------------
+   * File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+   * -------------------|---------|----------|---------|---------|-------------------
+   * All files          |   54.65 |       70 |   64.86 |   54.86 |
+   *  src               |       0 |        0 |       0 |       0 |
+   */
+  const fileLines = txtContent.split('\n');
+  const filterReport = fileLines.filter(
+    (line) => line.split('|').length === 6 && !line.includes('----'),
+  );
+
+  const [_headerLine, ...filesLine] = filterReport;
+  const filesLinesObj = parseFilesLine(filesLine);
+
+  return filesLinesObj;
 };

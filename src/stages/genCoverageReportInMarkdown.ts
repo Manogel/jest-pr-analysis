@@ -1,6 +1,5 @@
 import markdownTable from 'markdown-table';
 
-import { parseCoverageFromTextFile } from '~/utils/parseCoverageFromTextFile';
 import { parseMarkdownTemplate } from '~/utils/parseMarkdownTemplate';
 
 interface ICoverageArrayOptions {
@@ -65,9 +64,9 @@ const coverageDataToArrayString = (
 
 const getCoverageStatusIcon = (percent: number) => {
   let color = '🔴';
-  if (percent > 60) color = '🟠';
+  if (percent > 90) color = '🟢';
   else if (percent > 80) color = '🟡';
-  else if (percent > 90) color = '🟢';
+  else if (percent > 60) color = '🟠';
   return color;
 };
 
@@ -95,10 +94,14 @@ const makeFilesCovRows = (folders: IParsedCoverageObj) => {
   return covRows;
 };
 
-export const genCoverageReportInMarkdown = (coverageTextFilePath: string) => {
-  const results = parseCoverageFromTextFile(coverageTextFilePath);
-  const covRows = makeFilesCovRows(results.filesLinesObj);
-  const mkTable = createReportTable([...covRows]);
+/**
+ * Generate coverage report in markdown
+ */
+export const genCoverageReportInMarkdown = (
+  filesLinesObj: IParsedCoverageObj,
+) => {
+  const covRows = makeFilesCovRows(filesLinesObj);
+  const mkTable = createReportTable(covRows);
 
   const content = parseMarkdownTemplate('default', {
     covTable: mkTable,

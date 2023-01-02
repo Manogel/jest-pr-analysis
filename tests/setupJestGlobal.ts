@@ -22,3 +22,10 @@ export const spyExec = {
       return { exitCode: 1, stdout: _commandLine, stderr: _commandLine };
     }),
 };
+
+export const spyProcessExit = jest
+  .spyOn(process, 'exit')
+  // @ts-expect-error
+  .mockImplementation((number?: number) => {
+    console.debug('process.exit', number);
+  });

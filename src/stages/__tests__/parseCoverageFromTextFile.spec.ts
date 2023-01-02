@@ -1,5 +1,5 @@
+import { parseCoverageFromTextFile } from '~/stages/parseCoverageFromTextFile';
 import { mockContentFileWithRootPath } from '~/utils/__tests__/_mocks';
-import { parseCoverageFromTextFile } from '~/utils/parseCoverageFromTextFile';
 
 const getContentFileMock = jest.fn();
 

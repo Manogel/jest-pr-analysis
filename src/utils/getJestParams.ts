@@ -3,13 +3,10 @@ import path from 'path';
 
 export const getThreshold = (
   packageJson: IPackageObj,
-  defaultGlobalThreshold = 80,
+  defaultGlobalThreshold = 50,
 ) => {
   const DEFAULT_GLOBAL_THRESHOLD = {
-    branches: defaultGlobalThreshold,
-    functions: defaultGlobalThreshold,
     lines: defaultGlobalThreshold,
-    statements: defaultGlobalThreshold,
   };
   const globalThreshold = packageJson.jest.coverageThreshold?.global;
 
