@@ -5,7 +5,7 @@ build({
   minify: true,
   sourcemap: 'external',
   platform: 'node',
-  entryPoints: ['dist/index.js'],
+  entryPoints: ['dist/run.js'],
   outfile: 'lib/index.js',
   target: 'node10',
   loader: {

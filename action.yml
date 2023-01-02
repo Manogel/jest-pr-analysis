@@ -11,4 +11,4 @@ inputs:
     default: ${{ github.token }}
 runs:
   using: 'node16'
-  main: lib/run.js
+  main: lib/index.js
