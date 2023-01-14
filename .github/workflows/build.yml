@@ -34,7 +34,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git config --local user.password "${{ secrets.GITHUB_TOKEN }}"
-          git commit -am "[Build] Release files"
+          git commit -am "[Build] Release files" || echo "ignore commit failure, proceed"
       
       - name: Update app version to patch
         run: npm version patch -m 'Upgrade to %s'

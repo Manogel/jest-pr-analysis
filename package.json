@@ -85,6 +85,7 @@
     ],
     "collectCoverageFrom": [
       "src/**/*.ts",
+      "!src/run.ts",
       "!src/@types/*",
       "!src/**/*.spec.ts",
       "!src/constants/*",

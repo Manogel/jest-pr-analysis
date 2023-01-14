@@ -14,3 +14,10 @@ event:
 		-s GITHUB_TOKEN=$(gh_token) \
 		-s SSH_PRIVATE_KEY="$$(< ~/.ssh/id_rsa)" \
 		-s SSH_HOSTS="$$(< ~/.ssh/known_hosts)"
+
+build:
+	@echo "#######################"
+	@echo "# Build action        #"
+	@echo "#######################"
+	yarn build
+	yarn package
