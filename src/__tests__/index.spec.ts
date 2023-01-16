@@ -1,3 +1,4 @@
+// TODO: test all mocked stages
 import { run } from '~/index';
 
 jest.mock('~/stages/checkThreshold', () => {
@@ -30,9 +31,21 @@ jest.mock('~/stages/getRelatedTestFiles', () => {
     getRelatedTestFiles: jest.fn().mockReturnValue('index.spec.ts'),
   };
 });
-jest.mock('~/stages/parseCoverageFromTextFile', () => {
+jest.mock('~/stages/parseCoverageReportFromTextFile', () => {
   return {
-    parseCoverageFromTextFile: jest.fn(),
+    parseCoverageReportFromTextFile: jest.fn(),
+  };
+});
+jest.mock('~/stages/parseCoverageReportFromJsonFile', () => {
+  return {
+    parseCoverageReportFromJsonFile: jest
+      .fn()
+      .mockReturnValue({ success: true }),
+  };
+});
+jest.mock('~/stages/parseCoverageSummaryFromJsonFile', () => {
+  return {
+    parseCoverageSummaryFromJsonFile: jest.fn(),
   };
 });
 jest.mock('~/stages/runTests', () => {

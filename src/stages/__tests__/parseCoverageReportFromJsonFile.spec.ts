@@ -1,11 +1,11 @@
 import { mockResultsFromJsonFile } from '~/stages/__tests__/_mocks';
 import { parseCoverageReportFromJsonFile } from '~/stages/parseCoverageReportFromJsonFile';
 
-const getCoverageReport = jest.fn();
+const getJsonReport = jest.fn();
 
-jest.mock('~/utils/getCoverageReport', () => {
+jest.mock('~/utils/getJsonReport', () => {
   return {
-    getCoverageReport: (...args: any) => getCoverageReport(...args),
+    getJsonReport: (...args: any) => getJsonReport(...args),
   };
 });
 
@@ -14,10 +14,9 @@ describe('parseCoverageFromJsonFile', () => {
 
   it('open coverage text file', () => {
     const path = './coverage/report.json';
-    getCoverageReport.mockReturnValue(mockResultsFromJsonFile);
+    getJsonReport.mockReturnValue(mockResultsFromJsonFile);
     const results = parseCoverageReportFromJsonFile(path);
-    console.log(results);
-    expect(getCoverageReport).toBeCalledWith(
+    expect(getJsonReport).toBeCalledWith(
       `${process.cwd()}/coverage/report.json`,
     );
     expect(results).toBeDefined();

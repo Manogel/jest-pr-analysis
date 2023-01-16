@@ -21,6 +21,8 @@ export const getActionParams = (): IActionParams => {
     prNumber: pullRequest.number,
     pullRequest,
     coverageTextPath: './coverage/coverage.txt',
+    coverageJsonReportPath: `./coverage/report.json`,
+    coverageJsonSummaryPath: `./coverage/coverage-summary.json`,
   };
 
   return options;

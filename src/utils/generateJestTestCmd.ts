@@ -10,15 +10,19 @@ export const generateJestTestCmd = ({
   reporters = [],
 }: IGenerateJestTestCmd) => {
   const defaultReporters = ['default', ...reporters];
+  const coverageJsonReportPath = 'coverage/report.json';
 
   const jestCommand = [
     'yarn',
     'jest',
+    '--testLocationInResults',
+    '--json',
     '--ci',
     '--coverage',
     collectCoverageScript,
     ...defaultReporters.map((reporter) => `--reporters=${reporter}`),
-    '--coverageReporters=text',
+    '--coverageReporters="json-summary"',
+    `--outputFile="${coverageJsonReportPath}"`,
     ...filesToTestArray,
   ];
 

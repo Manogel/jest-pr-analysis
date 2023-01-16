@@ -72,3 +72,24 @@ interface Snapshot {
   unmatched: number;
   updated: number;
 }
+
+//  Coverage summary
+
+interface ReportSummaryJSON {
+  total: ReportSummary;
+  [filePath: string]: ReportSummary;
+}
+
+interface ReportSummary {
+  lines: ReportSummaryLines;
+  functions: ReportSummaryLines;
+  statements: ReportSummaryLines;
+  branches: ReportSummaryLines;
+}
+
+interface ReportSummaryLines {
+  total: number;
+  covered: number;
+  skipped: number;
+  pct: number;
+}

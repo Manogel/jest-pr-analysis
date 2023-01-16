@@ -716,11 +716,11 @@ export const mockResultsFromJsonFile = {
     {
       assertionResults: [
         {
-          ancestorTitles: ['parseCoverageFromTextFile'],
+          ancestorTitles: ['parseCoverageReportFromTextFile'],
           duration: 3,
           failureDetails: [],
           failureMessages: [],
-          fullName: 'parseCoverageFromTextFile open coverage text file',
+          fullName: 'parseCoverageReportFromTextFile open coverage text file',
           invocations: 1,
           location: { column: 3, line: 15 },
           numPassingAsserts: 0,
@@ -731,7 +731,7 @@ export const mockResultsFromJsonFile = {
       ],
       endTime: 1672109349778,
       message: '',
-      name: '/Users/manogel/projects/jest-pr-analysis/src/stages/__tests__/parseCoverageFromTextFile.spec.ts',
+      name: '/Users/manogel/projects/jest-pr-analysis/src/stages/__tests__/parseCoverageReportFromTextFile.spec.ts',
       startTime: 1672109344461,
       status: 'passed',
       summary: '',
@@ -2206,9 +2206,9 @@ export const mockResultsFromJsonFile = {
       f: { '0': 4 },
       b: { '0': [3, 2, 1, 1, 0], '1': [4], '2': [7, 7, 7] },
     },
-    '/Users/manogel/projects/jest-pr-analysis/src/stages/parseCoverageFromTextFile.ts':
+    '/Users/manogel/projects/jest-pr-analysis/src/stages/parseCoverageReportFromTextFile.ts':
       {
-        path: '/Users/manogel/projects/jest-pr-analysis/src/stages/parseCoverageFromTextFile.ts',
+        path: '/Users/manogel/projects/jest-pr-analysis/src/stages/parseCoverageReportFromTextFile.ts',
         statementMap: {
           '0': {
             start: { line: 1, column: 0 },
@@ -3582,5 +3582,124 @@ export const mockResultsFromJsonFile = {
         f: { '0': 0, '1': 0, '2': 0 },
         b: { '0': [0, 0], '1': [0, 0], '2': [0], '3': [0, 0] },
       },
+  },
+};
+
+export const mockSummaryResultsFromJsonFile = {
+  total: {
+    lines: { total: 269, covered: 198, skipped: 0, pct: 73.6 },
+    statements: { total: 293, covered: 213, skipped: 0, pct: 72.69 },
+    functions: { total: 43, covered: 34, skipped: 0, pct: 79.06 },
+    branches: { total: 81, covered: 59, skipped: 0, pct: 72.83 },
+    branchesTrue: { total: 0, covered: 0, skipped: 0, pct: 100 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/index.ts': {
+    lines: { total: 44, covered: 39, skipped: 0, pct: 88.63 },
+    functions: { total: 6, covered: 5, skipped: 0, pct: 83.33 },
+    statements: { total: 46, covered: 41, skipped: 0, pct: 89.13 },
+    branches: { total: 4, covered: 1, skipped: 0, pct: 25 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/checkThreshold.ts': {
+    lines: { total: 21, covered: 20, skipped: 0, pct: 95.23 },
+    functions: { total: 1, covered: 1, skipped: 0, pct: 100 },
+    statements: { total: 22, covered: 21, skipped: 0, pct: 95.45 },
+    branches: { total: 9, covered: 8, skipped: 0, pct: 88.88 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/createCoverageTextFile.ts':
+    {
+      lines: { total: 14, covered: 14, skipped: 0, pct: 100 },
+      functions: { total: 2, covered: 2, skipped: 0, pct: 100 },
+      statements: { total: 16, covered: 16, skipped: 0, pct: 100 },
+      branches: { total: 2, covered: 2, skipped: 0, pct: 100 },
+    },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/createReportComment.ts':
+    {
+      lines: { total: 21, covered: 0, skipped: 0, pct: 0 },
+      functions: { total: 3, covered: 0, skipped: 0, pct: 0 },
+      statements: { total: 22, covered: 0, skipped: 0, pct: 0 },
+      branches: { total: 7, covered: 0, skipped: 0, pct: 0 },
+    },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/genCoverageReportInMarkdown.ts':
+    {
+      lines: { total: 41, covered: 41, skipped: 0, pct: 100 },
+      functions: { total: 7, covered: 7, skipped: 0, pct: 100 },
+      statements: { total: 46, covered: 43, skipped: 0, pct: 93.47 },
+      branches: { total: 27, covered: 23, skipped: 0, pct: 85.18 },
+    },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/getPrDiffFiles.ts': {
+    lines: { total: 9, covered: 0, skipped: 0, pct: 0 },
+    functions: { total: 1, covered: 0, skipped: 0, pct: 0 },
+    statements: { total: 10, covered: 0, skipped: 0, pct: 0 },
+    branches: { total: 0, covered: 0, skipped: 0, pct: 100 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/getRelatedTestFiles.ts':
+    {
+      lines: { total: 7, covered: 5, skipped: 0, pct: 71.42 },
+      functions: { total: 1, covered: 1, skipped: 0, pct: 100 },
+      statements: { total: 8, covered: 6, skipped: 0, pct: 75 },
+      branches: { total: 0, covered: 0, skipped: 0, pct: 100 },
+    },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/parseCoverageReportFromTextFile.ts':
+    {
+      lines: { total: 32, covered: 32, skipped: 0, pct: 100 },
+      functions: { total: 7, covered: 7, skipped: 0, pct: 100 },
+      statements: { total: 33, covered: 33, skipped: 0, pct: 100 },
+      branches: { total: 10, covered: 9, skipped: 0, pct: 90 },
+    },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/parseCoverageReportFromJsonFile.ts':
+    {
+      lines: { total: 15, covered: 15, skipped: 0, pct: 100 },
+      functions: { total: 4, covered: 4, skipped: 0, pct: 100 },
+      statements: { total: 16, covered: 16, skipped: 0, pct: 100 },
+      branches: { total: 2, covered: 1, skipped: 0, pct: 50 },
+    },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/runTests.ts': {
+    lines: { total: 3, covered: 3, skipped: 0, pct: 100 },
+    functions: { total: 1, covered: 1, skipped: 0, pct: 100 },
+    statements: { total: 4, covered: 4, skipped: 0, pct: 100 },
+    branches: { total: 0, covered: 0, skipped: 0, pct: 100 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/utils/generateJestTestCmd.ts': {
+    lines: { total: 5, covered: 5, skipped: 0, pct: 100 },
+    functions: { total: 2, covered: 2, skipped: 0, pct: 100 },
+    statements: { total: 6, covered: 6, skipped: 0, pct: 100 },
+    branches: { total: 1, covered: 1, skipped: 0, pct: 100 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/utils/getActionParams.ts': {
+    lines: { total: 9, covered: 0, skipped: 0, pct: 0 },
+    functions: { total: 1, covered: 0, skipped: 0, pct: 0 },
+    statements: { total: 10, covered: 0, skipped: 0, pct: 0 },
+    branches: { total: 1, covered: 0, skipped: 0, pct: 0 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/utils/getContentFile.ts': {
+    lines: { total: 13, covered: 0, skipped: 0, pct: 0 },
+    functions: { total: 1, covered: 0, skipped: 0, pct: 0 },
+    statements: { total: 14, covered: 0, skipped: 0, pct: 0 },
+    branches: { total: 2, covered: 0, skipped: 0, pct: 0 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/utils/getCoverageReport.ts': {
+    lines: { total: 4, covered: 0, skipped: 0, pct: 0 },
+    functions: { total: 1, covered: 0, skipped: 0, pct: 0 },
+    statements: { total: 5, covered: 0, skipped: 0, pct: 0 },
+    branches: { total: 0, covered: 0, skipped: 0, pct: 100 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/utils/getJestParams.ts': {
+    lines: { total: 15, covered: 14, skipped: 0, pct: 93.33 },
+    functions: { total: 2, covered: 2, skipped: 0, pct: 100 },
+    statements: { total: 17, covered: 16, skipped: 0, pct: 94.11 },
+    branches: { total: 12, covered: 10, skipped: 0, pct: 83.33 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/utils/parseMarkdownTemplate.ts':
+    {
+      lines: { total: 10, covered: 10, skipped: 0, pct: 100 },
+      functions: { total: 2, covered: 2, skipped: 0, pct: 100 },
+      statements: { total: 11, covered: 11, skipped: 0, pct: 100 },
+      branches: { total: 4, covered: 4, skipped: 0, pct: 100 },
+    },
+  '/Users/manogel/projects/jest-pr-analysis/src/utils/safeRunStage.ts': {
+    lines: { total: 6, covered: 0, skipped: 0, pct: 0 },
+    functions: { total: 1, covered: 0, skipped: 0, pct: 0 },
+    statements: { total: 7, covered: 0, skipped: 0, pct: 0 },
+    branches: { total: 0, covered: 0, skipped: 0, pct: 100 },
   },
 };

@@ -1,12 +1,12 @@
 import { join, sep } from 'path';
 import stripAnsi from 'strip-ansi';
 
-import { getCoverageReport } from '~/utils/getCoverageReport';
+import { getJsonReport } from '~/utils/getJsonReport';
 
 export const parseCoverageReportFromJsonFile = (covReportPath: string) => {
   const cwd = process.cwd() + sep;
   const relativePathToFile = join(cwd, covReportPath);
-  const results = getCoverageReport(relativePathToFile);
+  const results = getJsonReport<FormattedTestResults>(relativePathToFile);
   const {
     success,
     numTotalTestSuites,
