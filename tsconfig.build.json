@@ -3,6 +3,6 @@
   "compilerOptions": {
     "strict": true
   },
-  "include": ["src/run.ts", "src/@types/index.d.ts"],
+  "include": ["src/run.ts", "src/@types/*.d.ts"],
   "exclude": ["node_modules", "test"]
 }
