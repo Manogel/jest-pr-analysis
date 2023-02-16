@@ -6,19 +6,20 @@ export const parseCoverageSummaryFromJsonFile = (covReportPath: string) => {
   const cwd = process.cwd() + sep;
   const relativePathToFile = join(cwd, covReportPath);
   const results = getJsonReport<ReportSummaryJSON>(relativePathToFile);
+  const { total: totalResultLine, ...restResultLines } = results;
 
   const mappedFoldersObj: IParsedCoverageObj = {
     'All files': {
       isAllFilesLine: true,
       totalFilePathCov: {
-        lines: results.total.lines.pct,
-        branch: results.total.branches.pct,
-        funcs: results.total.functions.pct,
-        stmts: results.total.statements.pct,
+        lines: totalResultLine.lines.pct,
+        branch: totalResultLine.branches.pct,
+        funcs: totalResultLine.functions.pct,
+        stmts: totalResultLine.statements.pct,
         uncoveredLines: null,
         file: 'All files',
       },
-      filesCov: Object.entries(results).map(([key, value]) => {
+      filesCov: Object.entries(restResultLines).map(([key, value]) => {
         const relativePath = key.replace(cwd, '');
         return {
           lines: value.lines.pct,

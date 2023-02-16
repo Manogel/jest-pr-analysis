@@ -6,6 +6,15 @@ interface ICoverageArrayOptions {
   statusIcon?: boolean;
 }
 
+const FILENAME_LENGTH = 11;
+
+const trimFilename = (filename: string) => {
+  const nameLength = filename.length;
+  return nameLength > FILENAME_LENGTH
+    ? `...${filename.slice(nameLength - FILENAME_LENGTH, nameLength)}`
+    : filename;
+};
+
 const createReportTable = (rows: string[][]) => {
   return markdownTable(
     [
@@ -32,11 +41,11 @@ const coverageDataToArrayString = (
   let formattedFilename = covData.file;
 
   if (isFile(covData.file)) {
-    formattedFilename = `📌 ${covData.file}`;
+    formattedFilename = `📌 ${trimFilename(covData.file)}`;
   } else if (covData.file === 'All files') {
     formattedFilename = `📦 ${covData.file}`;
   } else {
-    formattedFilename = `• ${covData.file}`;
+    formattedFilename = `• ${trimFilename(covData.file)}`;
   }
 
   const stmtsText = `${
