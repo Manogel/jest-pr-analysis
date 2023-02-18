@@ -9,7 +9,7 @@ export const generateJestTestCmd = ({
   filesToTestArray,
   reporters = [],
 }: IGenerateJestTestCmd) => {
-  const defaultReporters = ['default', ...reporters];
+  const defaultReporters = [...reporters];
   const coverageJsonReportPath = 'coverage/report.json';
 
   const jestCommand = [
