@@ -1,27 +1,23 @@
 import { getActionParams } from '~/utils/getActionParams';
 
-jest.mock('@actions/github', () => {
-  return {
-    context: {
-      payload: {
-        pull_request: {
-          head: {
-            ref: 'feat/format-threshold',
-          },
-          base: {
-            ref: 'main',
-          },
-          number: 7,
-        },
-      },
-    },
-  };
-});
-
 describe('getActionsParams', () => {
-  afterEach(jest.clearAllMocks);
+  const mockActionGithub = jest.requireActual('@actions/github');
+
+  afterEach(() => {
+    jest.resetModules();
+    jest.clearAllMocks();
+  });
 
   it('should be return parameters', () => {
+    mockActionGithub.context.payload.pull_request = {
+      head: {
+        ref: 'feat/format-threshold',
+      },
+      base: {
+        ref: 'main',
+      },
+      number: 7,
+    };
     const results = getActionParams();
     expect(results).toBeDefined();
     expect(results).toEqual(
@@ -42,5 +38,11 @@ describe('getActionsParams', () => {
         coverageJsonSummaryPath: `./coverage/coverage-summary.json`,
       }),
     );
+  });
+
+  it('should be throw error', () => {
+    mockActionGithub.context.payload.pull_request = null;
+
+    expect(getActionParams).toThrow('Action available only pull request');
   });
 });

@@ -7,7 +7,7 @@ export const getActionParams = (): IActionParams => {
   });
 
   if (context.payload.pull_request == null) {
-    throw Error('Action available only pull request');
+    throw new Error('Action available only pull request');
   }
 
   // For testing:
