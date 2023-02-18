@@ -10,7 +10,7 @@ describe('generateJestTestCmd', () => {
     });
     expect(results).toBeDefined();
     expect(results).toBe(
-      'yarn jest --ci --coverage  --reporters=default --coverageReporters=text file-test.ts',
+      'yarn jest --testLocationInResults --json --ci --coverage  --coverageReporters="json-summary" --outputFile="coverage/report.json" file-test.ts',
     );
   });
 });

@@ -63,4 +63,6 @@ interface IActionParams {
   ghToken: string;
   pullRequest: IPullRequest;
   coverageTextPath: string;
+  coverageJsonReportPath: string;
+  coverageJsonSummaryPath: string;
 }

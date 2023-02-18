@@ -1,3 +1,4 @@
+// TODO: test all mocked stages
 import { run } from '~/index';
 
 jest.mock('~/stages/checkThreshold', () => {
@@ -25,14 +26,32 @@ jest.mock('~/stages/getPrDiffFiles', () => {
     getPrDiffFiles: jest.fn().mockReturnValue([{ filename: 'index.ts' }]),
   };
 });
+
+const mockGetRelatedTestFiles = jest.fn().mockReturnValue('index.spec.ts');
 jest.mock('~/stages/getRelatedTestFiles', () => {
   return {
-    getRelatedTestFiles: jest.fn().mockReturnValue('index.spec.ts'),
+    getRelatedTestFiles: (...args: any) => mockGetRelatedTestFiles(...args),
   };
 });
-jest.mock('~/stages/parseCoverageFromTextFile', () => {
+jest.mock('~/stages/parseCoverageReportFromTextFile', () => {
   return {
-    parseCoverageFromTextFile: jest.fn(),
+    parseCoverageReportFromTextFile: jest.fn(),
+  };
+});
+
+const mockParseCoverageReportFromJsonFile = jest
+  .fn()
+  .mockReturnValue({ success: true });
+
+jest.mock('~/stages/parseCoverageReportFromJsonFile', () => {
+  return {
+    parseCoverageReportFromJsonFile: (...args: any) =>
+      mockParseCoverageReportFromJsonFile(...args),
+  };
+});
+jest.mock('~/stages/parseCoverageSummaryFromJsonFile', () => {
+  return {
+    parseCoverageSummaryFromJsonFile: jest.fn(),
   };
 });
 jest.mock('~/stages/runTests', () => {
@@ -73,6 +92,24 @@ describe('src/index', () => {
     await run();
 
     expect(process.exit).toBeCalledWith(0);
+    expect(process.exit).toBeCalledTimes(1);
+  });
+
+  test('finish process when no related test files is found', async () => {
+    mockGetRelatedTestFiles.mockReturnValue([]);
+
+    await run();
+
+    expect(process.exit).toBeCalledWith(1);
+    expect(process.exit).toBeCalledTimes(1);
+  });
+
+  test('finish process when coverage report is not success', async () => {
+    mockParseCoverageReportFromJsonFile.mockReturnValue({ success: false });
+
+    await run();
+
+    expect(process.exit).toBeCalledWith(1);
     expect(process.exit).toBeCalledTimes(1);
   });
 });

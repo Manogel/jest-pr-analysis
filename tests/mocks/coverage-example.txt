@@ -1,0 +1,27 @@
+yarn run v1.22.19
+$ jest --coverage
+--------------------------------------|---------|----------|---------|---------|-------------------
+File                                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+--------------------------------------|---------|----------|---------|---------|-------------------
+All files                             |   71.15 |    75.32 |   79.48 |   72.15 |                   
+ stages                               |   79.89 |    75.43 |    86.2 |   81.03 |                   
+  checkThreshold.ts                   |   95.45 |    88.88 |     100 |   95.23 | 31                
+  createCoverageTextFile.ts           |     100 |      100 |     100 |     100 |                   
+  createReportComment.ts              |       0 |        0 |       0 |       0 | 1-52              
+  genCoverageReportInMarkdown.ts      |   93.47 |    85.18 |     100 |     100 | 30,67-69          
+  getPrDiffFiles.ts                   |       0 |      100 |       0 |       0 | 1-17              
+  getRelatedTestFiles.ts              |      75 |      100 |     100 |   71.42 | 10-11             
+  parseCoverageReportFromJsonFile.ts  |     100 |       50 |     100 |     100 | 33                
+  parseCoverageReportFromTextFile.ts  |     100 |       90 |     100 |     100 | 12                
+  parseCoverageSummaryFromJsonFile.ts |     100 |      100 |     100 |     100 |                   
+  runTests.ts                         |     100 |      100 |     100 |     100 |                   
+ utils                                |   47.88 |       75 |      60 |   47.61 |                   
+  generateJestTestCmd.ts              |     100 |      100 |     100 |     100 |                   
+  getActionParams.ts                  |       0 |        0 |       0 |       0 | 1-28              
+  getContentFile.ts                   |       0 |        0 |       0 |       0 | 1-20              
+  getJestParams.ts                    |   94.11 |    83.33 |     100 |   93.33 | 26                
+  getJsonReport.ts                    |       0 |      100 |       0 |       0 | 1-6               
+  parseMarkdownTemplate.ts            |     100 |      100 |     100 |     100 |                   
+  safeRunStage.ts                     |       0 |      100 |       0 |       0 | 1-7               
+--------------------------------------|---------|----------|---------|---------|-------------------
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

@@ -38,7 +38,7 @@ All files                        |   23.07 |    13.04 |   19.44 |   22.22 |
   getActionParams.ts             |       0 |        0 |       0 |       0 | 1-26                        
   getContentFile.ts              |       0 |        0 |       0 |       0 | 1-20                        
   getJestParams.ts               |   35.29 |        0 |       0 |   26.66 | 8-16,20-33                  
-  parseCoverageFromTextFile.ts   |     100 |       90 |     100 |     100 | 12                          
+  parseCoverageReportFromTextFile.ts   |     100 |       90 |     100 |     100 | 12                          
   parseMarkdownTemplate.ts       |       0 |        0 |       0 |       0 | 1-24                        
   safeRunStage.ts                |       0 |      100 |       0 |       0 | 1-7                         
 ---------------------------------|---------|----------|---------|---------|-----------------------------`;

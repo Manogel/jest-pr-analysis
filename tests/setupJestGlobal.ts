@@ -8,6 +8,7 @@ export const spyCore = {
   error: jest.spyOn(core, 'error').mockImplementation(() => {}),
   startGroup: jest.spyOn(core, 'startGroup').mockImplementation(() => {}),
   endGroup: jest.spyOn(core, 'endGroup').mockImplementation(() => {}),
+  getInput: jest.spyOn(core, 'getInput').mockImplementation(() => ''),
 };
 
 export const spyExec = {

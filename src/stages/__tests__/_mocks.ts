@@ -256,3 +256,3450 @@ export const mockResultsFromTextFile2 = {
     isAllFilesLine: false,
   },
 };
+
+export const mockResultsFromJsonFile = {
+  numFailedTestSuites: 1,
+  numFailedTests: 1,
+  numPassedTestSuites: 12,
+  numPassedTests: 22,
+  numPendingTestSuites: 0,
+  numPendingTests: 0,
+  numRuntimeErrorTestSuites: 0,
+  numTodoTests: 0,
+  numTotalTestSuites: 13,
+  numTotalTests: 23,
+  openHandles: [],
+  snapshot: {
+    added: 0,
+    didUpdate: false,
+    failure: false,
+    filesAdded: 0,
+    filesRemoved: 0,
+    filesRemovedList: [],
+    filesUnmatched: 0,
+    filesUpdated: 0,
+    matched: 0,
+    total: 0,
+    unchecked: 0,
+    uncheckedKeysByFile: [],
+    unmatched: 0,
+    updated: 0,
+  },
+  startTime: 1672109344155,
+  success: false,
+  testResults: [
+    {
+      assertionResults: [
+        {
+          ancestorTitles: ['getRelatedTestFiles'],
+          duration: 5,
+          failureDetails: [],
+          failureMessages: [],
+          fullName:
+            'getRelatedTestFiles should be execute jest command by parameter',
+          invocations: 1,
+          location: { column: 3, line: 7 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'should be execute jest command by parameter',
+        },
+      ],
+      endTime: 1672109349395,
+      message: '',
+      name: '/Users/manogel/projects/jest-pr-analysis/src/stages/__tests__/getRelatedTestFiles.spec.ts',
+      startTime: 1672109344416,
+      status: 'passed',
+      summary: '',
+    },
+    {
+      assertionResults: [
+        {
+          ancestorTitles: ['genCoverageReportInMarkdown'],
+          duration: 14,
+          failureDetails: [],
+          failureMessages: [],
+          fullName:
+            'genCoverageReportInMarkdown should be return coverage report #1',
+          invocations: 1,
+          location: { column: 3, line: 17 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'should be return coverage report #1',
+        },
+        {
+          ancestorTitles: ['genCoverageReportInMarkdown'],
+          duration: 0,
+          failureDetails: [],
+          failureMessages: [],
+          fullName:
+            'genCoverageReportInMarkdown should be return coverage report #2',
+          invocations: 1,
+          location: { column: 3, line: 23 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'should be return coverage report #2',
+        },
+      ],
+      endTime: 1672109349492,
+      message: '',
+      name: '/Users/manogel/projects/jest-pr-analysis/src/stages/__tests__/genCoverageReportInMarkdown.spec.ts',
+      startTime: 1672109344396,
+      status: 'passed',
+      summary: '',
+    },
+    {
+      assertionResults: [
+        {
+          ancestorTitles: ['getPrDiffFiles'],
+          duration: 0,
+          failureDetails: [],
+          failureMessages: [],
+          fullName: 'getPrDiffFiles initial',
+          invocations: 1,
+          location: { column: 3, line: 2 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'initial',
+        },
+      ],
+      endTime: 1672109349502,
+      message: '',
+      name: '/Users/manogel/projects/jest-pr-analysis/src/stages/__tests__/getPrDiffFiles.spec.ts',
+      startTime: 1672109349412,
+      status: 'passed',
+      summary: '',
+    },
+    {
+      assertionResults: [
+        {
+          ancestorTitles: ['getJestParams'],
+          duration: 2,
+          failureDetails: [],
+          failureMessages: [],
+          fullName: 'getJestParams return jest params from package.json',
+          invocations: 1,
+          location: { column: 3, line: 26 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'return jest params from package.json',
+        },
+        {
+          ancestorTitles: ['getJestParams'],
+          duration: 1,
+          failureDetails: [],
+          failureMessages: [],
+          fullName: 'getJestParams return default threshold | lines::50%',
+          invocations: 1,
+          location: { column: 3, line: 42 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'return default threshold | lines::50%',
+        },
+        {
+          ancestorTitles: ['getJestParams'],
+          duration: 7,
+          failureDetails: [
+            {
+              matcherResult: {
+                message:
+                  '\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    "coverageThreshold": Object {\u001b[22m\n\u001b[2m      "branches": 80,\u001b[22m\n\u001b[2m      "functions": 80,\u001b[22m\n\u001b[32m-     "lines": 80,\u001b[39m\n\u001b[31m+     "lines": 50,\u001b[39m\n\u001b[2m    },\u001b[22m\n\u001b[2m  }\u001b[22m',
+                pass: false,
+              },
+            },
+          ],
+          failureMessages: [
+            'Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    "coverageThreshold": Object {\u001b[22m\n\u001b[2m      "branches": 80,\u001b[22m\n\u001b[2m      "functions": 80,\u001b[22m\n\u001b[32m-     "lines": 80,\u001b[39m\n\u001b[31m+     "lines": 50,\u001b[39m\n\u001b[2m    },\u001b[22m\n\u001b[2m  }\u001b[22m\n    at Object.<anonymous> (/Users/manogel/projects/jest-pr-analysis/src/utils/__tests__/getJestParams.spec.ts:62:21)\n    at Promise.then.completed (/Users/manogel/projects/jest-pr-analysis/node_modules/jest-circus/build/utils.js:289:28)\n    at new Promise (<anonymous>)\n    at callAsyncCircusFn (/Users/manogel/projects/jest-pr-analysis/node_modules/jest-circus/build/utils.js:222:10)\n    at _callCircusTest (/Users/manogel/projects/jest-pr-analysis/node_modules/jest-circus/build/run.js:248:40)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)\n    at _runTest (/Users/manogel/projects/jest-pr-analysis/node_modules/jest-circus/build/run.js:184:3)\n    at _runTestsForDescribeBlock (/Users/manogel/projects/jest-pr-analysis/node_modules/jest-circus/build/run.js:86:9)\n    at _runTestsForDescribeBlock (/Users/manogel/projects/jest-pr-analysis/node_modules/jest-circus/build/run.js:81:9)\n    at run (/Users/manogel/projects/jest-pr-analysis/node_modules/jest-circus/build/run.js:26:3)\n    at runAndTransformResultsToJestFormat (/Users/manogel/projects/jest-pr-analysis/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:120:21)\n    at jestAdapter (/Users/manogel/projects/jest-pr-analysis/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)\n    at runTestInternal (/Users/manogel/projects/jest-pr-analysis/node_modules/jest-runner/build/runTest.js:367:16)\n    at runTest (/Users/manogel/projects/jest-pr-analysis/node_modules/jest-runner/build/runTest.js:444:34)\n    at Object.worker (/Users/manogel/projects/jest-pr-analysis/node_modules/jest-runner/build/testWorker.js:106:12)',
+          ],
+          fullName: 'getJestParams merge threshold config with default',
+          invocations: 1,
+          location: { column: 3, line: 53 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'failed',
+          title: 'merge threshold config with default',
+        },
+      ],
+      endTime: 1672109349543,
+      message:
+        '\u001b[1m\u001b[31m  \u001b[1m● \u001b[22m\u001b[1mgetJestParams › merge threshold config with default\u001b[39m\u001b[22m\n\n    \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n    \u001b[32m- Expected  - 1\u001b[39m\n    \u001b[31m+ Received  + 1\u001b[39m\n\n    \u001b[2m  Object {\u001b[22m\n    \u001b[2m    "coverageThreshold": Object {\u001b[22m\n    \u001b[2m      "branches": 80,\u001b[22m\n    \u001b[2m      "functions": 80,\u001b[22m\n    \u001b[32m-     "lines": 80,\u001b[39m\n    \u001b[31m+     "lines": 50,\u001b[39m\n    \u001b[2m    },\u001b[22m\n    \u001b[2m  }\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m    \u001b[0m \u001b[90m 60 |\u001b[39m     \u001b[36mconst\u001b[39m results \u001b[33m=\u001b[39m getJestParams()\u001b[33m;\u001b[39m\u001b[0m\u001b[22m\n\u001b[2m    \u001b[0m \u001b[90m 61 |\u001b[39m     expect(results)\u001b[33m.\u001b[39mtoBeDefined()\u001b[33m;\u001b[39m\u001b[0m\u001b[22m\n\u001b[2m    \u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[2m\u001b[39m\u001b[90m 62 |\u001b[39m     expect(results)\u001b[33m.\u001b[39mtoMatchObject({\u001b[0m\u001b[22m\n\u001b[2m    \u001b[0m \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[2m\u001b[39m\u001b[0m\u001b[22m\n\u001b[2m    \u001b[0m \u001b[90m 63 |\u001b[39m       coverageThreshold\u001b[33m:\u001b[39m {\u001b[0m\u001b[22m\n\u001b[2m    \u001b[0m \u001b[90m 64 |\u001b[39m         lines\u001b[33m:\u001b[39m \u001b[35m80\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\u001b[22m\n\u001b[2m    \u001b[0m \u001b[90m 65 |\u001b[39m         branches\u001b[33m:\u001b[39m \u001b[35m80\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m      \u001b[2mat Object.<anonymous> (\u001b[22m\u001b[2m\u001b[0m\u001b[36msrc/utils/__tests__/getJestParams.spec.ts\u001b[39m\u001b[0m\u001b[2m:62:21)\u001b[22m\u001b[2m\u001b[22m\n',
+      name: '/Users/manogel/projects/jest-pr-analysis/src/utils/__tests__/getJestParams.spec.ts',
+      startTime: 1672109344428,
+      status: 'failed',
+      summary: '',
+    },
+    {
+      assertionResults: [
+        {
+          ancestorTitles: ['generateJestTestCmd'],
+          duration: 1,
+          failureDetails: [],
+          failureMessages: [],
+          fullName:
+            'generateJestTestCmd should be return jest command by parameters',
+          invocations: 1,
+          location: { column: 3, line: 6 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'should be return jest command by parameters',
+        },
+      ],
+      endTime: 1672109349557,
+      message: '',
+      name: '/Users/manogel/projects/jest-pr-analysis/src/utils/__tests__/generateJestTestCmd.spec.ts',
+      startTime: 1672109344405,
+      status: 'passed',
+      summary: '',
+    },
+    {
+      assertionResults: [
+        {
+          ancestorTitles: ['runTests'],
+          duration: 2,
+          failureDetails: [],
+          failureMessages: [],
+          fullName: 'runTests should be execute jest command by parameter',
+          invocations: 1,
+          location: { column: 3, line: 8 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'should be execute jest command by parameter',
+        },
+      ],
+      endTime: 1672109349604,
+      message: '',
+      name: '/Users/manogel/projects/jest-pr-analysis/src/stages/__tests__/runTests.spec.ts',
+      startTime: 1672109349509,
+      status: 'passed',
+      summary: '',
+    },
+    {
+      assertionResults: [
+        {
+          ancestorTitles: ['fetchBranch'],
+          duration: 0,
+          failureDetails: [],
+          failureMessages: [],
+          fullName: 'fetchBranch initial',
+          invocations: 1,
+          location: { column: 3, line: 2 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'initial',
+        },
+      ],
+      endTime: 1672109349635,
+      message: '',
+      name: '/Users/manogel/projects/jest-pr-analysis/src/stages/__tests__/fetchBranch.spec.ts',
+      startTime: 1672109349520,
+      status: 'passed',
+      summary: '',
+    },
+    {
+      assertionResults: [
+        {
+          ancestorTitles: ['switchToBranch'],
+          duration: 0,
+          failureDetails: [],
+          failureMessages: [],
+          fullName: 'switchToBranch initial',
+          invocations: 1,
+          location: { column: 3, line: 2 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'initial',
+        },
+      ],
+      endTime: 1672109349652,
+      message: '',
+      name: '/Users/manogel/projects/jest-pr-analysis/src/stages/__tests__/switchToBranch.spec.ts',
+      startTime: 1672109349566,
+      status: 'passed',
+      summary: '',
+    },
+    {
+      assertionResults: [
+        {
+          ancestorTitles: ['src/index'],
+          duration: 0,
+          failureDetails: [],
+          failureMessages: [],
+          fullName: 'src/index initial',
+          invocations: 1,
+          location: { column: 3, line: 2 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'initial',
+        },
+      ],
+      endTime: 1672109349675,
+      message: '',
+      name: '/Users/manogel/projects/jest-pr-analysis/src/__tests__/index.spec.ts',
+      startTime: 1672109349594,
+      status: 'passed',
+      summary: '',
+    },
+    {
+      assertionResults: [
+        {
+          ancestorTitles: ['createCoverageTextFile'],
+          duration: 19,
+          failureDetails: [],
+          failureMessages: [],
+          fullName: 'createCoverageTextFile create path #1',
+          invocations: 1,
+          location: { column: 3, line: 18 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'create path #1',
+        },
+        {
+          ancestorTitles: ['createCoverageTextFile'],
+          duration: 1,
+          failureDetails: [],
+          failureMessages: [],
+          fullName: 'createCoverageTextFile create path #2',
+          invocations: 1,
+          location: { column: 3, line: 26 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'create path #2',
+        },
+        {
+          ancestorTitles: ['createCoverageTextFile'],
+          duration: 0,
+          failureDetails: [],
+          failureMessages: [],
+          fullName: 'createCoverageTextFile create path #3',
+          invocations: 1,
+          location: { column: 3, line: 34 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'create path #3',
+        },
+        {
+          ancestorTitles: ['createCoverageTextFile'],
+          duration: 0,
+          failureDetails: [],
+          failureMessages: [],
+          fullName: 'createCoverageTextFile create path #3',
+          invocations: 1,
+          location: { column: 3, line: 42 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'create path #3',
+        },
+        {
+          ancestorTitles: ['createCoverageTextFile'],
+          duration: 1,
+          failureDetails: [],
+          failureMessages: [],
+          fullName: "createCoverageTextFile don't create path",
+          invocations: 1,
+          location: { column: 3, line: 50 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: "don't create path",
+        },
+      ],
+      endTime: 1672109349688,
+      message: '',
+      name: '/Users/manogel/projects/jest-pr-analysis/src/stages/__tests__/createCoverageTextFile.spec.ts',
+      startTime: 1672109344475,
+      status: 'passed',
+      summary: '',
+    },
+    {
+      assertionResults: [
+        {
+          ancestorTitles: ['pullBranch'],
+          duration: 0,
+          failureDetails: [],
+          failureMessages: [],
+          fullName: 'pullBranch initial',
+          invocations: 1,
+          location: { column: 3, line: 2 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'initial',
+        },
+      ],
+      endTime: 1672109349695,
+      message: '',
+      name: '/Users/manogel/projects/jest-pr-analysis/src/stages/__tests__/pullBranch.spec.ts',
+      startTime: 1672109349611,
+      status: 'passed',
+      summary: '',
+    },
+    {
+      assertionResults: [
+        {
+          ancestorTitles: ['checkThreshold'],
+          duration: 3,
+          failureDetails: [],
+          failureMessages: [],
+          fullName:
+            'checkThreshold should be stop program when branches is not acceptable',
+          invocations: 1,
+          location: { column: 3, line: 28 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'should be stop program when branches is not acceptable',
+        },
+        {
+          ancestorTitles: ['checkThreshold'],
+          duration: 0,
+          failureDetails: [],
+          failureMessages: [],
+          fullName:
+            'checkThreshold should be stop program when functions is not acceptable',
+          invocations: 1,
+          location: { column: 3, line: 43 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'should be stop program when functions is not acceptable',
+        },
+        {
+          ancestorTitles: ['checkThreshold'],
+          duration: 0,
+          failureDetails: [],
+          failureMessages: [],
+          fullName:
+            'checkThreshold should be stop program when statements is not acceptable',
+          invocations: 1,
+          location: { column: 3, line: 58 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'should be stop program when statements is not acceptable',
+        },
+        {
+          ancestorTitles: ['checkThreshold'],
+          duration: 0,
+          failureDetails: [],
+          failureMessages: [],
+          fullName:
+            'checkThreshold should be stop program when lines is not acceptable',
+          invocations: 1,
+          location: { column: 3, line: 73 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'should be stop program when lines is not acceptable',
+        },
+      ],
+      endTime: 1672109349766,
+      message: '',
+      name: '/Users/manogel/projects/jest-pr-analysis/src/stages/__tests__/checkThreshold.spec.ts',
+      startTime: 1672109344417,
+      status: 'passed',
+      summary: '',
+    },
+    {
+      assertionResults: [
+        {
+          ancestorTitles: ['parseCoverageReportFromTextFile'],
+          duration: 3,
+          failureDetails: [],
+          failureMessages: [],
+          fullName: 'parseCoverageReportFromTextFile open coverage text file',
+          invocations: 1,
+          location: { column: 3, line: 15 },
+          numPassingAsserts: 0,
+          retryReasons: [],
+          status: 'passed',
+          title: 'open coverage text file',
+        },
+      ],
+      endTime: 1672109349778,
+      message: '',
+      name: '/Users/manogel/projects/jest-pr-analysis/src/stages/__tests__/parseCoverageReportFromTextFile.spec.ts',
+      startTime: 1672109344461,
+      status: 'passed',
+      summary: '',
+    },
+  ],
+  wasInterrupted: false,
+  coverageMap: {
+    '/Users/manogel/projects/jest-pr-analysis/src/stages/getRelatedTestFiles.ts':
+      {
+        path: '/Users/manogel/projects/jest-pr-analysis/src/stages/getRelatedTestFiles.ts',
+        statementMap: {
+          '0': {
+            start: { line: 1, column: 0 },
+            end: { line: 1, column: 46 },
+          },
+          '1': {
+            start: { line: 3, column: 35 },
+            end: { line: 13, column: 1 },
+          },
+          '2': {
+            start: { line: 4, column: 2 },
+            end: { line: 12, column: null },
+          },
+          '3': {
+            start: { line: 5, column: 23 },
+            end: { line: 6, column: null },
+          },
+          '4': {
+            start: { line: 8, column: 4 },
+            end: { line: 8, column: 18 },
+          },
+          '5': {
+            start: { line: 10, column: 4 },
+            end: { line: 10, column: 50 },
+          },
+          '6': {
+            start: { line: 11, column: 4 },
+            end: { line: 11, column: 14 },
+          },
+          '7': {
+            start: { line: 3, column: 13 },
+            end: { line: 3, column: 35 },
+          },
+        },
+        fnMap: {
+          '0': {
+            name: '(anonymous_0)',
+            decl: {
+              start: { line: 3, column: 35 },
+              end: { line: 3, column: 40 },
+            },
+            loc: {
+              start: { line: 3, column: 73 },
+              end: { line: 13, column: 1 },
+            },
+          },
+        },
+        branchMap: {},
+        s: { '0': 1, '1': 1, '2': 1, '3': 1, '4': 1, '5': 0, '6': 0, '7': 1 },
+        f: { '0': 1 },
+        b: {},
+      },
+    '/Users/manogel/projects/jest-pr-analysis/src/stages/genCoverageReportInMarkdown.ts':
+      {
+        path: '/Users/manogel/projects/jest-pr-analysis/src/stages/genCoverageReportInMarkdown.ts',
+        statementMap: {
+          '0': {
+            start: { line: 1, column: 0 },
+            end: { line: 1, column: 43 },
+          },
+          '1': {
+            start: { line: 3, column: 0 },
+            end: { line: 3, column: 70 },
+          },
+          '2': {
+            start: { line: 9, column: 26 },
+            end: { line: 24, column: 1 },
+          },
+          '3': {
+            start: { line: 10, column: 2 },
+            end: { line: 23, column: 4 },
+          },
+          '4': {
+            start: { line: 26, column: 34 },
+            end: { line: 63, column: 1 },
+          },
+          '5': {
+            start: { line: 30, column: 33 },
+            end: { line: 30, column: 40 },
+          },
+          '6': {
+            start: { line: 31, column: 17 },
+            end: { line: 31, column: 53 },
+          },
+          '7': {
+            start: { line: 31, column: 35 },
+            end: { line: 31, column: 53 },
+          },
+          '8': {
+            start: { line: 32, column: 26 },
+            end: { line: 32, column: 38 },
+          },
+          '9': {
+            start: { line: 34, column: 2 },
+            end: { line: 40, column: null },
+          },
+          '10': {
+            start: { line: 35, column: 4 },
+            end: { line: 35, column: 45 },
+          },
+          '11': {
+            start: { line: 36, column: 9 },
+            end: { line: 40, column: null },
+          },
+          '12': {
+            start: { line: 37, column: 4 },
+            end: { line: 37, column: 45 },
+          },
+          '13': {
+            start: { line: 39, column: 4 },
+            end: { line: 39, column: 44 },
+          },
+          '14': {
+            start: { line: 42, column: 20 },
+            end: { line: 44, column: 28 },
+          },
+          '15': {
+            start: { line: 45, column: 21 },
+            end: { line: 47, column: 29 },
+          },
+          '16': {
+            start: { line: 48, column: 20 },
+            end: { line: 50, column: 28 },
+          },
+          '17': {
+            start: { line: 51, column: 20 },
+            end: { line: 53, column: 28 },
+          },
+          '18': {
+            start: { line: 55, column: 2 },
+            end: { line: 62, column: 4 },
+          },
+          '19': {
+            start: { line: 65, column: 30 },
+            end: { line: 71, column: 1 },
+          },
+          '20': {
+            start: { line: 66, column: 14 },
+            end: { line: 66, column: 18 },
+          },
+          '21': {
+            start: { line: 67, column: 2 },
+            end: { line: 69, column: 38 },
+          },
+          '22': {
+            start: { line: 67, column: 20 },
+            end: { line: 67, column: 33 },
+          },
+          '23': {
+            start: { line: 68, column: 7 },
+            end: { line: 69, column: 38 },
+          },
+          '24': {
+            start: { line: 68, column: 25 },
+            end: { line: 68, column: 38 },
+          },
+          '25': {
+            start: { line: 69, column: 7 },
+            end: { line: 69, column: 38 },
+          },
+          '26': {
+            start: { line: 69, column: 25 },
+            end: { line: 69, column: 38 },
+          },
+          '27': {
+            start: { line: 70, column: 2 },
+            end: { line: 70, column: 15 },
+          },
+          '28': {
+            start: { line: 73, column: 25 },
+            end: { line: 95, column: 1 },
+          },
+          '29': {
+            start: { line: 74, column: 30 },
+            end: { line: 74, column: 32 },
+          },
+          '30': {
+            start: { line: 76, column: 2 },
+            end: { line: 92, column: null },
+          },
+          '31': {
+            start: { line: 77, column: 18 },
+            end: { line: 77, column: 46 },
+          },
+          '32': {
+            start: { line: 78, column: 20 },
+            end: { line: 78, column: 56 },
+          },
+          '33': {
+            start: { line: 79, column: 27 },
+            end: { line: 79, column: 61 },
+          },
+          '34': {
+            start: { line: 81, column: 4 },
+            end: { line: 83, column: 6 },
+          },
+          '35': {
+            start: { line: 85, column: 4 },
+            end: { line: 87, column: null },
+          },
+          '36': {
+            start: { line: 86, column: 6 },
+            end: { line: 86, column: 15 },
+          },
+          '37': {
+            start: { line: 89, column: 4 },
+            end: { line: 91, column: 7 },
+          },
+          '38': {
+            start: { line: 90, column: 6 },
+            end: { line: 90, column: 75 },
+          },
+          '39': {
+            start: { line: 94, column: 2 },
+            end: { line: 94, column: 17 },
+          },
+          '40': {
+            start: { line: 100, column: 43 },
+            end: { line: 112, column: 1 },
+          },
+          '41': {
+            start: { line: 103, column: 18 },
+            end: { line: 103, column: 49 },
+          },
+          '42': {
+            start: { line: 104, column: 18 },
+            end: { line: 104, column: 44 },
+          },
+          '43': {
+            start: { line: 106, column: 18 },
+            end: { line: 109, column: 4 },
+          },
+          '44': {
+            start: { line: 111, column: 2 },
+            end: { line: 111, column: 17 },
+          },
+          '45': {
+            start: { line: 100, column: 13 },
+            end: { line: 100, column: 43 },
+          },
+        },
+        fnMap: {
+          '0': {
+            name: '(anonymous_1)',
+            decl: {
+              start: { line: 9, column: 26 },
+              end: { line: 9, column: 27 },
+            },
+            loc: {
+              start: { line: 9, column: 47 },
+              end: { line: 24, column: 1 },
+            },
+          },
+          '1': {
+            name: '(anonymous_2)',
+            decl: {
+              start: { line: 26, column: 34 },
+              end: { line: 26, column: null },
+            },
+            loc: {
+              start: { line: 29, column: 4 },
+              end: { line: 63, column: 1 },
+            },
+          },
+          '2': {
+            name: '(anonymous_3)',
+            decl: {
+              start: { line: 31, column: 17 },
+              end: { line: 31, column: 18 },
+            },
+            loc: {
+              start: { line: 31, column: 35 },
+              end: { line: 31, column: 53 },
+            },
+          },
+          '3': {
+            name: '(anonymous_4)',
+            decl: {
+              start: { line: 65, column: 30 },
+              end: { line: 65, column: 31 },
+            },
+            loc: {
+              start: { line: 65, column: 50 },
+              end: { line: 71, column: 1 },
+            },
+          },
+          '4': {
+            name: '(anonymous_5)',
+            decl: {
+              start: { line: 73, column: 25 },
+              end: { line: 73, column: 26 },
+            },
+            loc: {
+              start: { line: 73, column: 57 },
+              end: { line: 95, column: 1 },
+            },
+          },
+          '5': {
+            name: '(anonymous_6)',
+            decl: {
+              start: { line: 89, column: 18 },
+              end: { line: 89, column: 19 },
+            },
+            loc: {
+              start: { line: 89, column: 27 },
+              end: { line: 91, column: 5 },
+            },
+          },
+          '6': {
+            name: '(anonymous_7)',
+            decl: {
+              start: { line: 100, column: 43 },
+              end: { line: 100, column: null },
+            },
+            loc: {
+              start: { line: 102, column: 4 },
+              end: { line: 112, column: 1 },
+            },
+          },
+        },
+        branchMap: {
+          '0': {
+            loc: {
+              start: { line: 30, column: 10 },
+              end: { line: 30, column: 28 },
+            },
+            type: 'default-arg',
+            locations: [
+              {
+                start: { line: 30, column: 23 },
+                end: { line: 30, column: 28 },
+              },
+            ],
+          },
+          '1': {
+            loc: {
+              start: { line: 34, column: 2 },
+              end: { line: 40, column: null },
+            },
+            type: 'if',
+            locations: [
+              {
+                start: { line: 34, column: 2 },
+                end: { line: 40, column: null },
+              },
+              {
+                start: { line: 36, column: 9 },
+                end: { line: 40, column: null },
+              },
+            ],
+          },
+          '2': {
+            loc: {
+              start: { line: 36, column: 9 },
+              end: { line: 40, column: null },
+            },
+            type: 'if',
+            locations: [
+              {
+                start: { line: 36, column: 9 },
+                end: { line: 40, column: null },
+              },
+              {
+                start: { line: 38, column: 9 },
+                end: { line: 40, column: null },
+              },
+            ],
+          },
+          '3': {
+            loc: {
+              start: { line: 43, column: 4 },
+              end: { line: 43, column: null },
+            },
+            type: 'cond-expr',
+            locations: [
+              {
+                start: { line: 43, column: 17 },
+                end: { line: 43, column: 53 },
+              },
+              {
+                start: { line: 43, column: 56 },
+                end: { line: 43, column: null },
+              },
+            ],
+          },
+          '4': {
+            loc: {
+              start: { line: 46, column: 4 },
+              end: { line: 46, column: null },
+            },
+            type: 'cond-expr',
+            locations: [
+              {
+                start: { line: 46, column: 17 },
+                end: { line: 46, column: 54 },
+              },
+              {
+                start: { line: 46, column: 57 },
+                end: { line: 46, column: null },
+              },
+            ],
+          },
+          '5': {
+            loc: {
+              start: { line: 49, column: 4 },
+              end: { line: 49, column: null },
+            },
+            type: 'cond-expr',
+            locations: [
+              {
+                start: { line: 49, column: 17 },
+                end: { line: 49, column: 53 },
+              },
+              {
+                start: { line: 49, column: 56 },
+                end: { line: 49, column: null },
+              },
+            ],
+          },
+          '6': {
+            loc: {
+              start: { line: 52, column: 4 },
+              end: { line: 52, column: null },
+            },
+            type: 'cond-expr',
+            locations: [
+              {
+                start: { line: 52, column: 17 },
+                end: { line: 52, column: 53 },
+              },
+              {
+                start: { line: 52, column: 56 },
+                end: { line: 52, column: null },
+              },
+            ],
+          },
+          '7': {
+            loc: {
+              start: { line: 61, column: 4 },
+              end: { line: 61, column: 44 },
+            },
+            type: 'cond-expr',
+            locations: [
+              {
+                start: { line: 61, column: 37 },
+                end: { line: 61, column: 41 },
+              },
+              {
+                start: { line: 61, column: 41 },
+                end: { line: 61, column: 44 },
+              },
+            ],
+          },
+          '8': {
+            loc: {
+              start: { line: 61, column: 4 },
+              end: { line: 61, column: 41 },
+            },
+            type: 'binary-expr',
+            locations: [
+              {
+                start: { line: 61, column: 4 },
+                end: { line: 61, column: 41 },
+              },
+              {
+                start: { line: 61, column: 37 },
+                end: { line: 61, column: 41 },
+              },
+            ],
+          },
+          '9': {
+            loc: {
+              start: { line: 61, column: 4 },
+              end: { line: 61, column: 37 },
+            },
+            type: 'cond-expr',
+            locations: [
+              {
+                start: { line: 61, column: 26 },
+                end: { line: 61, column: 28 },
+              },
+              {
+                start: { line: 61, column: 26 },
+                end: { line: 61, column: 37 },
+              },
+            ],
+          },
+          '10': {
+            loc: {
+              start: { line: 61, column: 4 },
+              end: { line: 61, column: 28 },
+            },
+            type: 'binary-expr',
+            locations: [
+              {
+                start: { line: 61, column: 4 },
+                end: { line: 61, column: 28 },
+              },
+              {
+                start: { line: 61, column: 26 },
+                end: { line: 61, column: 28 },
+              },
+            ],
+          },
+          '11': {
+            loc: {
+              start: { line: 67, column: 2 },
+              end: { line: 69, column: 38 },
+            },
+            type: 'if',
+            locations: [
+              {
+                start: { line: 67, column: 2 },
+                end: { line: 69, column: 38 },
+              },
+              {
+                start: { line: 68, column: 7 },
+                end: { line: 69, column: 38 },
+              },
+            ],
+          },
+          '12': {
+            loc: {
+              start: { line: 68, column: 7 },
+              end: { line: 69, column: 38 },
+            },
+            type: 'if',
+            locations: [
+              {
+                start: { line: 68, column: 7 },
+                end: { line: 69, column: 38 },
+              },
+              {
+                start: { line: 69, column: 7 },
+                end: { line: 69, column: 38 },
+              },
+            ],
+          },
+          '13': {
+            loc: {
+              start: { line: 69, column: 7 },
+              end: { line: 69, column: 38 },
+            },
+            type: 'if',
+            locations: [
+              {
+                start: { line: 69, column: 7 },
+                end: { line: 69, column: 38 },
+              },
+            ],
+          },
+          '14': {
+            loc: {
+              start: { line: 85, column: 4 },
+              end: { line: 87, column: null },
+            },
+            type: 'if',
+            locations: [
+              {
+                start: { line: 85, column: 4 },
+                end: { line: 87, column: null },
+              },
+            ],
+          },
+        },
+        s: {
+          '0': 1,
+          '1': 1,
+          '2': 1,
+          '3': 2,
+          '4': 1,
+          '5': 25,
+          '6': 25,
+          '7': 25,
+          '8': 25,
+          '9': 25,
+          '10': 16,
+          '11': 9,
+          '12': 2,
+          '13': 7,
+          '14': 25,
+          '15': 25,
+          '16': 25,
+          '17': 25,
+          '18': 25,
+          '19': 1,
+          '20': 8,
+          '21': 8,
+          '22': 0,
+          '23': 8,
+          '24': 0,
+          '25': 8,
+          '26': 0,
+          '27': 8,
+          '28': 1,
+          '29': 2,
+          '30': 2,
+          '31': 9,
+          '32': 9,
+          '33': 9,
+          '34': 9,
+          '35': 9,
+          '36': 1,
+          '37': 8,
+          '38': 16,
+          '39': 2,
+          '40': 1,
+          '41': 2,
+          '42': 2,
+          '43': 2,
+          '44': 2,
+          '45': 1,
+        },
+        f: { '0': 2, '1': 25, '2': 25, '3': 8, '4': 2, '5': 16, '6': 2 },
+        b: {
+          '0': [0],
+          '1': [16, 9],
+          '2': [2, 7],
+          '3': [2, 23],
+          '4': [2, 23],
+          '5': [2, 23],
+          '6': [2, 23],
+          '7': [16, 9],
+          '8': [25, 25],
+          '9': [9, 16],
+          '10': [25, 16],
+          '11': [0, 8],
+          '12': [0, 8],
+          '13': [0],
+          '14': [1],
+        },
+      },
+    '/Users/manogel/projects/jest-pr-analysis/src/utils/parseMarkdownTemplate.ts':
+      {
+        path: '/Users/manogel/projects/jest-pr-analysis/src/utils/parseMarkdownTemplate.ts',
+        statementMap: {
+          '0': {
+            start: { line: 1, column: 0 },
+            end: { line: 1, column: 55 },
+          },
+          '1': {
+            start: { line: 5, column: 37 },
+            end: { line: 25, column: 1 },
+          },
+          '2': {
+            start: { line: 9, column: 13 },
+            end: { line: 9, column: 15 },
+          },
+          '3': {
+            start: { line: 12, column: 2 },
+            end: { line: 14, column: null },
+          },
+          '4': {
+            start: { line: 13, column: 4 },
+            end: { line: 13, column: 27 },
+          },
+          '5': {
+            start: { line: 16, column: 2 },
+            end: { line: 23, column: 5 },
+          },
+          '6': {
+            start: { line: 18, column: 23 },
+            end: { line: 18, column: 76 },
+          },
+          '7': {
+            start: { line: 20, column: 4 },
+            end: { line: 22, column: null },
+          },
+          '8': {
+            start: { line: 21, column: 6 },
+            end: { line: 21, column: 71 },
+          },
+          '9': {
+            start: { line: 24, column: 2 },
+            end: { line: 24, column: 14 },
+          },
+          '10': {
+            start: { line: 5, column: 13 },
+            end: { line: 5, column: 37 },
+          },
+        },
+        fnMap: {
+          '0': {
+            name: '(anonymous_1)',
+            decl: {
+              start: { line: 5, column: 37 },
+              end: { line: 5, column: null },
+            },
+            loc: {
+              start: { line: 8, column: 4 },
+              end: { line: 25, column: 1 },
+            },
+          },
+          '1': {
+            name: '(anonymous_2)',
+            decl: {
+              start: { line: 16, column: 28 },
+              end: { line: 16, column: 29 },
+            },
+            loc: {
+              start: { line: 16, column: 40 },
+              end: { line: 23, column: 3 },
+            },
+          },
+        },
+        branchMap: {
+          '0': {
+            loc: {
+              start: { line: 12, column: 2 },
+              end: { line: 14, column: null },
+            },
+            type: 'if',
+            locations: [
+              {
+                start: { line: 12, column: 2 },
+                end: { line: 14, column: null },
+              },
+            ],
+          },
+          '1': {
+            loc: {
+              start: { line: 18, column: 23 },
+              end: { line: 18, column: 76 },
+            },
+            type: 'binary-expr',
+            locations: [
+              {
+                start: { line: 18, column: 23 },
+                end: { line: 18, column: 50 },
+              },
+              {
+                start: { line: 18, column: 54 },
+                end: { line: 18, column: 76 },
+              },
+            ],
+          },
+          '2': {
+            loc: {
+              start: { line: 20, column: 4 },
+              end: { line: 22, column: null },
+            },
+            type: 'if',
+            locations: [
+              {
+                start: { line: 20, column: 4 },
+                end: { line: 22, column: null },
+              },
+            ],
+          },
+        },
+        s: {
+          '0': 1,
+          '1': 1,
+          '2': 2,
+          '3': 2,
+          '4': 2,
+          '5': 2,
+          '6': 4,
+          '7': 4,
+          '8': 4,
+          '9': 2,
+          '10': 1,
+        },
+        f: { '0': 2, '1': 4 },
+        b: { '0': [2], '1': [4, 4], '2': [4] },
+      },
+    '/Users/manogel/projects/jest-pr-analysis/src/utils/getJestParams.ts': {
+      path: '/Users/manogel/projects/jest-pr-analysis/src/utils/getJestParams.ts',
+      statementMap: {
+        '0': {
+          start: { line: 1, column: 0 },
+          end: { line: 1, column: 26 },
+        },
+        '1': {
+          start: { line: 2, column: 0 },
+          end: { line: 2, column: 24 },
+        },
+        '2': {
+          start: { line: 4, column: 28 },
+          end: { line: 14, column: 1 },
+        },
+        '3': {
+          start: { line: 8, column: 35 },
+          end: { line: 10, column: 4 },
+        },
+        '4': {
+          start: { line: 11, column: 26 },
+          end: { line: 11, column: 68 },
+        },
+        '5': {
+          start: { line: 13, column: 2 },
+          end: { line: 13, column: 72 },
+        },
+        '6': {
+          start: { line: 4, column: 13 },
+          end: { line: 4, column: 28 },
+        },
+        '7': {
+          start: { line: 16, column: 29 },
+          end: { line: 36, column: 1 },
+        },
+        '8': {
+          start: { line: 17, column: 21 },
+          end: { line: 17, column: 78 },
+        },
+        '9': {
+          start: { line: 18, column: 61 },
+          end: { line: 18, column: 76 },
+        },
+        '10': {
+          start: { line: 20, column: 25 },
+          end: { line: 20, column: 32 },
+        },
+        '11': {
+          start: { line: 22, column: 2 },
+          end: { line: 28, column: null },
+        },
+        '12': {
+          start: { line: 23, column: 21 },
+          end: { line: 23, column: 58 },
+        },
+        '13': {
+          start: { line: 25, column: 4 },
+          end: { line: 27, column: null },
+        },
+        '14': {
+          start: { line: 26, column: 6 },
+          end: { line: 26, column: 66 },
+        },
+        '15': {
+          start: { line: 30, column: 2 },
+          end: { line: 35, column: 4 },
+        },
+        '16': {
+          start: { line: 16, column: 13 },
+          end: { line: 16, column: 29 },
+        },
+      },
+      fnMap: {
+        '0': {
+          name: '(anonymous_1)',
+          decl: {
+            start: { line: 4, column: 28 },
+            end: { line: 4, column: null },
+          },
+          loc: {
+            start: { line: 7, column: 4 },
+            end: { line: 14, column: 1 },
+          },
+        },
+        '1': {
+          name: '(anonymous_2)',
+          decl: {
+            start: { line: 16, column: 29 },
+            end: { line: 16, column: 32 },
+          },
+          loc: {
+            start: { line: 16, column: 34 },
+            end: { line: 36, column: 1 },
+          },
+        },
+      },
+      branchMap: {
+        '0': {
+          loc: {
+            start: { line: 6, column: 2 },
+            end: { line: 6, column: 29 },
+          },
+          type: 'default-arg',
+          locations: [
+            {
+              start: { line: 6, column: 27 },
+              end: { line: 6, column: 29 },
+            },
+          ],
+        },
+        '1': {
+          loc: {
+            start: { line: 11, column: 26 },
+            end: { line: 11, column: 68 },
+          },
+          type: 'cond-expr',
+          locations: [
+            {
+              start: { line: 11, column: 60 },
+              end: { line: 11, column: 62 },
+            },
+            {
+              start: { line: 11, column: 60 },
+              end: { line: 11, column: 68 },
+            },
+          ],
+        },
+        '2': {
+          loc: {
+            start: { line: 11, column: 26 },
+            end: { line: 11, column: 62 },
+          },
+          type: 'binary-expr',
+          locations: [
+            {
+              start: { line: 11, column: 26 },
+              end: { line: 11, column: 62 },
+            },
+            {
+              start: { line: 11, column: 60 },
+              end: { line: 11, column: 62 },
+            },
+          ],
+        },
+        '3': {
+          loc: {
+            start: { line: 13, column: 49 },
+            end: { line: 13, column: 70 },
+          },
+          type: 'cond-expr',
+          locations: [
+            {
+              start: { line: 13, column: 49 },
+              end: { line: 13, column: 64 },
+            },
+            {
+              start: { line: 13, column: 68 },
+              end: { line: 13, column: 70 },
+            },
+          ],
+        },
+        '4': {
+          loc: {
+            start: { line: 13, column: 49 },
+            end: { line: 13, column: 68 },
+          },
+          type: 'binary-expr',
+          locations: [
+            {
+              start: { line: 13, column: 49 },
+              end: { line: 13, column: 68 },
+            },
+            {
+              start: { line: 13, column: 49 },
+              end: { line: 13, column: 68 },
+            },
+          ],
+        },
+        '5': {
+          loc: {
+            start: { line: 18, column: 31 },
+            end: { line: 18, column: 45 },
+          },
+          type: 'default-arg',
+          locations: [
+            {
+              start: { line: 18, column: 41 },
+              end: { line: 18, column: 45 },
+            },
+          ],
+        },
+        '6': {
+          loc: {
+            start: { line: 22, column: 2 },
+            end: { line: 28, column: null },
+          },
+          type: 'if',
+          locations: [
+            {
+              start: { line: 22, column: 2 },
+              end: { line: 28, column: null },
+            },
+          ],
+        },
+        '7': {
+          loc: {
+            start: { line: 25, column: 4 },
+            end: { line: 27, column: null },
+          },
+          type: 'if',
+          locations: [
+            {
+              start: { line: 25, column: 4 },
+              end: { line: 27, column: null },
+            },
+          ],
+        },
+      },
+      s: {
+        '0': 1,
+        '1': 1,
+        '2': 1,
+        '3': 3,
+        '4': 3,
+        '5': 3,
+        '6': 1,
+        '7': 1,
+        '8': 3,
+        '9': 3,
+        '10': 3,
+        '11': 3,
+        '12': 3,
+        '13': 3,
+        '14': 0,
+        '15': 3,
+        '16': 1,
+      },
+      f: { '0': 3, '1': 3 },
+      b: {
+        '0': [3],
+        '1': [1, 2],
+        '2': [3, 3],
+        '3': [2, 1],
+        '4': [3, 3],
+        '5': [0],
+        '6': [3],
+        '7': [0],
+      },
+    },
+    '/Users/manogel/projects/jest-pr-analysis/src/utils/generateJestTestCmd.ts':
+      {
+        path: '/Users/manogel/projects/jest-pr-analysis/src/utils/generateJestTestCmd.ts',
+        statementMap: {
+          '0': {
+            start: { line: 7, column: 35 },
+            end: { line: 26, column: 1 },
+          },
+          '1': {
+            start: { line: 12, column: 27 },
+            end: { line: 12, column: 52 },
+          },
+          '2': {
+            start: { line: 14, column: 22 },
+            end: { line: 23, column: 4 },
+          },
+          '3': {
+            start: { line: 20, column: 42 },
+            end: { line: 20, column: 67 },
+          },
+          '4': {
+            start: { line: 25, column: 2 },
+            end: { line: 25, column: 31 },
+          },
+          '5': {
+            start: { line: 7, column: 13 },
+            end: { line: 7, column: 35 },
+          },
+        },
+        fnMap: {
+          '0': {
+            name: '(anonymous_0)',
+            decl: {
+              start: { line: 7, column: 35 },
+              end: { line: 7, column: 36 },
+            },
+            loc: {
+              start: { line: 11, column: 27 },
+              end: { line: 26, column: 1 },
+            },
+          },
+          '1': {
+            name: '(anonymous_1)',
+            decl: {
+              start: { line: 20, column: 28 },
+              end: { line: 20, column: 29 },
+            },
+            loc: {
+              start: { line: 20, column: 42 },
+              end: { line: 20, column: 67 },
+            },
+          },
+        },
+        branchMap: {
+          '0': {
+            loc: {
+              start: { line: 10, column: 2 },
+              end: { line: 10, column: 16 },
+            },
+            type: 'default-arg',
+            locations: [
+              {
+                start: { line: 10, column: 14 },
+                end: { line: 10, column: 16 },
+              },
+            ],
+          },
+        },
+        s: { '0': 1, '1': 1, '2': 1, '3': 1, '4': 1, '5': 1 },
+        f: { '0': 1, '1': 1 },
+        b: { '0': [1] },
+      },
+    '/Users/manogel/projects/jest-pr-analysis/src/stages/runTests.ts': {
+      path: '/Users/manogel/projects/jest-pr-analysis/src/stages/runTests.ts',
+      statementMap: {
+        '0': {
+          start: { line: 1, column: 0 },
+          end: { line: 1, column: 37 },
+        },
+        '1': {
+          start: { line: 3, column: 23 },
+          end: { line: 5, column: 1 },
+        },
+        '2': {
+          start: { line: 4, column: 2 },
+          end: { line: 4, column: 26 },
+        },
+        '3': {
+          start: { line: 3, column: 13 },
+          end: { line: 3, column: 23 },
+        },
+      },
+      fnMap: {
+        '0': {
+          name: '(anonymous_0)',
+          decl: {
+            start: { line: 3, column: 23 },
+            end: { line: 3, column: 28 },
+          },
+          loc: {
+            start: { line: 3, column: 53 },
+            end: { line: 5, column: 1 },
+          },
+        },
+      },
+      branchMap: {},
+      s: { '0': 1, '1': 1, '2': 1, '3': 1 },
+      f: { '0': 1 },
+      b: {},
+    },
+    '/Users/manogel/projects/jest-pr-analysis/src/stages/createCoverageTextFile.ts':
+      {
+        path: '/Users/manogel/projects/jest-pr-analysis/src/stages/createCoverageTextFile.ts',
+        statementMap: {
+          '0': {
+            start: { line: 1, column: 0 },
+            end: { line: 1, column: 37 },
+          },
+          '1': {
+            start: { line: 2, column: 0 },
+            end: { line: 2, column: 26 },
+          },
+          '2': {
+            start: { line: 4, column: 38 },
+            end: { line: 23, column: 1 },
+          },
+          '3': {
+            start: { line: 5, column: 2 },
+            end: { line: 5, column: 41 },
+          },
+          '4': {
+            start: { line: 6, column: 2 },
+            end: { line: 9, column: null },
+          },
+          '5': {
+            start: { line: 7, column: 4 },
+            end: { line: 7, column: 36 },
+          },
+          '6': {
+            start: { line: 8, column: 4 },
+            end: { line: 8, column: 11 },
+          },
+          '7': {
+            start: { line: 11, column: 16 },
+            end: { line: 11, column: 74 },
+          },
+          '8': {
+            start: { line: 11, column: 57 },
+            end: { line: 11, column: 73 },
+          },
+          '9': {
+            start: { line: 13, column: 2 },
+            end: { line: 13, column: 14 },
+          },
+          '10': {
+            start: { line: 14, column: 24 },
+            end: { line: 14, column: 39 },
+          },
+          '11': {
+            start: { line: 16, column: 2 },
+            end: { line: 18, column: null },
+          },
+          '12': {
+            start: { line: 17, column: 4 },
+            end: { line: 17, column: 33 },
+          },
+          '13': {
+            start: { line: 20, column: 2 },
+            end: { line: 20, column: 30 },
+          },
+          '14': {
+            start: { line: 22, column: 2 },
+            end: { line: 22, column: 35 },
+          },
+          '15': {
+            start: { line: 4, column: 13 },
+            end: { line: 4, column: 38 },
+          },
+        },
+        fnMap: {
+          '0': {
+            name: '(anonymous_1)',
+            decl: {
+              start: { line: 4, column: 38 },
+              end: { line: 4, column: 39 },
+            },
+            loc: {
+              start: { line: 4, column: 59 },
+              end: { line: 23, column: 1 },
+            },
+          },
+          '1': {
+            name: '(anonymous_2)',
+            decl: {
+              start: { line: 11, column: 43 },
+              end: { line: 11, column: 44 },
+            },
+            loc: {
+              start: { line: 11, column: 57 },
+              end: { line: 11, column: 73 },
+            },
+          },
+        },
+        branchMap: {
+          '0': {
+            loc: {
+              start: { line: 6, column: 2 },
+              end: { line: 9, column: null },
+            },
+            type: 'if',
+            locations: [
+              {
+                start: { line: 6, column: 2 },
+                end: { line: 9, column: null },
+              },
+            ],
+          },
+          '1': {
+            loc: {
+              start: { line: 16, column: 2 },
+              end: { line: 18, column: null },
+            },
+            type: 'if',
+            locations: [
+              {
+                start: { line: 16, column: 2 },
+                end: { line: 18, column: null },
+              },
+            ],
+          },
+        },
+        s: {
+          '0': 1,
+          '1': 1,
+          '2': 1,
+          '3': 5,
+          '4': 5,
+          '5': 1,
+          '6': 1,
+          '7': 4,
+          '8': 11,
+          '9': 4,
+          '10': 4,
+          '11': 4,
+          '12': 3,
+          '13': 4,
+          '14': 4,
+          '15': 1,
+        },
+        f: { '0': 5, '1': 11 },
+        b: { '0': [1], '1': [3] },
+      },
+    '/Users/manogel/projects/jest-pr-analysis/src/stages/checkThreshold.ts': {
+      path: '/Users/manogel/projects/jest-pr-analysis/src/stages/checkThreshold.ts',
+      statementMap: {
+        '0': {
+          start: { line: 1, column: 0 },
+          end: { line: 1, column: 38 },
+        },
+        '1': {
+          start: { line: 3, column: 30 },
+          end: { line: 45, column: 1 },
+        },
+        '2': {
+          start: { line: 7, column: 25 },
+          end: { line: 7, column: 44 },
+        },
+        '3': {
+          start: { line: 9, column: 2 },
+          end: { line: 44, column: null },
+        },
+        '4': {
+          start: { line: 13, column: 4 },
+          end: { line: 32, column: null },
+        },
+        '5': {
+          start: { line: 15, column: 8 },
+          end: { line: 15, column: 59 },
+        },
+        '6': {
+          start: { line: 16, column: 8 },
+          end: { line: 16, column: 62 },
+        },
+        '7': {
+          start: { line: 17, column: 8 },
+          end: { line: 17, column: 14 },
+        },
+        '8': {
+          start: { line: 19, column: 8 },
+          end: { line: 19, column: 60 },
+        },
+        '9': {
+          start: { line: 20, column: 8 },
+          end: { line: 20, column: 61 },
+        },
+        '10': {
+          start: { line: 21, column: 8 },
+          end: { line: 21, column: 14 },
+        },
+        '11': {
+          start: { line: 23, column: 8 },
+          end: { line: 23, column: 56 },
+        },
+        '12': {
+          start: { line: 24, column: 8 },
+          end: { line: 24, column: 61 },
+        },
+        '13': {
+          start: { line: 25, column: 8 },
+          end: { line: 25, column: 14 },
+        },
+        '14': {
+          start: { line: 27, column: 8 },
+          end: { line: 27, column: 61 },
+        },
+        '15': {
+          start: { line: 28, column: 8 },
+          end: { line: 28, column: 61 },
+        },
+        '16': {
+          start: { line: 29, column: 8 },
+          end: { line: 29, column: 14 },
+        },
+        '17': {
+          start: { line: 31, column: 8 },
+          end: { line: 31, column: 14 },
+        },
+        '18': {
+          start: { line: 34, column: 4 },
+          end: { line: 43, column: null },
+        },
+        '19': {
+          start: { line: 39, column: 6 },
+          end: { line: 41, column: 8 },
+        },
+        '20': {
+          start: { line: 42, column: 6 },
+          end: { line: 42, column: 29 },
+        },
+        '21': {
+          start: { line: 3, column: 13 },
+          end: { line: 3, column: 30 },
+        },
+      },
+      fnMap: {
+        '0': {
+          name: '(anonymous_0)',
+          decl: {
+            start: { line: 3, column: 30 },
+            end: { line: 3, column: null },
+          },
+          loc: {
+            start: { line: 6, column: 4 },
+            end: { line: 45, column: 1 },
+          },
+        },
+      },
+      branchMap: {
+        '0': {
+          loc: {
+            start: { line: 13, column: 4 },
+            end: { line: 32, column: null },
+          },
+          type: 'switch',
+          locations: [
+            {
+              start: { line: 14, column: 6 },
+              end: { line: 17, column: 14 },
+            },
+            {
+              start: { line: 18, column: 6 },
+              end: { line: 21, column: 14 },
+            },
+            {
+              start: { line: 22, column: 6 },
+              end: { line: 25, column: 14 },
+            },
+            {
+              start: { line: 26, column: 6 },
+              end: { line: 29, column: 14 },
+            },
+            {
+              start: { line: 30, column: 6 },
+              end: { line: 31, column: 14 },
+            },
+          ],
+        },
+        '1': {
+          loc: {
+            start: { line: 34, column: 4 },
+            end: { line: 43, column: null },
+          },
+          type: 'if',
+          locations: [
+            {
+              start: { line: 34, column: 4 },
+              end: { line: 43, column: null },
+            },
+          ],
+        },
+        '2': {
+          loc: {
+            start: { line: 35, column: 6 },
+            end: { line: 37, column: 52 },
+          },
+          type: 'binary-expr',
+          locations: [
+            {
+              start: { line: 35, column: 6 },
+              end: { line: 35, column: 21 },
+            },
+            {
+              start: { line: 36, column: 6 },
+              end: { line: 36, column: 18 },
+            },
+            {
+              start: { line: 37, column: 6 },
+              end: { line: 37, column: 52 },
+            },
+          ],
+        },
+      },
+      s: {
+        '0': 1,
+        '1': 1,
+        '2': 4,
+        '3': 4,
+        '4': 7,
+        '5': 3,
+        '6': 3,
+        '7': 3,
+        '8': 2,
+        '9': 2,
+        '10': 2,
+        '11': 1,
+        '12': 1,
+        '13': 1,
+        '14': 1,
+        '15': 1,
+        '16': 1,
+        '17': 0,
+        '18': 7,
+        '19': 4,
+        '20': 4,
+        '21': 1,
+      },
+      f: { '0': 4 },
+      b: { '0': [3, 2, 1, 1, 0], '1': [4], '2': [7, 7, 7] },
+    },
+    '/Users/manogel/projects/jest-pr-analysis/src/stages/parseCoverageReportFromTextFile.ts':
+      {
+        path: '/Users/manogel/projects/jest-pr-analysis/src/stages/parseCoverageReportFromTextFile.ts',
+        statementMap: {
+          '0': {
+            start: { line: 1, column: 0 },
+            end: { line: 1, column: 56 },
+          },
+          '1': {
+            start: { line: 3, column: 19 },
+            end: { line: 5, column: 1 },
+          },
+          '2': {
+            start: { line: 4, column: 2 },
+            end: { line: 4, column: 36 },
+          },
+          '3': {
+            start: { line: 7, column: 21 },
+            end: { line: 9, column: 1 },
+          },
+          '4': {
+            start: { line: 8, column: 2 },
+            end: { line: 8, column: 32 },
+          },
+          '5': {
+            start: { line: 11, column: 24 },
+            end: { line: 24, column: 1 },
+          },
+          '6': {
+            start: { line: 12, column: 67 },
+            end: { line: 12, column: 76 },
+          },
+          '7': {
+            start: { line: 14, column: 2 },
+            end: { line: 23, column: 4 },
+          },
+          '8': {
+            start: { line: 26, column: 23 },
+            end: { line: 65, column: 1 },
+          },
+          '9': {
+            start: { line: 27, column: 25 },
+            end: { line: 27, column: 27 },
+          },
+          '10': {
+            start: { line: 28, column: 47 },
+            end: { line: 28, column: 71 },
+          },
+          '11': {
+            start: { line: 29, column: 2 },
+            end: { line: 63, column: 5 },
+          },
+          '12': {
+            start: { line: 30, column: 22 },
+            end: { line: 30, column: 43 },
+          },
+          '13': {
+            start: { line: 32, column: 21 },
+            end: { line: 32, column: 44 },
+          },
+          '14': {
+            start: { line: 33, column: 19 },
+            end: { line: 33, column: 40 },
+          },
+          '15': {
+            start: { line: 35, column: 4 },
+            end: { line: 45, column: null },
+          },
+          '16': {
+            start: { line: 36, column: 6 },
+            end: { line: 36, column: 45 },
+          },
+          '17': {
+            start: { line: 38, column: 6 },
+            end: { line: 44, column: 8 },
+          },
+          '18': {
+            start: { line: 47, column: 4 },
+            end: { line: 62, column: null },
+          },
+          '19': {
+            start: { line: 52, column: 6 },
+            end: { line: 52, column: 41 },
+          },
+          '20': {
+            start: { line: 54, column: 6 },
+            end: { line: 56, column: 8 },
+          },
+          '21': {
+            start: { line: 58, column: 6 },
+            end: { line: 59, column: 35 },
+          },
+          '22': {
+            start: { line: 60, column: 6 },
+            end: { line: 61, column: 41 },
+          },
+          '23': {
+            start: { line: 64, column: 2 },
+            end: { line: 64, column: 26 },
+          },
+          '24': {
+            start: { line: 67, column: 41 },
+            end: { line: 88, column: 1 },
+          },
+          '25': {
+            start: { line: 68, column: 21 },
+            end: { line: 68, column: 53 },
+          },
+          '26': {
+            start: { line: 79, column: 20 },
+            end: { line: 79, column: 42 },
+          },
+          '27': {
+            start: { line: 80, column: 23 },
+            end: { line: 81, column: null },
+          },
+          '28': {
+            start: { line: 81, column: 14 },
+            end: { line: 81, column: 68 },
+          },
+          '29': {
+            start: { line: 84, column: 38 },
+            end: { line: 84, column: 50 },
+          },
+          '30': {
+            start: { line: 85, column: 24 },
+            end: { line: 85, column: 49 },
+          },
+          '31': {
+            start: { line: 87, column: 2 },
+            end: { line: 87, column: 23 },
+          },
+          '32': {
+            start: { line: 67, column: 13 },
+            end: { line: 67, column: 41 },
+          },
+        },
+        fnMap: {
+          '0': {
+            name: '(anonymous_0)',
+            decl: {
+              start: { line: 3, column: 19 },
+              end: { line: 3, column: 20 },
+            },
+            loc: {
+              start: { line: 3, column: 43 },
+              end: { line: 5, column: 1 },
+            },
+          },
+          '1': {
+            name: '(anonymous_1)',
+            decl: {
+              start: { line: 7, column: 21 },
+              end: { line: 7, column: 22 },
+            },
+            loc: {
+              start: { line: 7, column: 45 },
+              end: { line: 9, column: 1 },
+            },
+          },
+          '2': {
+            name: '(anonymous_2)',
+            decl: {
+              start: { line: 11, column: 24 },
+              end: { line: 11, column: 25 },
+            },
+            loc: {
+              start: { line: 11, column: 63 },
+              end: { line: 24, column: 1 },
+            },
+          },
+          '3': {
+            name: '(anonymous_3)',
+            decl: {
+              start: { line: 26, column: 23 },
+              end: { line: 26, column: 24 },
+            },
+            loc: {
+              start: { line: 26, column: 47 },
+              end: { line: 65, column: 1 },
+            },
+          },
+          '4': {
+            name: '(anonymous_4)',
+            decl: {
+              start: { line: 29, column: 20 },
+              end: { line: 29, column: 21 },
+            },
+            loc: {
+              start: { line: 29, column: 35 },
+              end: { line: 63, column: 3 },
+            },
+          },
+          '5': {
+            name: '(anonymous_5)',
+            decl: {
+              start: { line: 67, column: 41 },
+              end: { line: 67, column: 42 },
+            },
+            loc: {
+              start: { line: 67, column: 70 },
+              end: { line: 88, column: 1 },
+            },
+          },
+          '6': {
+            name: '(anonymous_6)',
+            decl: {
+              start: { line: 81, column: 4 },
+              end: { line: 81, column: 5 },
+            },
+            loc: {
+              start: { line: 81, column: 14 },
+              end: { line: 81, column: 68 },
+            },
+          },
+        },
+        branchMap: {
+          '0': {
+            loc: {
+              start: { line: 12, column: 44 },
+              end: { line: 12, column: 63 },
+            },
+            type: 'default-arg',
+            locations: [
+              {
+                start: { line: 12, column: 61 },
+                end: { line: 12, column: 63 },
+              },
+            ],
+          },
+          '1': {
+            loc: {
+              start: { line: 20, column: 20 },
+              end: { line: 22, column: 12 },
+            },
+            type: 'cond-expr',
+            locations: [
+              {
+                start: { line: 21, column: 8 },
+                end: { line: 21, column: 40 },
+              },
+              {
+                start: { line: 22, column: 8 },
+                end: { line: 22, column: 12 },
+              },
+            ],
+          },
+          '2': {
+            loc: {
+              start: { line: 35, column: 4 },
+              end: { line: 45, column: null },
+            },
+            type: 'if',
+            locations: [
+              {
+                start: { line: 35, column: 4 },
+                end: { line: 45, column: null },
+              },
+            ],
+          },
+          '3': {
+            loc: {
+              start: { line: 38, column: 43 },
+              end: { line: 44, column: 8 },
+            },
+            type: 'binary-expr',
+            locations: [
+              {
+                start: { line: 38, column: 43 },
+                end: { line: 39, column: null },
+              },
+              {
+                start: { line: 40, column: 11 },
+                end: { line: 44, column: 8 },
+              },
+            ],
+          },
+          '4': {
+            loc: {
+              start: { line: 47, column: 4 },
+              end: { line: 62, column: null },
+            },
+            type: 'if',
+            locations: [
+              {
+                start: { line: 47, column: 4 },
+                end: { line: 62, column: null },
+              },
+              {
+                start: { line: 57, column: 11 },
+                end: { line: 62, column: null },
+              },
+            ],
+          },
+          '5': {
+            loc: {
+              start: { line: 81, column: 14 },
+              end: { line: 81, column: 68 },
+            },
+            type: 'binary-expr',
+            locations: [
+              {
+                start: { line: 81, column: 14 },
+                end: { line: 81, column: 42 },
+              },
+              {
+                start: { line: 81, column: 46 },
+                end: { line: 81, column: 68 },
+              },
+            ],
+          },
+        },
+        s: {
+          '0': 1,
+          '1': 1,
+          '2': 42,
+          '3': 1,
+          '4': 21,
+          '5': 1,
+          '6': 21,
+          '7': 21,
+          '8': 1,
+          '9': 1,
+          '10': 1,
+          '11': 1,
+          '12': 21,
+          '13': 21,
+          '14': 21,
+          '15': 21,
+          '16': 6,
+          '17': 6,
+          '18': 21,
+          '19': 15,
+          '20': 15,
+          '21': 6,
+          '22': 6,
+          '23': 1,
+          '24': 1,
+          '25': 1,
+          '26': 1,
+          '27': 1,
+          '28': 26,
+          '29': 1,
+          '30': 1,
+          '31': 1,
+          '32': 1,
+        },
+        f: { '0': 42, '1': 21, '2': 21, '3': 1, '4': 21, '5': 1, '6': 26 },
+        b: {
+          '0': [0],
+          '1': [15, 6],
+          '2': [6],
+          '3': [6, 6],
+          '4': [15, 6],
+          '5': [26, 25],
+        },
+      },
+    '/Users/manogel/projects/jest-pr-analysis/src/utils/safeRunStage.ts': {
+      path: '/Users/manogel/projects/jest-pr-analysis/src/utils/safeRunStage.ts',
+      statementMap: {
+        '0': {
+          start: { line: 1, column: 28 },
+          end: { line: 9, column: 1 },
+        },
+        '1': {
+          start: { line: 2, column: 2 },
+          end: { line: 8, column: null },
+        },
+        '2': {
+          start: { line: 3, column: 19 },
+          end: { line: 3, column: 33 },
+        },
+        '3': {
+          start: { line: 4, column: 4 },
+          end: { line: 4, column: 37 },
+        },
+        '4': {
+          start: { line: 6, column: 4 },
+          end: { line: 6, column: 25 },
+        },
+        '5': {
+          start: { line: 7, column: 4 },
+          end: { line: 7, column: 49 },
+        },
+        '6': {
+          start: { line: 1, column: 13 },
+          end: { line: 1, column: 28 },
+        },
+      },
+      fnMap: {
+        '0': {
+          name: '(anonymous_0)',
+          decl: {
+            start: { line: 1, column: 28 },
+            end: { line: 1, column: 33 },
+          },
+          loc: {
+            start: { line: 1, column: 57 },
+            end: { line: 9, column: 1 },
+          },
+        },
+      },
+      branchMap: {},
+      s: { '0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0 },
+      f: { '0': 0 },
+      b: {},
+    },
+    '/Users/manogel/projects/jest-pr-analysis/src/utils/getActionParams.ts': {
+      path: '/Users/manogel/projects/jest-pr-analysis/src/utils/getActionParams.ts',
+      statementMap: {
+        '0': {
+          start: { line: 1, column: 0 },
+          end: { line: 1, column: 41 },
+        },
+        '1': {
+          start: { line: 2, column: 0 },
+          end: { line: 2, column: 42 },
+        },
+        '2': {
+          start: { line: 4, column: 31 },
+          end: { line: 27, column: 1 },
+        },
+        '3': {
+          start: { line: 5, column: 18 },
+          end: { line: 7, column: 4 },
+        },
+        '4': {
+          start: { line: 9, column: 2 },
+          end: { line: 11, column: null },
+        },
+        '5': {
+          start: { line: 10, column: 4 },
+          end: { line: 10, column: 54 },
+        },
+        '6': {
+          start: { line: 17, column: 22 },
+          end: { line: 17, column: 66 },
+        },
+        '7': {
+          start: { line: 19, column: 33 },
+          end: { line: 24, column: 4 },
+        },
+        '8': {
+          start: { line: 26, column: 2 },
+          end: { line: 26, column: 17 },
+        },
+        '9': {
+          start: { line: 4, column: 13 },
+          end: { line: 4, column: 31 },
+        },
+      },
+      fnMap: {
+        '0': {
+          name: '(anonymous_0)',
+          decl: {
+            start: { line: 4, column: 31 },
+            end: { line: 4, column: 49 },
+          },
+          loc: {
+            start: { line: 4, column: 51 },
+            end: { line: 27, column: 1 },
+          },
+        },
+      },
+      branchMap: {
+        '0': {
+          loc: {
+            start: { line: 9, column: 2 },
+            end: { line: 11, column: null },
+          },
+          type: 'if',
+          locations: [
+            {
+              start: { line: 9, column: 2 },
+              end: { line: 11, column: null },
+            },
+          ],
+        },
+      },
+      s: {
+        '0': 0,
+        '1': 0,
+        '2': 0,
+        '3': 0,
+        '4': 0,
+        '5': 0,
+        '6': 0,
+        '7': 0,
+        '8': 0,
+        '9': 0,
+      },
+      f: { '0': 0 },
+      b: { '0': [0] },
+    },
+    '/Users/manogel/projects/jest-pr-analysis/src/stages/getPrDiffFiles.ts': {
+      path: '/Users/manogel/projects/jest-pr-analysis/src/stages/getPrDiffFiles.ts',
+      statementMap: {
+        '0': {
+          start: { line: 1, column: 0 },
+          end: { line: 1, column: 54 },
+        },
+        '1': {
+          start: { line: 3, column: 30 },
+          end: { line: 19, column: 1 },
+        },
+        '2': {
+          start: { line: 4, column: 2 },
+          end: { line: 18, column: null },
+        },
+        '3': {
+          start: { line: 5, column: 28 },
+          end: { line: 5, column: 40 },
+        },
+        '4': {
+          start: { line: 7, column: 20 },
+          end: { line: 7, column: 52 },
+        },
+        '5': {
+          start: { line: 8, column: 28 },
+          end: { line: 12, column: 6 },
+        },
+        '6': {
+          start: { line: 14, column: 4 },
+          end: { line: 14, column: 17 },
+        },
+        '7': {
+          start: { line: 16, column: 4 },
+          end: { line: 16, column: 50 },
+        },
+        '8': {
+          start: { line: 17, column: 4 },
+          end: { line: 17, column: 14 },
+        },
+        '9': {
+          start: { line: 3, column: 13 },
+          end: { line: 3, column: 30 },
+        },
+      },
+      fnMap: {
+        '0': {
+          name: '(anonymous_0)',
+          decl: {
+            start: { line: 3, column: 30 },
+            end: { line: 3, column: 35 },
+          },
+          loc: {
+            start: { line: 3, column: 68 },
+            end: { line: 19, column: 1 },
+          },
+        },
+      },
+      branchMap: {},
+      s: {
+        '0': 0,
+        '1': 0,
+        '2': 0,
+        '3': 0,
+        '4': 0,
+        '5': 0,
+        '6': 0,
+        '7': 0,
+        '8': 0,
+        '9': 0,
+      },
+      f: { '0': 0 },
+      b: {},
+    },
+    '/Users/manogel/projects/jest-pr-analysis/src/utils/getCoverageReport.ts': {
+      path: '/Users/manogel/projects/jest-pr-analysis/src/utils/getCoverageReport.ts',
+      statementMap: {
+        '0': {
+          start: { line: 1, column: 0 },
+          end: { line: 1, column: 26 },
+        },
+        '1': {
+          start: { line: 3, column: 33 },
+          end: { line: 7, column: 1 },
+        },
+        '2': {
+          start: { line: 4, column: 18 },
+          end: { line: 4, column: 72 },
+        },
+        '3': {
+          start: { line: 6, column: 2 },
+          end: { line: 6, column: 17 },
+        },
+        '4': {
+          start: { line: 3, column: 13 },
+          end: { line: 3, column: 33 },
+        },
+      },
+      fnMap: {
+        '0': {
+          name: '(anonymous_1)',
+          decl: {
+            start: { line: 3, column: 33 },
+            end: { line: 3, column: 34 },
+          },
+          loc: {
+            start: { line: 3, column: 59 },
+            end: { line: 7, column: 1 },
+          },
+        },
+      },
+      branchMap: {},
+      s: { '0': 0, '1': 0, '2': 0, '3': 0, '4': 0 },
+      f: { '0': 0 },
+      b: {},
+    },
+    '/Users/manogel/projects/jest-pr-analysis/src/utils/getContentFile.ts': {
+      path: '/Users/manogel/projects/jest-pr-analysis/src/utils/getContentFile.ts',
+      statementMap: {
+        '0': {
+          start: { line: 1, column: 0 },
+          end: { line: 1, column: 53 },
+        },
+        '1': {
+          start: { line: 2, column: 0 },
+          end: { line: 2, column: 46 },
+        },
+        '2': {
+          start: { line: 4, column: 30 },
+          end: { line: 21, column: 1 },
+        },
+        '3': {
+          start: { line: 5, column: 21 },
+          end: { line: 5, column: 43 },
+        },
+        '4': {
+          start: { line: 7, column: 2 },
+          end: { line: 10, column: null },
+        },
+        '5': {
+          start: { line: 8, column: 4 },
+          end: { line: 8, column: 48 },
+        },
+        '6': {
+          start: { line: 9, column: 4 },
+          end: { line: 9, column: 46 },
+        },
+        '7': {
+          start: { line: 12, column: 18 },
+          end: { line: 12, column: 50 },
+        },
+        '8': {
+          start: { line: 14, column: 2 },
+          end: { line: 17, column: null },
+        },
+        '9': {
+          start: { line: 15, column: 4 },
+          end: { line: 15, column: 56 },
+        },
+        '10': {
+          start: { line: 16, column: 4 },
+          end: { line: 16, column: 49 },
+        },
+        '11': {
+          start: { line: 19, column: 2 },
+          end: { line: 19, column: 49 },
+        },
+        '12': {
+          start: { line: 20, column: 2 },
+          end: { line: 20, column: 17 },
+        },
+        '13': {
+          start: { line: 4, column: 13 },
+          end: { line: 4, column: 30 },
+        },
+      },
+      fnMap: {
+        '0': {
+          name: '(anonymous_0)',
+          decl: {
+            start: { line: 4, column: 30 },
+            end: { line: 4, column: 31 },
+          },
+          loc: {
+            start: { line: 4, column: 53 },
+            end: { line: 21, column: 1 },
+          },
+        },
+      },
+      branchMap: {
+        '0': {
+          loc: {
+            start: { line: 7, column: 2 },
+            end: { line: 10, column: null },
+          },
+          type: 'if',
+          locations: [
+            {
+              start: { line: 7, column: 2 },
+              end: { line: 10, column: null },
+            },
+          ],
+        },
+        '1': {
+          loc: {
+            start: { line: 14, column: 2 },
+            end: { line: 17, column: null },
+          },
+          type: 'if',
+          locations: [
+            {
+              start: { line: 14, column: 2 },
+              end: { line: 17, column: null },
+            },
+          ],
+        },
+      },
+      s: {
+        '0': 0,
+        '1': 0,
+        '2': 0,
+        '3': 0,
+        '4': 0,
+        '5': 0,
+        '6': 0,
+        '7': 0,
+        '8': 0,
+        '9': 0,
+        '10': 0,
+        '11': 0,
+        '12': 0,
+        '13': 0,
+      },
+      f: { '0': 0 },
+      b: { '0': [0], '1': [0] },
+    },
+    '/Users/manogel/projects/jest-pr-analysis/src/index.ts': {
+      path: '/Users/manogel/projects/jest-pr-analysis/src/index.ts',
+      statementMap: {
+        '0': {
+          start: { line: 1, column: 0 },
+          end: { line: 1, column: 44 },
+        },
+        '1': {
+          start: { line: 2, column: 0 },
+          end: { line: 2, column: 36 },
+        },
+        '2': {
+          start: { line: 3, column: 0 },
+          end: { line: 3, column: 24 },
+        },
+        '3': {
+          start: { line: 5, column: 0 },
+          end: { line: 5, column: 57 },
+        },
+        '4': {
+          start: { line: 6, column: 0 },
+          end: { line: 6, column: 73 },
+        },
+        '5': {
+          start: { line: 7, column: 0 },
+          end: { line: 7, column: 67 },
+        },
+        '6': {
+          start: { line: 8, column: 0 },
+          end: { line: 8, column: 83 },
+        },
+        '7': {
+          start: { line: 9, column: 0 },
+          end: { line: 9, column: 57 },
+        },
+        '8': {
+          start: { line: 10, column: 0 },
+          end: { line: 10, column: 67 },
+        },
+        '9': {
+          start: { line: 11, column: 0 },
+          end: { line: 11, column: 79 },
+        },
+        '10': {
+          start: { line: 12, column: 0 },
+          end: { line: 12, column: 44 },
+        },
+        '11': {
+          start: { line: 13, column: 0 },
+          end: { line: 13, column: 66 },
+        },
+        '12': {
+          start: { line: 14, column: 0 },
+          end: { line: 14, column: 58 },
+        },
+        '13': {
+          start: { line: 15, column: 0 },
+          end: { line: 15, column: 54 },
+        },
+        '14': {
+          start: { line: 16, column: 0 },
+          end: { line: 16, column: 52 },
+        },
+        '15': {
+          start: { line: 18, column: 19 },
+          end: { line: 84, column: 1 },
+        },
+        '16': {
+          start: { line: 19, column: 23 },
+          end: { line: 19, column: 40 },
+        },
+        '17': {
+          start: { line: 21, column: 24 },
+          end: { line: 21, column: 58 },
+        },
+        '18': {
+          start: { line: 22, column: 24 },
+          end: { line: 22, column: 69 },
+        },
+        '19': {
+          start: { line: 22, column: 60 },
+          end: { line: 22, column: 68 },
+        },
+        '20': {
+          start: { line: 24, column: 21 },
+          end: { line: 24, column: 36 },
+        },
+        '21': {
+          start: { line: 25, column: 28 },
+          end: { line: 27, column: null },
+        },
+        '22': {
+          start: { line: 30, column: 2 },
+          end: { line: 33, column: null },
+        },
+        '23': {
+          start: { line: 31, column: 4 },
+          end: { line: 31, column: 31 },
+        },
+        '24': {
+          start: { line: 32, column: 4 },
+          end: { line: 32, column: 20 },
+        },
+        '25': {
+          start: { line: 35, column: 32 },
+          end: { line: 45, column: 14 },
+        },
+        '26': {
+          start: { line: 40, column: 8 },
+          end: { line: 42, column: 16 },
+        },
+        '27': {
+          start: { line: 43, column: 6 },
+          end: { line: 43, column: 56 },
+        },
+        '28': {
+          start: { line: 47, column: 29 },
+          end: { line: 47, column: 73 },
+        },
+        '29': {
+          start: { line: 48, column: 27 },
+          end: { line: 53, column: 72 },
+        },
+        '30': {
+          start: { line: 52, column: 31 },
+          end: { line: 52, column: 69 },
+        },
+        '31': {
+          start: { line: 53, column: 22 },
+          end: { line: 53, column: 71 },
+        },
+        '32': {
+          start: { line: 55, column: 2 },
+          end: { line: 58, column: null },
+        },
+        '33': {
+          start: { line: 56, column: 4 },
+          end: { line: 56, column: 67 },
+        },
+        '34': {
+          start: { line: 57, column: 4 },
+          end: { line: 57, column: 20 },
+        },
+        '35': {
+          start: { line: 60, column: 18 },
+          end: { line: 63, column: 4 },
+        },
+        '36': {
+          start: { line: 65, column: 22 },
+          end: { line: 65, column: 88 },
+        },
+        '37': {
+          start: { line: 67, column: 2 },
+          end: { line: 67, column: 56 },
+        },
+        '38': {
+          start: { line: 69, column: 2 },
+          end: { line: 71, column: 5 },
+        },
+        '39': {
+          start: { line: 70, column: 4 },
+          end: { line: 70, column: 31 },
+        },
+        '40': {
+          start: { line: 73, column: 32 },
+          end: { line: 74, column: null },
+        },
+        '41': {
+          start: { line: 77, column: 17 },
+          end: { line: 77, column: 67 },
+        },
+        '42': {
+          start: { line: 79, column: 2 },
+          end: { line: 79, column: 50 },
+        },
+        '43': {
+          start: { line: 81, column: 2 },
+          end: { line: 81, column: 70 },
+        },
+        '44': {
+          start: { line: 83, column: 2 },
+          end: { line: 83, column: 18 },
+        },
+        '45': {
+          start: { line: 18, column: 13 },
+          end: { line: 18, column: 19 },
+        },
+        '46': {
+          start: { line: 86, column: 0 },
+          end: { line: 86, column: 11 },
+        },
+      },
+      fnMap: {
+        '0': {
+          name: '(anonymous_1)',
+          decl: {
+            start: { line: 18, column: 19 },
+            end: { line: 18, column: 24 },
+          },
+          loc: {
+            start: { line: 18, column: 30 },
+            end: { line: 84, column: 1 },
+          },
+        },
+        '1': {
+          name: '(anonymous_2)',
+          decl: {
+            start: { line: 22, column: 42 },
+            end: { line: 22, column: 43 },
+          },
+          loc: {
+            start: { line: 22, column: 60 },
+            end: { line: 22, column: 68 },
+          },
+        },
+        '2': {
+          name: '(anonymous_3)',
+          decl: {
+            start: { line: 36, column: 9 },
+            end: { line: 36, column: 10 },
+          },
+          loc: {
+            start: { line: 36, column: 18 },
+            end: { line: 44, column: 5 },
+          },
+        },
+        '3': {
+          name: '(anonymous_4)',
+          decl: {
+            start: { line: 52, column: 9 },
+            end: { line: 52, column: 10 },
+          },
+          loc: {
+            start: { line: 52, column: 31 },
+            end: { line: 52, column: 69 },
+          },
+        },
+        '4': {
+          name: '(anonymous_5)',
+          decl: {
+            start: { line: 53, column: 12 },
+            end: { line: 53, column: 13 },
+          },
+          loc: {
+            start: { line: 53, column: 22 },
+            end: { line: 53, column: 71 },
+          },
+        },
+        '5': {
+          name: '(anonymous_6)',
+          decl: {
+            start: { line: 69, column: 21 },
+            end: { line: 69, column: 26 },
+          },
+          loc: {
+            start: { line: 69, column: 32 },
+            end: { line: 71, column: 3 },
+          },
+        },
+      },
+      branchMap: {
+        '0': {
+          loc: {
+            start: { line: 30, column: 2 },
+            end: { line: 33, column: null },
+          },
+          type: 'if',
+          locations: [
+            {
+              start: { line: 30, column: 2 },
+              end: { line: 33, column: null },
+            },
+          ],
+        },
+        '1': {
+          loc: {
+            start: { line: 40, column: 8 },
+            end: { line: 42, column: 16 },
+          },
+          type: 'cond-expr',
+          locations: [
+            {
+              start: { line: 41, column: 12 },
+              end: { line: 41, column: 51 },
+            },
+            {
+              start: { line: 42, column: 12 },
+              end: { line: 42, column: 16 },
+            },
+          ],
+        },
+        '2': {
+          loc: {
+            start: { line: 55, column: 2 },
+            end: { line: 58, column: null },
+          },
+          type: 'if',
+          locations: [
+            {
+              start: { line: 55, column: 2 },
+              end: { line: 58, column: null },
+            },
+          ],
+        },
+      },
+      s: {
+        '0': 0,
+        '1': 0,
+        '2': 0,
+        '3': 0,
+        '4': 0,
+        '5': 0,
+        '6': 0,
+        '7': 0,
+        '8': 0,
+        '9': 0,
+        '10': 0,
+        '11': 0,
+        '12': 0,
+        '13': 0,
+        '14': 0,
+        '15': 0,
+        '16': 0,
+        '17': 0,
+        '18': 0,
+        '19': 0,
+        '20': 0,
+        '21': 0,
+        '22': 0,
+        '23': 0,
+        '24': 0,
+        '25': 0,
+        '26': 0,
+        '27': 0,
+        '28': 0,
+        '29': 0,
+        '30': 0,
+        '31': 0,
+        '32': 0,
+        '33': 0,
+        '34': 0,
+        '35': 0,
+        '36': 0,
+        '37': 0,
+        '38': 0,
+        '39': 0,
+        '40': 0,
+        '41': 0,
+        '42': 0,
+        '43': 0,
+        '44': 0,
+        '45': 0,
+        '46': 0,
+      },
+      f: { '0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0 },
+      b: { '0': [0], '1': [0, 0], '2': [0] },
+    },
+    '/Users/manogel/projects/jest-pr-analysis/src/stages/parseCoverageReport.ts':
+      {
+        path: '/Users/manogel/projects/jest-pr-analysis/src/stages/parseCoverageReport.ts',
+        statementMap: {
+          '0': {
+            start: { line: 1, column: 0 },
+            end: { line: 1, column: 33 },
+          },
+          '1': {
+            start: { line: 3, column: 0 },
+            end: { line: 3, column: 62 },
+          },
+          '2': {
+            start: { line: 4, column: 35 },
+            end: { line: 25, column: 1 },
+          },
+          '3': {
+            start: { line: 5, column: 14 },
+            end: { line: 5, column: 33 },
+          },
+          '4': {
+            start: { line: 6, column: 29 },
+            end: { line: 6, column: 53 },
+          },
+          '5': {
+            start: { line: 7, column: 18 },
+            end: { line: 7, column: 55 },
+          },
+          '6': {
+            start: { line: 15, column: 6 },
+            end: { line: 15, column: 13 },
+          },
+          '7': {
+            start: { line: 17, column: 2 },
+            end: { line: 24, column: 4 },
+          },
+          '8': {
+            start: { line: 4, column: 13 },
+            end: { line: 4, column: 35 },
+          },
+        },
+        fnMap: {
+          '0': {
+            name: '(anonymous_0)',
+            decl: {
+              start: { line: 4, column: 35 },
+              end: { line: 4, column: 36 },
+            },
+            loc: {
+              start: { line: 4, column: 61 },
+              end: { line: 25, column: 1 },
+            },
+          },
+        },
+        branchMap: {},
+        s: {
+          '0': 0,
+          '1': 0,
+          '2': 0,
+          '3': 0,
+          '4': 0,
+          '5': 0,
+          '6': 0,
+          '7': 0,
+          '8': 0,
+        },
+        f: { '0': 0 },
+        b: {},
+      },
+    '/Users/manogel/projects/jest-pr-analysis/src/stages/createReportComment.ts':
+      {
+        path: '/Users/manogel/projects/jest-pr-analysis/src/stages/createReportComment.ts',
+        statementMap: {
+          '0': {
+            start: { line: 1, column: 0 },
+            end: { line: 1, column: 40 },
+          },
+          '1': {
+            start: { line: 2, column: 0 },
+            end: { line: 2, column: 54 },
+          },
+          '2': {
+            start: { line: 5, column: 0 },
+            end: { line: 5, column: 59 },
+          },
+          '3': {
+            start: { line: 7, column: 22 },
+            end: { line: 7, column: 59 },
+          },
+          '4': {
+            start: { line: 9, column: 26 },
+            end: { line: 27, column: 1 },
+          },
+          '5': {
+            start: { line: 13, column: 26 },
+            end: { line: 13, column: 38 },
+          },
+          '6': {
+            start: { line: 15, column: 22 },
+            end: { line: 20, column: 4 },
+          },
+          '7': {
+            start: { line: 22, column: 25 },
+            end: { line: 23, column: null },
+          },
+          '8': {
+            start: { line: 23, column: 4 },
+            end: { line: 23, column: null },
+          },
+          '9': {
+            start: { line: 26, column: 2 },
+            end: { line: 26, column: 24 },
+          },
+          '10': {
+            start: { line: 29, column: 35 },
+            end: { line: 59, column: 1 },
+          },
+          '11': {
+            start: { line: 33, column: 18 },
+            end: { line: 33, column: 45 },
+          },
+          '12': {
+            start: { line: 35, column: 2 },
+            end: { line: 39, column: null },
+          },
+          '13': {
+            start: { line: 36, column: 27 },
+            end: { line: 36, column: 125 },
+          },
+          '14': {
+            start: { line: 37, column: 4 },
+            end: { line: 37, column: 28 },
+          },
+          '15': {
+            start: { line: 38, column: 4 },
+            end: { line: 38, column: 11 },
+          },
+          '16': {
+            start: { line: 41, column: 25 },
+            end: { line: 41, column: 75 },
+          },
+          '17': {
+            start: { line: 42, column: 26 },
+            end: { line: 42, column: 38 },
+          },
+          '18': {
+            start: { line: 44, column: 2 },
+            end: { line: 58, column: null },
+          },
+          '19': {
+            start: { line: 45, column: 4 },
+            end: { line: 50, column: 7 },
+          },
+          '20': {
+            start: { line: 52, column: 4 },
+            end: { line: 57, column: 7 },
+          },
+          '21': {
+            start: { line: 29, column: 13 },
+            end: { line: 29, column: 35 },
+          },
+        },
+        fnMap: {
+          '0': {
+            name: '(anonymous_0)',
+            decl: {
+              start: { line: 9, column: 26 },
+              end: { line: 9, column: 31 },
+            },
+            loc: {
+              start: { line: 12, column: 4 },
+              end: { line: 27, column: 1 },
+            },
+          },
+          '1': {
+            name: '(anonymous_1)',
+            decl: {
+              start: { line: 22, column: 42 },
+              end: { line: 22, column: 43 },
+            },
+            loc: {
+              start: { line: 22, column: 54 },
+              end: { line: 23, column: null },
+            },
+          },
+          '2': {
+            name: '(anonymous_2)',
+            decl: {
+              start: { line: 29, column: 35 },
+              end: { line: 29, column: 40 },
+            },
+            loc: {
+              start: { line: 32, column: 4 },
+              end: { line: 59, column: 1 },
+            },
+          },
+        },
+        branchMap: {
+          '0': {
+            loc: {
+              start: { line: 23, column: 4 },
+              end: { line: 23, column: 43 },
+            },
+            type: 'cond-expr',
+            locations: [
+              {
+                start: { line: 23, column: 16 },
+                end: { line: 23, column: 18 },
+              },
+              {
+                start: { line: 23, column: 16 },
+                end: { line: 23, column: 43 },
+              },
+            ],
+          },
+          '1': {
+            loc: {
+              start: { line: 23, column: 4 },
+              end: { line: 23, column: 18 },
+            },
+            type: 'binary-expr',
+            locations: [
+              {
+                start: { line: 23, column: 4 },
+                end: { line: 23, column: 18 },
+              },
+              {
+                start: { line: 23, column: 16 },
+                end: { line: 23, column: 18 },
+              },
+            ],
+          },
+          '2': {
+            loc: {
+              start: { line: 35, column: 2 },
+              end: { line: 39, column: null },
+            },
+            type: 'if',
+            locations: [
+              {
+                start: { line: 35, column: 2 },
+                end: { line: 39, column: null },
+              },
+            ],
+          },
+          '3': {
+            loc: {
+              start: { line: 44, column: 2 },
+              end: { line: 58, column: null },
+            },
+            type: 'if',
+            locations: [
+              {
+                start: { line: 44, column: 2 },
+                end: { line: 58, column: null },
+              },
+              {
+                start: { line: 51, column: 9 },
+                end: { line: 58, column: null },
+              },
+            ],
+          },
+        },
+        s: {
+          '0': 0,
+          '1': 0,
+          '2': 0,
+          '3': 0,
+          '4': 0,
+          '5': 0,
+          '6': 0,
+          '7': 0,
+          '8': 0,
+          '9': 0,
+          '10': 0,
+          '11': 0,
+          '12': 0,
+          '13': 0,
+          '14': 0,
+          '15': 0,
+          '16': 0,
+          '17': 0,
+          '18': 0,
+          '19': 0,
+          '20': 0,
+          '21': 0,
+        },
+        f: { '0': 0, '1': 0, '2': 0 },
+        b: { '0': [0, 0], '1': [0, 0], '2': [0], '3': [0, 0] },
+      },
+  },
+};
+
+export const mockSummaryResultsFromJsonFile = {
+  total: {
+    lines: { total: 269, covered: 198, skipped: 0, pct: 73.6 },
+    statements: { total: 293, covered: 213, skipped: 0, pct: 72.69 },
+    functions: { total: 43, covered: 34, skipped: 0, pct: 79.06 },
+    branches: { total: 81, covered: 59, skipped: 0, pct: 72.83 },
+    branchesTrue: { total: 0, covered: 0, skipped: 0, pct: 100 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/index.ts': {
+    lines: { total: 44, covered: 39, skipped: 0, pct: 88.63 },
+    functions: { total: 6, covered: 5, skipped: 0, pct: 83.33 },
+    statements: { total: 46, covered: 41, skipped: 0, pct: 89.13 },
+    branches: { total: 4, covered: 1, skipped: 0, pct: 25 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/checkThreshold.ts': {
+    lines: { total: 21, covered: 20, skipped: 0, pct: 95.23 },
+    functions: { total: 1, covered: 1, skipped: 0, pct: 100 },
+    statements: { total: 22, covered: 21, skipped: 0, pct: 95.45 },
+    branches: { total: 9, covered: 8, skipped: 0, pct: 88.88 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/createCoverageTextFile.ts':
+    {
+      lines: { total: 14, covered: 14, skipped: 0, pct: 100 },
+      functions: { total: 2, covered: 2, skipped: 0, pct: 100 },
+      statements: { total: 16, covered: 16, skipped: 0, pct: 100 },
+      branches: { total: 2, covered: 2, skipped: 0, pct: 100 },
+    },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/createReportComment.ts':
+    {
+      lines: { total: 21, covered: 0, skipped: 0, pct: 0 },
+      functions: { total: 3, covered: 0, skipped: 0, pct: 0 },
+      statements: { total: 22, covered: 0, skipped: 0, pct: 0 },
+      branches: { total: 7, covered: 0, skipped: 0, pct: 0 },
+    },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/genCoverageReportInMarkdown.ts':
+    {
+      lines: { total: 41, covered: 41, skipped: 0, pct: 100 },
+      functions: { total: 7, covered: 7, skipped: 0, pct: 100 },
+      statements: { total: 46, covered: 43, skipped: 0, pct: 93.47 },
+      branches: { total: 27, covered: 23, skipped: 0, pct: 85.18 },
+    },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/getPrDiffFiles.ts': {
+    lines: { total: 9, covered: 0, skipped: 0, pct: 0 },
+    functions: { total: 1, covered: 0, skipped: 0, pct: 0 },
+    statements: { total: 10, covered: 0, skipped: 0, pct: 0 },
+    branches: { total: 0, covered: 0, skipped: 0, pct: 100 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/getRelatedTestFiles.ts':
+    {
+      lines: { total: 7, covered: 5, skipped: 0, pct: 71.42 },
+      functions: { total: 1, covered: 1, skipped: 0, pct: 100 },
+      statements: { total: 8, covered: 6, skipped: 0, pct: 75 },
+      branches: { total: 0, covered: 0, skipped: 0, pct: 100 },
+    },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/parseCoverageReportFromTextFile.ts':
+    {
+      lines: { total: 32, covered: 32, skipped: 0, pct: 100 },
+      functions: { total: 7, covered: 7, skipped: 0, pct: 100 },
+      statements: { total: 33, covered: 33, skipped: 0, pct: 100 },
+      branches: { total: 10, covered: 9, skipped: 0, pct: 90 },
+    },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/parseCoverageReportFromJsonFile.ts':
+    {
+      lines: { total: 15, covered: 15, skipped: 0, pct: 100 },
+      functions: { total: 4, covered: 4, skipped: 0, pct: 100 },
+      statements: { total: 16, covered: 16, skipped: 0, pct: 100 },
+      branches: { total: 2, covered: 1, skipped: 0, pct: 50 },
+    },
+  '/Users/manogel/projects/jest-pr-analysis/src/stages/runTests.ts': {
+    lines: { total: 3, covered: 3, skipped: 0, pct: 100 },
+    functions: { total: 1, covered: 1, skipped: 0, pct: 100 },
+    statements: { total: 4, covered: 4, skipped: 0, pct: 100 },
+    branches: { total: 0, covered: 0, skipped: 0, pct: 100 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/utils/generateJestTestCmd.ts': {
+    lines: { total: 5, covered: 5, skipped: 0, pct: 100 },
+    functions: { total: 2, covered: 2, skipped: 0, pct: 100 },
+    statements: { total: 6, covered: 6, skipped: 0, pct: 100 },
+    branches: { total: 1, covered: 1, skipped: 0, pct: 100 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/utils/getActionParams.ts': {
+    lines: { total: 9, covered: 0, skipped: 0, pct: 0 },
+    functions: { total: 1, covered: 0, skipped: 0, pct: 0 },
+    statements: { total: 10, covered: 0, skipped: 0, pct: 0 },
+    branches: { total: 1, covered: 0, skipped: 0, pct: 0 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/utils/getContentFile.ts': {
+    lines: { total: 13, covered: 0, skipped: 0, pct: 0 },
+    functions: { total: 1, covered: 0, skipped: 0, pct: 0 },
+    statements: { total: 14, covered: 0, skipped: 0, pct: 0 },
+    branches: { total: 2, covered: 0, skipped: 0, pct: 0 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/utils/getCoverageReport.ts': {
+    lines: { total: 4, covered: 0, skipped: 0, pct: 0 },
+    functions: { total: 1, covered: 0, skipped: 0, pct: 0 },
+    statements: { total: 5, covered: 0, skipped: 0, pct: 0 },
+    branches: { total: 0, covered: 0, skipped: 0, pct: 100 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/utils/getJestParams.ts': {
+    lines: { total: 15, covered: 14, skipped: 0, pct: 93.33 },
+    functions: { total: 2, covered: 2, skipped: 0, pct: 100 },
+    statements: { total: 17, covered: 16, skipped: 0, pct: 94.11 },
+    branches: { total: 12, covered: 10, skipped: 0, pct: 83.33 },
+  },
+  '/Users/manogel/projects/jest-pr-analysis/src/utils/parseMarkdownTemplate.ts':
+    {
+      lines: { total: 10, covered: 10, skipped: 0, pct: 100 },
+      functions: { total: 2, covered: 2, skipped: 0, pct: 100 },
+      statements: { total: 11, covered: 11, skipped: 0, pct: 100 },
+      branches: { total: 4, covered: 4, skipped: 0, pct: 100 },
+    },
+  '/Users/manogel/projects/jest-pr-analysis/src/utils/safeRunStage.ts': {
+    lines: { total: 6, covered: 0, skipped: 0, pct: 0 },
+    functions: { total: 1, covered: 0, skipped: 0, pct: 0 },
+    statements: { total: 7, covered: 0, skipped: 0, pct: 0 },
+    branches: { total: 0, covered: 0, skipped: 0, pct: 100 },
+  },
+};

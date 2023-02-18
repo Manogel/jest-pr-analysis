@@ -64,7 +64,7 @@ const parseFilesLine = (filesLine: string[]) => {
   return mappedFoldersObj;
 };
 
-export const parseCoverageFromTextFile = (coverageFilePath: string) => {
+export const parseCoverageReportFromTextFile = (coverageFilePath: string) => {
   const txtContent = getContentFile(coverageFilePath);
 
   /**

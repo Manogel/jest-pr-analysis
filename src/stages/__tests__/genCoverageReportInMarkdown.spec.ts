@@ -4,12 +4,12 @@ import {
 } from '~/stages/__tests__/_mocks';
 import { genCoverageReportInMarkdown } from '~/stages/genCoverageReportInMarkdown';
 
-// const mockParseCoverageFromTextFileFn = jest.fn();
+// const mockparseCoverageReportFromTextFileFn = jest.fn();
 
-// jest.mock('~/utils/parseCoverageFromTextFile', () => {
+// jest.mock('~/utils/parseCoverageReportFromTextFile', () => {
 //   return {
-//     parseCoverageFromTextFile: (...args: any) =>
-//       mockParseCoverageFromTextFileFn(...args),
+//     parseCoverageReportFromTextFile: (...args: any) =>
+//       mockparseCoverageReportFromTextFileFn(...args),
 //   };
 // });
 
