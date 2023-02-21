@@ -34,7 +34,10 @@ export const createGithubAnnotations = async (
     head_sha: actionsParams.sha,
     conclusion: params.conclusion,
     status: params.status,
-    output: params.output,
+    output: {
+      ...params.output,
+      annotations: params.output.annotations.slice(0, 49),
+    },
   };
   await octokit.rest.checks.create(data);
 };
