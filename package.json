@@ -32,7 +32,8 @@
     "package": "ts-node scripts/esbuild.ts",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage"
+    "test:cov": "jest --coverage",
+    "test:report": "jest --testLocationInResults --coverageReporters='json-summary' --json --coverage --ci --outputFile='coverage/report.json'"
   },
   "dependencies": {
     "@actions/core": "^1.10.0",

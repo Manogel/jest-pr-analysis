@@ -21,8 +21,45 @@ interface FormattedTestResults {
 interface CoverageMap {
   [path: string]: {
     path: string;
-    branchMap: any;
+    statementMap: StatementMap;
+    fnMap: FunctionMap;
+    branchMap: BranchMap;
+    s: HitMap;
+    f: HitMap;
+    b: ArrayHitMap;
   };
+}
+
+type FunctionMap = Record<number, FunctionCoverage>;
+
+interface FunctionCoverage {
+  name: string;
+  decl: Range;
+  loc: Range;
+}
+
+type StatementMap = Record<number, StatementCoverage>;
+
+interface StatementCoverage {
+  start: Location;
+  end: Location;
+}
+
+type HitMap = Record<number, number>;
+
+type ArrayHitMap = Record<number, number[]>;
+
+type BranchMap = Record<number, BranchCoverage>;
+
+interface BranchCoverage {
+  loc: Range;
+  type: string;
+  locations?: Range[];
+}
+
+interface Range {
+  start: Location;
+  end: Location;
 }
 
 type TestResultStatus = 'failed' | 'passed';
@@ -52,7 +89,7 @@ interface AssertionResult {
 }
 
 interface Location {
-  column: number;
+  column?: number;
   line: number;
 }
 

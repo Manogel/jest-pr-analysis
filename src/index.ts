@@ -1,11 +1,15 @@
 import { error, info } from '@actions/core';
 import micromatch from 'micromatch';
 
+import { createGithubAnnotations } from '~/stages/createGithubAnnotations';
 import { createReportComment } from '~/stages/createReportComment';
 import { genCoverageReportInMarkdown } from '~/stages/genCoverageReportInMarkdown';
 import { getPrDiffFiles } from '~/stages/getPrDiffFiles';
 import { getRelatedTestFiles } from '~/stages/getRelatedTestFiles';
-import { parseCoverageReportFromJsonFile } from '~/stages/parseCoverageReportFromJsonFile';
+import {
+  IParsedCoverageReport,
+  parseCoverageReportFromJsonFile,
+} from '~/stages/parseCoverageReportFromJsonFile';
 import { parseCoverageSummaryFromJsonFile } from '~/stages/parseCoverageSummaryFromJsonFile';
 import { runTest } from '~/stages/runTests';
 import { generateJestTestCmd } from '~/utils/generateJestTestCmd';
@@ -28,6 +32,36 @@ const parseChangedFiles = (
     .join(' ');
 };
 
+const createAnnotationsFromCoverageReport = async (
+  fullReport: IParsedCoverageReport,
+  actionParams: IActionParams,
+) => {
+  try {
+    await createGithubAnnotations(
+      {
+        conclusion: fullReport.success ? 'success' : 'failure',
+        status: 'completed',
+        output: {
+          title: fullReport.success ? 'Jest tests passed' : 'Jest tests failed',
+          text: 'Results here',
+          summary: fullReport.summaryText,
+          annotations: fullReport.failedTestDetails.map((test) => ({
+            path: test.path,
+            start_line: test.startLine,
+            end_line: test.endLine,
+            annotation_level: 'failure',
+            message: test.messageError,
+            title: test.title,
+          })),
+        },
+      },
+      actionParams,
+    );
+  } catch (e) {
+    error('Failed to create annotations');
+  }
+};
+
 export const run = async () => {
   const actionParams = getActionParams();
 
@@ -46,11 +80,6 @@ export const run = async () => {
     return process.exit(0);
   }
 
-  const collectCoverageScript = parseChangedFiles(
-    changedFilesArray,
-    jestParams.rootDir,
-  );
-
   const filesToTestArray = await getRelatedTestFiles(
     changedFilesArray,
     jestParams.testRegex,
@@ -61,12 +90,17 @@ export const run = async () => {
     return process.exit(1);
   }
 
-  // Stage: Run tests and generate coverage report
+  const collectCoverageScript = parseChangedFiles(
+    changedFilesArray,
+    jestParams.rootDir,
+  );
+
   const jestCmd = generateJestTestCmd({
     collectCoverageScript,
     filesToTestArray,
   });
 
+  // Stage: Run tests and generate coverage report
   await safeRunStage(async () => {
     await runTest(jestCmd);
   });
@@ -83,6 +117,8 @@ export const run = async () => {
   const fullReport = parseCoverageReportFromJsonFile(
     actionParams.coverageJsonReportPath,
   );
+
+  await createAnnotationsFromCoverageReport(fullReport, actionParams);
 
   if (!fullReport.success) {
     error(`Coverage threshold error.`);

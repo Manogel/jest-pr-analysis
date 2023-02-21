@@ -59,6 +59,7 @@ interface IPullRequest {
 }
 
 interface IActionParams {
+  sha: string;
   prNumber: number;
   ghToken: string;
   pullRequest: IPullRequest;

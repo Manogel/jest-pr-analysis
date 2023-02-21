@@ -49,6 +49,13 @@ jest.mock('~/stages/parseCoverageReportFromJsonFile', () => {
       mockParseCoverageReportFromJsonFile(...args),
   };
 });
+
+jest.mock('~/stages/createGithubAnnotations', () => {
+  return {
+    createGithubAnnotations: jest.fn(),
+  };
+});
+
 jest.mock('~/stages/parseCoverageSummaryFromJsonFile', () => {
   return {
     parseCoverageSummaryFromJsonFile: jest.fn(),
