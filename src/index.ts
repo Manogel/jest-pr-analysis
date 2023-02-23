@@ -1,7 +1,10 @@
 import { error, info } from '@actions/core';
 import micromatch from 'micromatch';
 
-import { createGithubAnnotations } from '~/stages/createGithubAnnotations';
+import {
+  createGithubAnnotations,
+  IGhAnnotationItem,
+} from '~/stages/createGithubAnnotations';
 import { createReportComment } from '~/stages/createReportComment';
 import { genCoverageReportInMarkdown } from '~/stages/genCoverageReportInMarkdown';
 import { getPrDiffFiles } from '~/stages/getPrDiffFiles';
@@ -37,6 +40,33 @@ const createAnnotationsFromCoverageReport = async (
   actionParams: IActionParams,
 ) => {
   try {
+    const failedTestsAnnotations = fullReport.failedTestDetails.map(
+      (test) =>
+        ({
+          start_column: test.startColumn,
+          end_column: test.endColumn,
+          path: test.path,
+          start_line: test.startLine,
+          end_line: test.endLine,
+          annotation_level: 'failure',
+          message: test.messageError,
+          title: test.title,
+        } as IGhAnnotationItem),
+    );
+    const coverageAnnotations = fullReport.coverageDetails.map(
+      (covInfo) =>
+        ({
+          path: covInfo.path,
+          start_column: covInfo.startColumn,
+          end_column: covInfo.endColumn,
+          start_line: covInfo.startLine,
+          end_line: covInfo.endLine,
+          annotation_level: 'warning',
+          message: covInfo.title,
+          title: `🤔 Coverage warning`,
+        } as IGhAnnotationItem),
+    );
+
     await createGithubAnnotations(
       {
         conclusion: fullReport.success ? 'success' : 'failure',
@@ -45,14 +75,7 @@ const createAnnotationsFromCoverageReport = async (
           title: fullReport.success ? 'Jest tests passed' : 'Jest tests failed',
           text: 'Results here',
           summary: fullReport.summaryText,
-          annotations: fullReport.failedTestDetails.map((test) => ({
-            path: test.path,
-            start_line: test.startLine,
-            end_line: test.endLine,
-            annotation_level: 'failure',
-            message: test.messageError,
-            title: test.title,
-          })),
+          annotations: [...failedTestsAnnotations, ...coverageAnnotations],
         },
       },
       actionParams,

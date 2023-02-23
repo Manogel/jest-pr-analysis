@@ -1,5 +1,17 @@
 import { getOctokit, context } from '@actions/github';
 
+export interface IGhAnnotationItem {
+  path: string;
+  start_line: number;
+  end_line: number;
+  start_column?: number;
+  end_column?: number;
+  annotation_level: 'failure' | 'warning' | 'notice';
+  message: string;
+  raw_details?: string;
+  title: string;
+}
+
 interface ICreateGhAnnotations {
   conclusion: 'success' | 'failure';
   status: 'completed' | 'in_progress';
@@ -7,17 +19,7 @@ interface ICreateGhAnnotations {
     title: string;
     text: string;
     summary: string;
-    annotations: Array<{
-      path: string;
-      start_line: number;
-      end_line: number;
-      start_column?: number;
-      end_column?: number;
-      annotation_level: 'failure' | 'warning' | 'notice';
-      message: string;
-      raw_details?: string;
-      title: string;
-    }>;
+    annotations: IGhAnnotationItem[];
   };
 }
 
