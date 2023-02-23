@@ -51,6 +51,11 @@ export const parseCoverageReportFromJsonFile = (
   let summaryText = results.success
     ? `${results.numPassedTests} tests passing in ${results.numPassedTestSuites} suite(s).`
     : `Failed tests: ${results.numFailedTests}/${results.numTotalTests}. Failed suites: ${results.numFailedTests}/${results.numTotalTestSuites}.`;
+
+  if (results.numFailedTests === 0 && !results.success) {
+    summaryText =
+      'Coverage threshold not met. Check action report for details.';
+  }
   summaryText = (results.success ? `✅ ` : '❌ ') + summaryText;
 
   const filesList = testResults.flatMap((switchItem) => {
