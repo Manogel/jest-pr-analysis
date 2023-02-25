@@ -1,12 +1,10 @@
 import markdownTable from 'markdown-table';
 
-import { parseMarkdownTemplate } from '~/utils/parseMarkdownTemplate';
-
 interface ICoverageArrayOptions {
   statusIcon?: boolean;
 }
 
-const FILENAME_LENGTH = 11;
+const FILENAME_LENGTH = 14;
 
 const trimFilename = (filename: string) => {
   const nameLength = filename.length;
@@ -106,16 +104,11 @@ const makeFilesCovRows = (folders: IParsedCoverageObj) => {
 /**
  * Generate coverage report in markdown
  */
-export const genCoverageReportInMarkdown = (
+export const genCoverageTableInMarkdown = (
   filesLinesObj: IParsedCoverageObj,
 ) => {
   const covRows = makeFilesCovRows(filesLinesObj);
   const mkTable = createReportTable(covRows);
 
-  const content = parseMarkdownTemplate('default', {
-    covTable: mkTable,
-    title: 'Coverage report',
-  });
-
-  return content;
+  return mkTable;
 };

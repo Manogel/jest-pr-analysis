@@ -6,7 +6,7 @@ import {
   IGhAnnotationItem,
 } from '~/stages/createGithubAnnotations';
 import { createReportComment } from '~/stages/createReportComment';
-import { genCoverageReportInMarkdown } from '~/stages/genCoverageReportInMarkdown';
+import { genCoverageTableInMarkdown } from '~/stages/genCoverageTableInMarkdown';
 import { getPrDiffFiles } from '~/stages/getPrDiffFiles';
 import { getRelatedTestFiles } from '~/stages/getRelatedTestFiles';
 import {
@@ -18,6 +18,7 @@ import { runTest } from '~/stages/runTests';
 import { generateJestTestCmd } from '~/utils/generateJestTestCmd';
 import { getActionParams } from '~/utils/getActionParams';
 import { getJestParams } from '~/utils/getJestParams';
+import { parseMarkdownTemplate } from '~/utils/parseMarkdownTemplate';
 import { safeRunStage } from '~/utils/safeRunStage';
 
 const parseChangedFiles = (
@@ -132,15 +133,20 @@ export const run = async () => {
     actionParams.coverageJsonSummaryPath,
   );
 
-  const reportSummary = genCoverageReportInMarkdown(coverageObjectResults);
-
-  await createReportComment(reportSummary, actionParams);
-
   // Stage: Check threshold
   const fullReport = parseCoverageReportFromJsonFile(
     actionParams.coverageJsonReportPath,
   );
 
+  const mdTable = genCoverageTableInMarkdown(coverageObjectResults);
+
+  const reportComment = parseMarkdownTemplate('default', {
+    covTable: mdTable,
+    covSummary: fullReport.summaryText,
+    title: 'Coverage report',
+  });
+
+  await createReportComment(reportComment, actionParams);
   await createAnnotationsFromCoverageReport(fullReport, actionParams);
 
   if (!fullReport.success) {

@@ -16,11 +16,6 @@ jest.mock('~/stages/createReportComment', () => {
     createReportComment: jest.fn(),
   };
 });
-jest.mock('~/stages/genCoverageReportInMarkdown', () => {
-  return {
-    genCoverageReportInMarkdown: jest.fn(),
-  };
-});
 jest.mock('~/stages/getPrDiffFiles', () => {
   return {
     getPrDiffFiles: jest.fn().mockReturnValue([{ filename: 'index.ts' }]),
@@ -47,6 +42,18 @@ jest.mock('~/stages/parseCoverageReportFromJsonFile', () => {
   return {
     parseCoverageReportFromJsonFile: (...args: any) =>
       mockParseCoverageReportFromJsonFile(...args),
+  };
+});
+
+jest.mock('~/stages/genCoverageTableInMarkdown', () => {
+  return {
+    genCoverageTableInMarkdown: jest.fn(),
+  };
+});
+
+jest.mock('~/utils/parseMarkdownTemplate', () => {
+  return {
+    parseMarkdownTemplate: jest.fn(),
   };
 });
 
