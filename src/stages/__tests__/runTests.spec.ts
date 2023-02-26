@@ -1,12 +1,12 @@
 import { exec } from '@actions/exec';
 
-import { runTest } from '~/stages/runTests';
+import { runTests } from '~/stages/runTests';
 
 describe('runTests', () => {
   const jestCommand = 'jest';
 
   it('should be execute jest command by parameter', async () => {
-    await runTest(jestCommand);
+    await runTests(jestCommand);
     expect(exec).toBeCalledWith(jestCommand);
   });
 });

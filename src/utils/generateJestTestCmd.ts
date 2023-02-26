@@ -1,11 +1,17 @@
 interface IGenerateJestTestCmd {
   filesToTestArray: string[];
-  collectCoverageScript: string;
+  filesToCollectCoverage: string[];
   reporters?: string[];
 }
 
+const getCollectCoverageScript = (changedFilesArray: string[]) => {
+  return changedFilesArray
+    .map((from) => `--collectCoverageFrom "${from}"`)
+    .join(' ');
+};
+
 export const generateJestTestCmd = ({
-  collectCoverageScript,
+  filesToCollectCoverage,
   filesToTestArray,
   reporters = [],
 }: IGenerateJestTestCmd) => {
@@ -19,7 +25,7 @@ export const generateJestTestCmd = ({
     '--json',
     '--ci',
     '--coverage',
-    collectCoverageScript,
+    getCollectCoverageScript(filesToCollectCoverage),
     ...defaultReporters.map((reporter) => `--reporters=${reporter}`),
     '--coverageReporters="json-summary"',
     `--outputFile="${coverageJsonReportPath}"`,
