@@ -10,7 +10,7 @@ event:
 	act pull_request -e tests/mocks/pull-request-event.json \
 		--container-architecture linux/amd64 \
 		--bind \
-		--workflows .github/workflows \
+		--workflows tests/workflows \
 		-s GITHUB_TOKEN=$(gh_token) \
 		-s SSH_PRIVATE_KEY="$$(< ~/.ssh/id_rsa)" \
 		-s SSH_HOSTS="$$(< ~/.ssh/known_hosts)"

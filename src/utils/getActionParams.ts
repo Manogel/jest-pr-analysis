@@ -17,6 +17,7 @@ export const getActionParams = (): IActionParams => {
   const pullRequest = context.payload.pull_request as IPullRequest;
 
   const options: IActionParams = {
+    sha: context.payload.pull_request.head.sha ?? context.sha,
     ghToken,
     prNumber: pullRequest.number,
     pullRequest,

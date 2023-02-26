@@ -1,88 +1,62 @@
 import { error, info } from '@actions/core';
-import micromatch from 'micromatch';
 
+import { createAnnotationsFromCoverageReport } from '~/createAnnotationsFromCoverageReport';
+import { getPrChangedFiles } from '~/getPrChangedFiles';
 import { createReportComment } from '~/stages/createReportComment';
-import { genCoverageReportInMarkdown } from '~/stages/genCoverageReportInMarkdown';
-import { getPrDiffFiles } from '~/stages/getPrDiffFiles';
-import { getRelatedTestFiles } from '~/stages/getRelatedTestFiles';
+import { genCoverageTableInMarkdown } from '~/stages/genCoverageTableInMarkdown';
 import { parseCoverageReportFromJsonFile } from '~/stages/parseCoverageReportFromJsonFile';
 import { parseCoverageSummaryFromJsonFile } from '~/stages/parseCoverageSummaryFromJsonFile';
-import { runTest } from '~/stages/runTests';
+import { runTests } from '~/stages/runTests';
 import { generateJestTestCmd } from '~/utils/generateJestTestCmd';
 import { getActionParams } from '~/utils/getActionParams';
-import { getJestParams } from '~/utils/getJestParams';
+import { parseMarkdownTemplate } from '~/utils/parseMarkdownTemplate';
 import { safeRunStage } from '~/utils/safeRunStage';
-
-const parseChangedFiles = (
-  changedFilesArray: string[],
-  jestRootDir: string | null,
-) => {
-  return changedFilesArray
-    .map((from) => {
-      // remove rootDir reference
-
-      const formattedPath =
-        jestRootDir != null ? from.split(`${jestRootDir}/`)[1] : from;
-      return `--collectCoverageFrom "${formattedPath}"`;
-    })
-    .join(' ');
-};
 
 export const run = async () => {
   const actionParams = getActionParams();
 
   // Stage: Get changed files by pull request
-  const filesDiffList = await getPrDiffFiles(actionParams);
-  const filenamesList = filesDiffList.map(({ filename }) => filename);
+  const { prChangedFiles, filesToTest } = await getPrChangedFiles(actionParams);
 
-  const jestParams = getJestParams();
-  const changedFilesArray = micromatch(
-    filenamesList,
-    jestParams.collectCoverageFrom,
-  );
-
-  if (changedFilesArray.length <= 0) {
-    info('No files to tests.');
+  if (!prChangedFiles.length) {
+    info('No changed files in pull request');
     return process.exit(0);
   }
 
-  const collectCoverageScript = parseChangedFiles(
-    changedFilesArray,
-    jestParams.rootDir,
-  );
-
-  const filesToTestArray = await getRelatedTestFiles(
-    changedFilesArray,
-    jestParams.testRegex,
-  );
-
-  if (filesToTestArray.length <= 0) {
-    error(`No tests found for: [${changedFilesArray.join(' ')}].`);
+  if (!filesToTest.length) {
+    error(`No tests found for: [${prChangedFiles.join(', ')}]`);
     return process.exit(1);
   }
 
-  // Stage: Run tests and generate coverage report
   const jestCmd = generateJestTestCmd({
-    collectCoverageScript,
-    filesToTestArray,
+    filesToCollectCoverage: prChangedFiles,
+    filesToTestArray: filesToTest,
   });
 
+  // Stage: Run tests and generate coverage report
   await safeRunStage(async () => {
-    await runTest(jestCmd);
+    await runTests(jestCmd);
   });
 
   const coverageObjectResults = parseCoverageSummaryFromJsonFile(
     actionParams.coverageJsonSummaryPath,
   );
 
-  const reportSummary = genCoverageReportInMarkdown(coverageObjectResults);
-
-  await createReportComment(reportSummary, actionParams);
-
   // Stage: Check threshold
   const fullReport = parseCoverageReportFromJsonFile(
     actionParams.coverageJsonReportPath,
   );
+
+  const mdTable = genCoverageTableInMarkdown(coverageObjectResults);
+
+  const reportComment = parseMarkdownTemplate('default', {
+    covTable: mdTable,
+    covSummary: fullReport.summaryText,
+    title: 'Coverage report',
+  });
+
+  await createReportComment(reportComment, actionParams);
+  await createAnnotationsFromCoverageReport(fullReport, actionParams);
 
   if (!fullReport.success) {
     error(`Coverage threshold error.`);
