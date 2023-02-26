@@ -21,4 +21,33 @@ describe('parseCoverageFromJsonFile', () => {
     );
     expect(results).toBeDefined();
   });
+
+  it('should return success summary text when tests passed', () => {
+    const path = './coverage/report.json';
+    const mockTestResults = {
+      ...mockResultsFromJsonFile,
+      success: true,
+      numPassedTests: 1,
+      numPassedTestSuites: 1,
+    };
+    getJsonReport.mockReturnValue(mockTestResults);
+    const results = parseCoverageReportFromJsonFile(path);
+    expect(results.summaryText).toBe(
+      `✅ ${mockTestResults.numPassedTests} tests passing in ${mockTestResults.numPassedTestSuites} suite(s).`,
+    );
+  });
+
+  it('should return failed summary text when coverage not met', () => {
+    const path = './coverage/report.json';
+    const mockTestResults = {
+      ...mockResultsFromJsonFile,
+      success: false,
+      numFailedTests: 0,
+    };
+    getJsonReport.mockReturnValue(mockTestResults);
+    const results = parseCoverageReportFromJsonFile(path);
+    expect(results.summaryText).toBe(
+      `❌ Coverage threshold not met. Check action report for details.`,
+    );
+  });
 });

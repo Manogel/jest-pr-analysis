@@ -7,6 +7,7 @@ jest.mock('~/getPrChangedFiles', () => {
     getPrChangedFiles: (...args: any) => mockGetPrChangedFiles(...args),
   };
 });
+
 const mockParseCoverageReportFromJsonFile = jest
   .fn()
   .mockReturnValue({ success: true });
