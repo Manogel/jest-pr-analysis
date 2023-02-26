@@ -11,16 +11,18 @@ export interface IParsedCoverageReport {
   numTotalTests: number;
   numFailedTestSuites: number;
   summaryText: string;
-  failedTestDetails: Array<{
-    path: string;
-    startLine: number;
-    endLine: number;
-    title: string;
-    messageError: string;
-    startColumn?: number;
-    endColumn?: number;
-  }>;
+  failedTestDetails: IParsedFailedTestDetails[];
   coverageDetails: IParsedCoverageDetails[];
+}
+
+interface IParsedFailedTestDetails {
+  path: string;
+  startLine: number;
+  endLine: number;
+  title: string;
+  messageError: string;
+  startColumn?: number;
+  endColumn?: number;
 }
 
 interface IParsedCoverageDetails {
