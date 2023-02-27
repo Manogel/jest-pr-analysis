@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: '18'
           cache: 'yarn'
+
+      - run: yarn install
+
       - uses: reviewdog/action-eslint@v1
         with:
           github_token: ${{ github.token }}
