@@ -5,10 +5,7 @@
   "description": "This Action allows you to create annotations and coverage reports based on Jest's output.",
   "main": "lib/index.js",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Manogel/jest-pr-analysis"
-  },
+  "repository": "git+https://github.com/Manogel/jest-pr-analysis",
   "keywords": [
     "jest",
     "pull request",
@@ -52,6 +49,7 @@
     "@types/micromatch": "^4.0.2",
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "babel-jest": "^29.3.1",
     "copyfiles": "^2.4.1",
     "esbuild": "^0.16.4",
