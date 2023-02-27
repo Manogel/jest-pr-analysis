@@ -6,6 +6,7 @@
   "extends": ["standard-with-typescript", "plugin:prettier/recommended"],
   "overrides": [],
   "plugins": ["prettier", "eslint-plugin-import-helpers"],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",

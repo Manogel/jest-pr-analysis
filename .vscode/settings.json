@@ -1,8 +1,11 @@
 {
   "editor.formatOnSave": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
+  "editor.codeActionsOnSave": [
+    "source.sortMembers",
+    "source.organizeImports",
+    "source.fixAll.format",
+    "source.fixAll.eslint"
+],
   "typescript.suggest.autoImports": true,
   "files.exclude": {
     "node_modules": true
