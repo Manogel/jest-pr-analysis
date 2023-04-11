@@ -29,6 +29,7 @@ export const getPrChangedFiles = async (actionParams: IActionParams) => {
   const modifiedLines: {
     [filePath: string]: number[];
   } = {};
+  const filePaths: string[] = [];
 
   for (const file of filesDiffList) {
     if (!file.to) continue;
@@ -37,6 +38,7 @@ export const getPrChangedFiles = async (actionParams: IActionParams) => {
       jestParams.collectCoverageFrom,
     ).length;
     if (!isChangedFile) continue;
+    filePaths.push(file.to);
     const filePath = normalizeChangedFilePath(file.to, jestParams.rootDir);
     modifiedLines[filePath] = [];
     for (const chunk of file.chunks) {
@@ -49,18 +51,16 @@ export const getPrChangedFiles = async (actionParams: IActionParams) => {
   }
 
   prevResults.modifiedLines = modifiedLines;
-
   // extract keys/paths from modifiedLines
-  const changedFilesArray = Object.keys(modifiedLines);
-  prevResults.prChangedFiles = changedFilesArray;
+  prevResults.prChangedFiles = Object.keys(modifiedLines);
 
-  if (changedFilesArray.length <= 0) {
+  if (prevResults.prChangedFiles.length <= 0) {
     return prevResults;
   }
 
   // Get related test files (*.spec.ts, *.test.ts)
   const filesToTestArray = await getRelatedTestFiles(
-    changedFilesArray,
+    filePaths,
     jestParams.testRegex,
   );
   prevResults.filesToTest = filesToTestArray;
