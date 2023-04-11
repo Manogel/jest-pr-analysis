@@ -32,6 +32,11 @@ export const getPrChangedFiles = async (actionParams: IActionParams) => {
 
   for (const file of filesDiffList) {
     if (!file.to) continue;
+    const isChangedFile = micromatch.isMatch(
+      file.to,
+      jestParams.collectCoverageFrom,
+    );
+    if (!isChangedFile) continue;
     const filePath = normalizeChangedFilePath(file.to, jestParams.rootDir);
     modifiedLines[filePath] = [];
     for (const chunk of file.chunks) {
@@ -45,12 +50,8 @@ export const getPrChangedFiles = async (actionParams: IActionParams) => {
   prevResults.modifiedLines = modifiedLines;
 
   // extract keys/paths from modifiedLines
-  const filenamesList = Object.keys(modifiedLines);
-  // Filter files by collectCoverageFrom
-  const changedFilesArray = micromatch(
-    filenamesList,
-    jestParams.collectCoverageFrom,
-  );
+  const changedFilesArray = Object.keys(modifiedLines);
+  prevResults.prChangedFiles = changedFilesArray;
 
   if (changedFilesArray.length <= 0) {
     return prevResults;
