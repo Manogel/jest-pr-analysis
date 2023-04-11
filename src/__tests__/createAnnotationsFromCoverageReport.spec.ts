@@ -1,5 +1,5 @@
 import { createAnnotationsFromCoverageReport } from '~/createAnnotationsFromCoverageReport';
-import { IParsedCoverageReport } from '~/stages/parseCoverageReportFromJsonFile';
+import { IParsedCoverageReport } from '~/stages/types';
 
 const mockCreateGithubAnnotations = jest.fn();
 jest.mock('~/stages/createGithubAnnotations', () => {
