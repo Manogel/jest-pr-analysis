@@ -1,4 +1,4 @@
-import { debug } from '@actions/core';
+import { info } from '@actions/core';
 
 import { IParsedCoverageDetails, IPrModifiedLines } from '~/stages/types';
 
@@ -6,7 +6,7 @@ export const filterAnnotationsByModifiedLines = (
   annotations: IParsedCoverageDetails[],
   modifiedLines: IPrModifiedLines,
 ) => {
-  debug(`Has ${annotations.length} annotations details`);
+  info(`Has ${annotations.length} annotations details`);
 
   // filter annotations by modified lines
   const filteredAnnotationsList = annotations.filter((annotation) => {
@@ -21,7 +21,7 @@ export const filterAnnotationsByModifiedLines = (
     return isModified;
   });
 
-  debug(
+  info(
     `Has ${filteredAnnotationsList.length} annotations details after filter`,
   );
 

@@ -5,17 +5,15 @@ import { getRelatedTestFiles } from '~/stages/getRelatedTestFiles';
 import { IPrModifiedLines } from '~/stages/types';
 import { getJestParams } from '~/utils/getJestParams';
 
-const normalizeChangedFilesPath = (
-  changedFilesArray: string[],
+const normalizeChangedFilePath = (
+  changedFilePath: string,
   jestRootDir: string | null,
 ) => {
-  return changedFilesArray.map((from) => {
-    // remove rootDir reference
-
-    const formattedPath =
-      jestRootDir != null ? from.split(`${jestRootDir}/`)[1] : from;
-    return formattedPath;
-  });
+  const formattedPath =
+    jestRootDir != null
+      ? changedFilePath.split(`${jestRootDir}/`)[1]
+      : changedFilePath;
+  return formattedPath;
 };
 
 export const getPrChangedFiles = async (actionParams: IActionParams) => {
@@ -34,11 +32,12 @@ export const getPrChangedFiles = async (actionParams: IActionParams) => {
 
   for (const file of filesDiffList) {
     if (!file.to) continue;
-    modifiedLines[file.to] = [];
+    const filePath = normalizeChangedFilePath(file.to, jestParams.rootDir);
+    modifiedLines[filePath] = [];
     for (const chunk of file.chunks) {
       for (const change of chunk.changes) {
         if (change.type === 'add') {
-          modifiedLines[file.to].push(change.ln);
+          modifiedLines[filePath].push(change.ln);
         }
       }
     }
@@ -51,10 +50,6 @@ export const getPrChangedFiles = async (actionParams: IActionParams) => {
   const changedFilesArray = micromatch(
     filenamesList,
     jestParams.collectCoverageFrom,
-  );
-  prevResults.prChangedFiles = normalizeChangedFilesPath(
-    changedFilesArray,
-    jestParams.rootDir,
   );
 
   if (changedFilesArray.length <= 0) {
