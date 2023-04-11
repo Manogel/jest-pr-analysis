@@ -1,9 +1,10 @@
 import { getPrChangedFiles } from '~/getPrChangedFiles';
 
-const mockMicromatch = jest.fn();
+const mockMicromatchIsMatch = jest.fn();
 jest.mock('micromatch', () => ({
-  __esModule: true, // this property makes it work
-  default: (...args: any) => mockMicromatch(...args),
+  // __esModule: true, // this property makes it work
+  // default: jest.fn(),
+  isMatch: (...args: any) => mockMicromatchIsMatch(...args),
 }));
 
 const mockGetPrDiffFiles = jest.fn();
@@ -36,8 +37,8 @@ describe('getPrChangedFiles', () => {
 
   it('should be return pull request changed files and related test files', async () => {
     mockGetJestParams.mockReturnValue(jestParams);
-    mockGetPrDiffFiles.mockResolvedValue([{ filename: 'index.ts' }]);
-    mockMicromatch.mockReturnValue(['index.ts']);
+    mockGetPrDiffFiles.mockResolvedValue([{ chunks: [], to: 'index.ts' }]);
+    mockMicromatchIsMatch.mockReturnValue(true);
     mockGetRelatedTestFiles.mockResolvedValue(['index.spec.ts']);
 
     const results = await getPrChangedFiles(actionParams);
@@ -52,8 +53,8 @@ describe('getPrChangedFiles', () => {
       ...jestParams,
       rootDir: 'src',
     });
-    mockGetPrDiffFiles.mockResolvedValue([{ filename: 'src/index.ts' }]);
-    mockMicromatch.mockReturnValue(['src/index.ts']);
+    mockGetPrDiffFiles.mockResolvedValue([{ chunks: [], to: 'src/index.ts' }]);
+    mockMicromatchIsMatch.mockReturnValue(true);
     mockGetRelatedTestFiles.mockResolvedValue(['index.spec.ts']);
 
     const results = await getPrChangedFiles(actionParams);
@@ -65,8 +66,8 @@ describe('getPrChangedFiles', () => {
 
   it('should be return empty prev results when no changes tested files', async () => {
     mockGetJestParams.mockReturnValue(jestParams);
-    mockGetPrDiffFiles.mockResolvedValue([{ filename: 'readme.md' }]);
-    mockMicromatch.mockReturnValue([]);
+    mockGetPrDiffFiles.mockResolvedValue([{ chunks: [], to: 'readme.md' }]);
+    mockMicromatchIsMatch.mockReturnValue(false);
 
     const results = await getPrChangedFiles(actionParams);
 
