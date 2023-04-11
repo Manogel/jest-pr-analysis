@@ -1,7 +1,4 @@
-import micromatch from 'micromatch';
-
 import { getPrDiffFiles } from '~/stages/getPrDiffFiles';
-import { getRelatedTestFiles } from '~/stages/getRelatedTestFiles';
 import { getJestParams } from '~/utils/getJestParams';
 
 const normalizeChangedFilesPath = (
@@ -25,28 +22,33 @@ export const getPrChangedFiles = async (actionParams: IActionParams) => {
   };
 
   const filesDiffList = await getPrDiffFiles(actionParams);
-  const filenamesList = filesDiffList.map(({ filename }) => filename);
-
-  // Filter files by collectCoverageFrom
-  const changedFilesArray = micromatch(
-    filenamesList,
-    jestParams.collectCoverageFrom,
-  );
-  prevResults.prChangedFiles = normalizeChangedFilesPath(
-    changedFilesArray,
-    jestParams.rootDir,
-  );
-
-  if (changedFilesArray.length <= 0) {
-    return prevResults;
-  }
-
-  // Get related test files (*.spec.ts, *.test.ts)
-  const filesToTestArray = await getRelatedTestFiles(
-    changedFilesArray,
-    jestParams.testRegex,
-  );
-  prevResults.filesToTest = filesToTestArray;
-
+  console.log(filesDiffList);
   return prevResults;
+  // const addedOrModified = filesDiffList.filter(
+  //   ({ status }) => status === 'added' || status === 'modified',
+  // )
+  // const filenamesList = filesDiffList.map(({ filename }) => filename);
+
+  // // Filter files by collectCoverageFrom
+  // const changedFilesArray = micromatch(
+  //   filenamesList,
+  //   jestParams.collectCoverageFrom,
+  // );
+  // prevResults.prChangedFiles = normalizeChangedFilesPath(
+  //   changedFilesArray,
+  //   jestParams.rootDir,
+  // );
+
+  // if (changedFilesArray.length <= 0) {
+  //   return prevResults;
+  // }
+
+  // // Get related test files (*.spec.ts, *.test.ts)
+  // const filesToTestArray = await getRelatedTestFiles(
+  //   changedFilesArray,
+  //   jestParams.testRegex,
+  // );
+  // prevResults.filesToTest = filesToTestArray;
+
+  // return prevResults;
 };
