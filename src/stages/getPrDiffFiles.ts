@@ -18,25 +18,3 @@ export const getPrDiffFiles = async (actionParams: IActionParams) => {
 
   return patch;
 };
-
-export const getPrDiffFiles2 = async (actionParams: IActionParams) => {
-  try {
-    const { owner, repo } = context.repo;
-
-    const octokit = getOctokit(actionParams.ghToken);
-    const { data: files } = await octokit.rest.pulls.listFiles({
-      owner,
-      repo,
-      pull_number: actionParams.prNumber,
-    });
-
-    const addedOrModified = files.filter(
-      ({ status }) => status === 'added' || status === 'modified',
-    );
-
-    return addedOrModified;
-  } catch (err) {
-    console.warn('Error to show files diff', err);
-    throw err;
-  }
-};
