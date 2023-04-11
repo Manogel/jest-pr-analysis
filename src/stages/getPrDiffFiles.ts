@@ -1,19 +1,20 @@
 import { context, getOctokit } from '@actions/github';
+import parseDiff from 'parse-diff';
 
 export const getPrDiffFiles = async (actionParams: IActionParams) => {
-  try {
-    const { owner, repo } = context.repo;
+  const { owner, repo } = context.repo;
+  const octokit = getOctokit(actionParams.ghToken);
 
-    const octokit = getOctokit(actionParams.ghToken);
-    const { data: files } = await octokit.rest.pulls.listFiles({
-      owner,
-      repo,
-      pull_number: actionParams.prNumber,
-    });
+  const response = await octokit.rest.pulls.get({
+    owner,
+    repo,
+    pull_number: actionParams.prNumber,
+    headers: {
+      accept: 'application/vnd.github.v3.patch',
+    },
+  });
 
-    return files;
-  } catch (err) {
-    console.warn('Error to show files diff', err);
-    throw err;
-  }
+  const patch = parseDiff(response.data as unknown as string);
+
+  return patch;
 };

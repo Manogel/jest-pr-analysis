@@ -39,6 +39,7 @@
     "fs-extra": "^10.1.0",
     "markdown-table": "2",
     "micromatch": "^4.0.5",
+    "parse-diff": "^0.11.1",
     "strip-ansi": "^7.0.1"
   },
   "devDependencies": {

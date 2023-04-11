@@ -4,7 +4,7 @@ import {
   createGithubAnnotations,
   IGhAnnotationItem,
 } from '~/stages/createGithubAnnotations';
-import { IParsedCoverageReport } from '~/stages/parseCoverageReportFromJsonFile';
+import { IParsedCoverageReport } from '~/stages/types';
 
 export const createAnnotationsFromCoverageReport = async (
   fullReport: IParsedCoverageReport,

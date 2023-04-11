@@ -3,6 +3,7 @@ import { error, info } from '@actions/core';
 import { createAnnotationsFromCoverageReport } from '~/createAnnotationsFromCoverageReport';
 import { getPrChangedFiles } from '~/getPrChangedFiles';
 import { createReportComment } from '~/stages/createReportComment';
+import { filterAnnotationsByModifiedLines } from '~/stages/filterAnnotationsByModifiedLines';
 import { genCoverageTableInMarkdown } from '~/stages/genCoverageTableInMarkdown';
 import { parseCoverageReportFromJsonFile } from '~/stages/parseCoverageReportFromJsonFile';
 import { parseCoverageSummaryFromJsonFile } from '~/stages/parseCoverageSummaryFromJsonFile';
@@ -16,7 +17,8 @@ export const run = async () => {
   const actionParams = getActionParams();
 
   // Stage: Get changed files by pull request
-  const { prChangedFiles, filesToTest } = await getPrChangedFiles(actionParams);
+  const { prChangedFiles, filesToTest, modifiedLines } =
+    await getPrChangedFiles(actionParams);
 
   if (!prChangedFiles.length) {
     info('No changed files in pull request');
@@ -55,8 +57,15 @@ export const run = async () => {
     title: 'Coverage report',
   });
 
+  const filteredAnnotations = filterAnnotationsByModifiedLines(
+    fullReport.coverageDetails,
+    modifiedLines,
+  );
   await createReportComment(reportComment, actionParams);
-  await createAnnotationsFromCoverageReport(fullReport, actionParams);
+  await createAnnotationsFromCoverageReport(
+    { ...fullReport, coverageDetails: filteredAnnotations },
+    actionParams,
+  );
 
   if (!fullReport.success) {
     error(`Coverage threshold error.`);

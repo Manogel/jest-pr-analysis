@@ -36,7 +36,7 @@ describe('getPrChangedFiles', () => {
 
   it('should be return pull request changed files and related test files', async () => {
     mockGetJestParams.mockReturnValue(jestParams);
-    mockGetPrDiffFiles.mockResolvedValue([{ filename: 'index.ts' }]);
+    mockGetPrDiffFiles.mockResolvedValue([{ chunks: [], to: 'index.ts' }]);
     mockMicromatch.mockReturnValue(['index.ts']);
     mockGetRelatedTestFiles.mockResolvedValue(['index.spec.ts']);
 
@@ -52,7 +52,7 @@ describe('getPrChangedFiles', () => {
       ...jestParams,
       rootDir: 'src',
     });
-    mockGetPrDiffFiles.mockResolvedValue([{ filename: 'src/index.ts' }]);
+    mockGetPrDiffFiles.mockResolvedValue([{ chunks: [], to: 'src/index.ts' }]);
     mockMicromatch.mockReturnValue(['src/index.ts']);
     mockGetRelatedTestFiles.mockResolvedValue(['index.spec.ts']);
 
@@ -65,7 +65,7 @@ describe('getPrChangedFiles', () => {
 
   it('should be return empty prev results when no changes tested files', async () => {
     mockGetJestParams.mockReturnValue(jestParams);
-    mockGetPrDiffFiles.mockResolvedValue([{ filename: 'readme.md' }]);
+    mockGetPrDiffFiles.mockResolvedValue([{ chunks: [], to: 'readme.md' }]);
     mockMicromatch.mockReturnValue([]);
 
     const results = await getPrChangedFiles(actionParams);

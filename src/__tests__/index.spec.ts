@@ -85,6 +85,14 @@ jest.mock('~/utils/getActionParams', () => {
   };
 });
 
+const mockFilterAnnotationsByModifiedLines = jest.fn();
+jest.mock('~/stages/filterAnnotationsByModifiedLines', () => {
+  return {
+    filterAnnotationsByModifiedLines: (...args: any) =>
+      mockFilterAnnotationsByModifiedLines(...args),
+  };
+});
+
 describe('src/index', () => {
   afterEach(() => {
     jest.resetModules();
