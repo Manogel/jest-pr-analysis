@@ -30,5 +30,5 @@ export interface IParsedCoverageDetails {
 }
 
 export interface IPrModifiedLines {
-  [filePath: string]: number[];
+  [relativeFilesPath: string]: number[];
 }
